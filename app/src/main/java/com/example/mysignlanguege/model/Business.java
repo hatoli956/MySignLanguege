@@ -1,78 +1,144 @@
 package com.example.mysignlanguege.model;
 
 public class Business {
-    String Name,Category,Phone,Email,Residence,Site;
 
-    public Business(String name, String category, String phone, String email, String residence, String site) {
-        Name = name;
-        Category = category;
-        Phone = phone;
-        Email = email;
-        Residence = residence;
-        Site = site;
+    String id;
+    String name,category,phone,email,street,website,area,city,details;
+
+    String image;
+
+    User admin;
+
+
+
+    public Business(String id, String name, String category, String phone, String email, String street, String website, String area, String city, String details, String image, User admin) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.phone = phone;
+        this.email = email;
+        this.street = street;
+        this.website = website;
+        this.area = area;
+        this.city = city;
+        this.details = details;
+        this.image = image;
+        this.admin = admin;
+    }
+    public Business() {
+    }
+    public String getId() {
+        return id;
     }
 
-    public Business() {
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
-    public String getResidence() {
-        return Residence;
+    public String getStreet() {
+        return street;
     }
 
-    public void setResidence(String residence) {
-        Residence = residence;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public String getSite() {
-        return Site;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setSite(String site) {
-        Site = site;
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public User getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(User admin) {
+        this.admin = admin;
     }
 
 
     @Override
     public String toString() {
         return "Business{" +
-                "Name='" + Name + '\'' +
-                ", Category='" + Category + '\'' +
-                ", Phone='" + Phone + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Residence='" + Residence + '\'' +
-                ", Site='" + Site + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", street='" + street + '\'' +
+                ", website='" + website + '\'' +
+                ", area='" + area + '\'' +
+                ", city='" + city + '\'' +
+                ", details='" + details + '\'' +
+                ", image='" + image + '\'' +
+                ", admin=" + admin +
                 '}';
     }
 }
