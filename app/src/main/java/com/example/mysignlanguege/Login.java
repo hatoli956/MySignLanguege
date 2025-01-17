@@ -21,6 +21,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
+    String AdminName="Nadavrok123";
+    String AdminPassword="12345678910";
+
+
     EditText etEmail, etPassword;
     Button btnLog, btnForgotPassword;
     String email, pass;
@@ -76,10 +80,12 @@ public class Login extends AppCompatActivity {
         email = etEmail.getText().toString().trim();
         pass = etPassword.getText().toString().trim();
 
+
         if (email.isEmpty() || pass.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please enter email and password", Toast.LENGTH_SHORT).show();
             return;
         }
+
 
         // Sign in with FirebaseAuth
         mAuth.signInWithEmailAndPassword(email, pass)
@@ -107,5 +113,5 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
-    }
-}
+    }}
+

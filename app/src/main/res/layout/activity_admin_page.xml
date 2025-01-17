@@ -2,9 +2,86 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminPage">
+
+    <TextView
+        android:id="@+id/tvAdmin"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="47dp"
+        android:gravity="center"
+        android:text="דף מנהל"
+        android:textColor="#000000"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnGoAllOrders"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGoSearchPage"
+        android:layout_width="138dp"
+        android:layout_height="121dp"
+        android:layout_marginBottom="7dp"
+        android:backgroundTint="#EADD6F"
+        android:text="דף חיפוש משתמש"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddItem"
+        app:layout_constraintEnd_toEndOf="@+id/btnAddItem"
+        app:layout_constraintStart_toStartOf="@+id/btnAddItem"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoAfterLoginM" />
+
+    <Button
+        android:id="@+id/btnGoAfterLoginM"
+        android:layout_width="136dp"
+        android:layout_height="117dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#EADD6F"
+        android:text="דף ראשי"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnGoSearchPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoAllOrders" />
+
+    <Button
+        android:id="@+id/btnAddItem"
+        android:layout_width="141dp"
+        android:layout_height="124dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#EADD6F"
+        android:text="הוספת מוצר"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoSearchPage" />
+
+    <Button
+        android:id="@+id/btnGoAllOrders"
+        android:layout_width="141dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="14dp"
+        android:backgroundTint="#EADD6F"
+        android:text="כל ההזמנות"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnGoAfterLoginM"
+        app:layout_constraintEnd_toEndOf="@+id/btnGoAfterLoginM"
+        app:layout_constraintStart_toStartOf="@+id/btnGoAfterLoginM"
+        app:layout_constraintTop_toBottomOf="@+id/tvAdmin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

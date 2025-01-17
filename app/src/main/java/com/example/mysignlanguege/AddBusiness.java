@@ -103,7 +103,6 @@ public class AddBusiness extends AppCompatActivity implements View.OnClickListen
                 //  item1.setImageRef("gs://who-needed.appspot.com\n"+item1.getItemKey()+"");
                 myRef.setValue(newItem);
 
-                HandleImage.LoadImageFile(bitmap, AddBusiness.this, itemid);
                 //startActivity(intent2);
 
                 Intent go = new Intent(this, AdminPage.class);
