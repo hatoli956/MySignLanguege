@@ -2,16 +2,15 @@ package com.example.mysignlanguege.model;
 
 public class Business {
 
-    String id;
-    String name,category,phone,email,street,website,area,city,details;
+  protected   String id;
+  protected   String name,category,phone,email,street,website,city,details;
 
-    String image;
+  protected   String image;
 
-    User admin;
+   protected User admin;
 
 
-
-    public Business(String id, String name, String category, String phone, String email, String street, String website, String area, String city, String details, String image, User admin) {
+    public Business(String id, String name, String category, String phone, String email, String street, String website, String city, String details, String image, User admin) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -19,12 +18,12 @@ public class Business {
         this.email = email;
         this.street = street;
         this.website = website;
-        this.area = area;
         this.city = city;
         this.details = details;
         this.image = image;
         this.admin = admin;
     }
+
     public Business() {
     }
     public String getId() {
@@ -83,13 +82,6 @@ public class Business {
         this.website = website;
     }
 
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
 
     public String getCity() {
         return city;
@@ -124,6 +116,8 @@ public class Business {
     }
 
 
+
+
     @Override
     public String toString() {
         return "Business{" +
@@ -134,7 +128,7 @@ public class Business {
                 ", email='" + email + '\'' +
                 ", street='" + street + '\'' +
                 ", website='" + website + '\'' +
-                ", area='" + area + '\'' +
+
                 ", city='" + city + '\'' +
                 ", details='" + details + '\'' +
                 ", image='" + image + '\'' +

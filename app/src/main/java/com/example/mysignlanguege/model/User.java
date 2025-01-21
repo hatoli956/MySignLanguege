@@ -2,24 +2,18 @@ package com.example.mysignlanguege.model;
 
 public class User {
     String id;
-    String fName,lName, phone, email, password,city;
+    String fName,lName, phone, email, password;
 
-    public String getCity() {
-        return city;
-    }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
 
-    public User(String id, String fName, String lName, String phone, String email, String password, String city) {
+    public User(String id, String fName, String lName, String phone, String email, String password) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
         this.phone = phone;
         this.email = email;
         this.password = password;
-        this.city = city;
+
     }
 
     public User() {

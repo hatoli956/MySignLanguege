@@ -5,12 +5,21 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 
+import com.example.mysignlanguege.model.Business;
 import com.example.mysignlanguege.model.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+/// a service to interact with the Firebase Realtime Database.
+/// this class is a singleton, use getInstance() to get an instance of this class
+/// @see #getInstance()
+/// @see FirebaseDatabase
 
 /// a service to interact with the Firebase Realtime Database.
 /// this class is a singleton, use getInstance() to get an instance of this class
@@ -21,6 +30,7 @@ public class DatabaseService {
     /// tag for logging
     /// @see Log
     private static final String TAG = "DatabaseService";
+
 
     /// callback interface for database operations
     /// @param <T> the type of the object to return
@@ -133,9 +143,23 @@ public class DatabaseService {
     /// @see DatabaseCallback
     /// @see User
     public void createNewUser(@NotNull final User user, @Nullable final DatabaseCallback<Void> callback) {
-        writeData("users/" + user.getId(), user, callback);
+        writeData("Users/" + user.getId(), user, callback);
     }
 
+    /// create a new business in the database
+    /// @param business the business object to create
+    /// @param callback the callback to call when the operation is completed
+    ///              the callback will receive void
+    ///             if the operation fails, the callback will receive an exception
+    /// @return void
+    /// @see DatabaseCallback
+    /// @see Business
+
+
+
+    public void createNewBusiness( Business business,  DatabaseCallback<Void> callback) {
+        writeData("businesss/" + business.getId(), business, callback);
+    }
 
 
     /// get a user from the database
@@ -147,7 +171,84 @@ public class DatabaseService {
     /// @see DatabaseCallback
     /// @see User
     public void getUser(@NotNull final String uid, @NotNull final DatabaseCallback<User> callback) {
-        getData("users/" + uid, User.class, callback);
+        getData("Users/" + uid, User.class, callback);
+    }
+
+
+
+    /// get a business from the database
+    /// @param businessId the id of the business to get
+    /// @param callback the callback to call when the operation is completed
+    ///               the callback will receive the business object
+    ///              if the operation fails, the callback will receive an exception
+    /// @return void
+    /// @see DatabaseCallback
+    /// @see Business
+    public void getBusiness(@NotNull final String businessId, @NotNull final DatabaseCallback<Business> callback) {
+        getData("businesss/" + businessId, Business.class, callback);
+    }
+
+
+    /// generate a new id for a new business in the database
+    /// @return a new id for the business
+    /// @see #generateNewId(String)
+    /// @see Business
+    public String generateBusinessId() {
+        return generateNewId("businesss");
+    }
+
+    /// get all the businesss from the database
+    /// @param callback the callback to call when the operation is completed
+    ///              the callback will receive a list of business objects
+    ///            if the operation fails, the callback will receive an exception
+    /// @return void
+    /// @see DatabaseCallback
+    /// @see List
+    /// @see Business
+    /// @see #getData(String, Class, DatabaseCallback)
+    public void getBusinesss(@NotNull final DatabaseCallback<List<Business>> callback) {
+        readData("businesss").get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e(TAG, "Error getting data", task.getException());
+                callback.onFailed(task.getException());
+                return;
+            }
+            List<Business> businesss = new ArrayList<>();
+            task.getResult().getChildren().forEach(dataSnapshot -> {
+                Business business = dataSnapshot.getValue(Business.class);
+                Log.d(TAG, "Got business: " + business);
+                businesss.add(business);
+            });
+
+            callback.onCompleted(businesss);
+        });
+    }
+
+    /// get all the users from the database
+    /// @param callback the callback to call when the operation is completed
+    ///              the callback will receive a list of business objects
+    ///            if the operation fails, the callback will receive an exception
+    /// @return void
+    /// @see DatabaseCallback
+    /// @see List
+    /// @see Business
+    /// @see #getData(String, Class, DatabaseCallback)
+    public void getUsers(@NotNull final DatabaseCallback<List<User>> callback) {
+        readData("Users").get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e(TAG, "Error getting data", task.getException());
+                callback.onFailed(task.getException());
+                return;
+            }
+            List<User> users = new ArrayList<>();
+            task.getResult().getChildren().forEach(dataSnapshot -> {
+                User user = dataSnapshot.getValue(User.class);
+                Log.d(TAG, "Got user: " + user);
+                users.add(user);
+            });
+
+            callback.onCompleted(users);
+        });
     }
 
 
