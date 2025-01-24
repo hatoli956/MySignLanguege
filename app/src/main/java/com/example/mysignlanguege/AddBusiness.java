@@ -29,7 +29,7 @@ import com.example.mysignlanguege.utils.ImageUtil;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class AddBusiness extends AppCompatActivity implements View.OnClickListener {
+public class    AddBusiness extends AppCompatActivity implements View.OnClickListener {
 
     /// tag for logging
     private static final String TAG = "AddBusinessActivity";

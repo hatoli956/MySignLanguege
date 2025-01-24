@@ -36,4 +36,9 @@ public class MainActivity extends AppCompatActivity {
         Intent go = new Intent(getApplicationContext(), Login.class);
         startActivity(go);
     }
+
+    public void goAddItem(View view) {
+        Intent go = new Intent(getApplicationContext(), AddBusiness.class);
+        startActivity(go);
+    }
 }
