@@ -5,8 +5,8 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 
-import com.example.mysignlanguege.model.Business;
-import com.example.mysignlanguege.model.User;
+import com.example.mysignlanguege.models.Business;
+import com.example.mysignlanguege.models.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

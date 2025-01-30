@@ -21,15 +21,19 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
-    String AdminName="Nadavrok123";
-    String AdminPassword="12345678910";
+    // Define Admin credentials
+    String AdminEmail = "nadavrok123@gmail.com";
+    String AdminPassword = "272053";
 
-
+    // UI Elements
     EditText etEmail, etPassword;
     Button btnLog, btnForgotPassword;
     String email, pass;
+
+    // Firebase Auth instance
     private FirebaseAuth mAuth;
 
+    // SharedPreferences to store login data
     public static final String MyPREFERENCES = "MyPrefs";
     SharedPreferences sharedpreferences;
 
@@ -80,12 +84,10 @@ public class Login extends AppCompatActivity {
         email = etEmail.getText().toString().trim();
         pass = etPassword.getText().toString().trim();
 
-
         if (email.isEmpty() || pass.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please enter email and password", Toast.LENGTH_SHORT).show();
             return;
         }
-
 
         // Sign in with FirebaseAuth
         mAuth.signInWithEmailAndPassword(email, pass)
@@ -99,13 +101,21 @@ public class Login extends AppCompatActivity {
 
                             // Save email and password in SharedPreferences
                             SharedPreferences.Editor editor = sharedpreferences.edit();
-                            editor.putString("email", email);
-                            editor.putString("password", pass);
-                            editor.apply();
+                            editor.putString("email", email);  // Store email
+                            editor.putString("password", pass);  // Store password
+                            editor.apply();  // Commit changes
 
-                            // Navigate to MainActivity
-                            Intent go = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(go);
+                            // Check if the logged-in user is an admin
+                            if (email.equals(AdminEmail) && pass.equals(AdminPassword)) {
+                                Intent go = new Intent(getApplicationContext(), AdminPage.class);
+                                startActivity(go);
+                                finish(); // Ensure user can't go back to login screen
+                            } else {
+                                // Navigate to the main activity for regular users
+                                Intent go = new Intent(getApplicationContext(), AfterLogin.class);
+                                startActivity(go);
+                                finish(); // Ensure user can't go back to login screen
+                            }
                         } else {
                             // Sign-in failed
                             Log.w("TAG", "signInWithEmail:failure", task.getException());
@@ -113,5 +123,5 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
-    }}
-
+    }
+}

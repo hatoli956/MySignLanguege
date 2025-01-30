@@ -3,7 +3,7 @@ package com.example.mysignlanguege.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.mysignlanguege.model.User;
+import com.example.mysignlanguege.models.User;
 
 
 /// Utility class for shared preferences operations

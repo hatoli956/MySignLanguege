@@ -1,4 +1,4 @@
-package com.example.mysignlanguege.model;
+package com.example.mysignlanguege.models;
 
 public class Business {
 

@@ -21,13 +21,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.mysignlanguege.model.Business;
-import com.example.mysignlanguege.model.User;
+import com.example.mysignlanguege.models.Business;
+import com.example.mysignlanguege.models.User;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.ImageUtil;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class    AddBusiness extends AppCompatActivity implements View.OnClickListener {
 

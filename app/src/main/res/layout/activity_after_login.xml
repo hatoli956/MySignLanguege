@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AfterLogin">
@@ -9,10 +10,10 @@
 
     <Button
         android:id="@+id/btnGoStore2"
-        android:layout_width="382dp"
-        android:layout_height="109dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="13dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
         android:layout_marginBottom="9dp"
         android:backgroundTint="#EADD6F"
         android:text="מעבר לחנות"
@@ -22,15 +23,15 @@
         app:layout_constraintBottom_toTopOf="@+id/btnGoMyCart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView33" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <Button
         android:id="@+id/btnGoMyCart"
-        android:layout_width="382dp"
-        android:layout_height="109dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="14dp"
         android:layout_marginEnd="14dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="6dp"
         android:backgroundTint="#EADD6F"
         android:text="הסל שלי "
         android:textColor="@color/black"
@@ -43,11 +44,11 @@
 
     <Button
         android:id="@+id/btnGoPersonalArea"
-        android:layout_width="382dp"
-        android:layout_height="109dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="14dp"
         android:layout_marginEnd="14dp"
-        android:layout_marginBottom="61dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="#EADD6F"
         android:text="לאיזור האישי"
         android:textColor="@color/black"
@@ -58,18 +59,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGoMyCart" />
 
-    <ImageView
-        android:id="@+id/imageView33"
-        android:layout_width="382dp"
-        android:layout_height="109dp"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginBottom="178dp"
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:layout_marginBottom="242dp"
+        android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/btnGoStore2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-      />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
