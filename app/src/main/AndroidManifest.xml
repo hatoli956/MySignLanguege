@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MySignLanguege"
         tools:targetApi="31">
         <activity
+            android:name=".AllBusiness"
+            android:exported="false" />
+        <activity
             android:name=".ShowUsers"
             android:exported="false" />
         <activity

@@ -24,9 +24,15 @@ public class AdminPage extends AppCompatActivity {
         });
     }
 
-    public void onClick(View view) {
-            Intent go = new Intent(getApplicationContext(), MainActivity.class);
+
+    public void AddBusiness(View view) {
+            Intent go = new Intent(getApplicationContext(), AddBusiness.class);
             startActivity(go);
+    }
+    public void MainPage(View view) {
+        Intent go = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(go);
 
     }
+
 }
