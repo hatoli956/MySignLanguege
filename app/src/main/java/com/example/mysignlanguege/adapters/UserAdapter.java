@@ -16,14 +16,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
     private List<User> userList;
 
-    // Constructor to initialize user list
     public UserAdapter(List<User> userList) {
         this.userList = userList;
     }
 
     @Override
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // Inflate item layout for each user
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
         return new UserViewHolder(view);
     }
@@ -43,7 +41,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         return userList.size();
     }
 
-    // ViewHolder for binding user data
     public static class UserViewHolder extends RecyclerView.ViewHolder {
         TextView fName, lName, email, phone, password;
 

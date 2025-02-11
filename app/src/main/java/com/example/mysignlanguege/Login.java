@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Login extends AppCompatActivity {
 
     // Define Admin credentials
-    String AdminEmail = "nadavrok123@gmail.com";
+    String AdminEmail = "nadavroki@gmail.com";
     String AdminPassword = "272053";
 
     // UI Elements
@@ -96,7 +95,6 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign-in successful
-                            Log.d("TAG", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
                             // Save email and password in SharedPreferences
@@ -105,20 +103,20 @@ public class Login extends AppCompatActivity {
                             editor.putString("password", pass);  // Store password
                             editor.apply();  // Commit changes
 
-                            // Check if the logged-in user is an admin
+                            // Check if the logged-in user is an admin (using Firebase user email)
                             if (email.equals(AdminEmail) && pass.equals(AdminPassword)) {
+                                // Admin credentials match, redirect to AdminPage
                                 Intent go = new Intent(getApplicationContext(), AdminPage.class);
                                 startActivity(go);
                                 finish(); // Ensure user can't go back to login screen
                             } else {
-                                // Navigate to the main activity for regular users
+                                // Regular user, redirect to AfterLogin activity
                                 Intent go = new Intent(getApplicationContext(), AfterLogin.class);
                                 startActivity(go);
                                 finish(); // Ensure user can't go back to login screen
                             }
                         } else {
                             // Sign-in failed
-                            Log.w("TAG", "signInWithEmail:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
                         }
                     }

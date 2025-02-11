@@ -2,25 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="8dp">
 
-    <!-- Optional: Any text or title above RecyclerView -->
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
+    <!-- SearchView for searching users -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Users List"
-        android:textSize="20sp"
-        android:layout_marginBottom="16dp" />
+        android:queryHint="Search Users"
+        android:iconifiedByDefault="false"
+        android:padding="8dp"/>
 
     <!-- RecyclerView to display user data -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-    android:layout_weight="1"
-    android:padding="16dp" />
-
+        android:layout_weight="1"
+        android:padding="16dp" />
 </LinearLayout>
-
-

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,55 +21,85 @@ import java.util.List;
 
 public class ShowUsers extends AppCompatActivity {
 
-    private RecyclerView RecyclerView;
+    private RecyclerView recyclerView;
     private UserAdapter userAdapter;
-    private List<User> userList;  // This will hold the list of users you want to display
+    private List<User> userList;
+    private List<User> filteredList;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_users);
 
-        // Initialize RecyclerView
-        RecyclerView = findViewById(R.id.recyclerView);
+        // Initialize RecyclerView and list
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Create or fetch your list of users
         userList = new ArrayList<>();
+        filteredList = new ArrayList<>();
 
-        // Set the layout manager for RecyclerView
-        RecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // Initialize Firebase Database reference
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
-        // Initialize the UserAdapter
-        userAdapter = new UserAdapter(userList);
-        RecyclerView.setAdapter(userAdapter);
+        // Set up adapter for RecyclerView
+        userAdapter = new UserAdapter(filteredList);
+        recyclerView.setAdapter(userAdapter);
 
-        // Fetch users from Firebase or any other data source
+        // Fetch data from Firebase
         fetchUsersFromFirebase();
+
+        // Set up SearchView
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterUsers(newText);
+                return false;
+            }
+        });
     }
 
     private void fetchUsersFromFirebase() {
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users");
-
-        // Listen for changes in the "users" node in Firebase
-        usersRef.addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                userList.clear();  // Clear previous data
-
+                userList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     User user = snapshot.getValue(User.class);
-                    if (user != null) {
-                        userList.add(user);  // Add user to the list
-                    }
+                    userList.add(user);
                 }
-
-                userAdapter.notifyDataSetChanged();  // Notify adapter to refresh the RecyclerView
+                filteredList.clear();
+                filteredList.addAll(userList);
+                userAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(ShowUsers.this, "Error fetching users.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ShowUsers.this, "Failed to load data", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void filterUsers(String query) {
+        filteredList.clear();
+        if (query.isEmpty()) {
+            filteredList.addAll(userList);
+        } else {
+            for (User user : userList) {
+                if (user.getfName().toLowerCase().contains(query.toLowerCase()) ||
+                        user.getlName().toLowerCase().contains(query.toLowerCase()) ||
+                        user.getEmail().toLowerCase().contains(query.toLowerCase()) ||
+                        user.getPhone().toLowerCase().contains(query.toLowerCase())) {
+                    filteredList.add(user);
+                }
+            }
+        }
+        userAdapter.notifyDataSetChanged();
     }
 }

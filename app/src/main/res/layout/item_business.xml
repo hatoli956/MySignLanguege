@@ -1,18 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="190dp"
     android:orientation="horizontal"
     android:padding="16dp">
 
     <!-- Vertical container for text information (on the left side) -->
+
+    <!-- Business Image - Placed on the right side -->
     <LinearLayout
-        android:layout_width="158dp"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="171dp"
         android:orientation="vertical">
 
         <!-- Business Name -->
         <TextView
-            android:id="@+id/nameTextView"
+            android:id="@+id/tvNname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Business Name"
@@ -21,7 +23,7 @@
 
         <!-- Business Category -->
         <TextView
-            android:id="@+id/categoryTextView"
+            android:id="@+id/tvCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Category"
@@ -30,7 +32,7 @@
 
         <!-- Business City -->
         <TextView
-            android:id="@+id/cityTextView"
+            android:id="@+id/tvCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="City"
@@ -39,7 +41,7 @@
 
         <!-- Business Phone -->
         <TextView
-            android:id="@+id/phoneTextView"
+            android:id="@+id/tvPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Phone"
@@ -48,16 +50,17 @@
 
         <!-- Business Email -->
         <TextView
-            android:id="@+id/emailTextView"
+            android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:autoLink="email"
             android:text="Email"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
 
         <!-- Business Street -->
         <TextView
-            android:id="@+id/streetTextView"
+            android:id="@+id/tvStreet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Street"
@@ -66,28 +69,27 @@
 
         <!-- Business Website -->
         <TextView
-            android:id="@+id/websiteTextView"
+            android:id="@+id/tvWebsite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:autoLink="web"
             android:text="Website"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
 
         <!-- Business Details -->
         <TextView
-            android:id="@+id/detailsTextView"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvDetails"
+            android:layout_width="74dp"
             android:layout_height="wrap_content"
             android:text="Details"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
     </LinearLayout>
 
-    <!-- Business Image - Placed on the right side -->
     <ImageView
-        android:id="@+id/businessImageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/default_image" />  <!-- Default image if the image doesn't load -->
+        android:id="@+id/ivBusiness"
+        android:layout_width="175dp"
+        android:layout_height="157dp"
+        android:layout_marginStart="16dp" />  <!-- Default image if the image doesn't load -->
 </LinearLayout>

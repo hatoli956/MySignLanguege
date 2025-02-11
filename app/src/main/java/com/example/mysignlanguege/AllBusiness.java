@@ -1,39 +1,42 @@
 package com.example.mysignlanguege;
 
 import android.os.Bundle;
-import android.widget.Toast;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mysignlanguege.adapters.BusinessAdapter;  // Import your BusinessAdapter
-import com.example.mysignlanguege.models.Business;  // Import your Business model
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.example.mysignlanguege.adapters.BusinessAdapter;
+import com.example.mysignlanguege.models.Business;
+import com.example.mysignlanguege.services.DatabaseService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AllBusiness extends AppCompatActivity {
 
+    private static final String TAG ="ReadBusineess" ;
     private RecyclerView recyclerView;  // RecyclerView for businesses
     private BusinessAdapter businessAdapter;  // Adapter for displaying businesses
     private List<Business> businessList;  // List to hold businesses
+
+    private DatabaseService databaseService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_business);  // Use the correct layout for businesses
 
+          databaseService=DatabaseService.getInstance();
+
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
 
         // Create a list for the businesses
         businessList = new ArrayList<>();
+
+;
 
         // Set the layout manager for RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -42,36 +45,33 @@ public class AllBusiness extends AppCompatActivity {
         businessAdapter = new BusinessAdapter(businessList);
         recyclerView.setAdapter(businessAdapter);
 
-        // Fetch businesses from Firebase
-        fetchBusinessesFromFirebase();
-    }
-
-    private void fetchBusinessesFromFirebase() {
-        // Reference to the businesses node in Firebase
-        DatabaseReference businessesRef = FirebaseDatabase.getInstance().getReference("businesss");
-
-        // Listen for changes in the "businesses" node
-        businessesRef.addValueEventListener(new ValueEventListener() {
+        databaseService.getBusinesss(new DatabaseService.DatabaseCallback<List<Business>>() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                businessList.clear();  // Clear previous data
+            public void onCompleted(List<Business> object) {
 
-                // Iterate through the children of "businesses" node
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Business business = snapshot.getValue(Business.class);
-                    if (business != null) {
-                        businessList.add(business);  // Add the business to the list
-                    }
-                }
+                businessList.clear();
+                businessList.addAll(object);
+                /// notify the adapter that the data has changed
+                /// this specifies that the data has changed
+                /// and the adapter should update the view
+                /// @see FoodSpinnerAdapter#notifyDataSetChanged()
+                businessAdapter.notifyDataSetChanged();
 
-                businessAdapter.notifyDataSetChanged();  // Notify adapter to refresh the RecyclerView
+
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Show error if fetching businesses fails
-                Toast.makeText(AllBusiness.this, "Error fetching businesses.", Toast.LENGTH_SHORT).show();
+            public void onFailed(Exception e) {
+                Log.e(TAG, "onFailed: ", e);
+
+
             }
         });
+
+
+
+
     }
+
+
 }

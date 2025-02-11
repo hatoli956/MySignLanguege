@@ -15,6 +15,7 @@
 
     import com.example.mysignlanguege.R;
     import com.example.mysignlanguege.models.Business;
+    import com.example.mysignlanguege.utils.ImageUtil;
 
     import java.io.InputStream;
     import java.net.HttpURLConnection;
@@ -50,11 +51,11 @@
             holder.websiteTextView.setText(business.getWebsite());
             holder.detailsTextView.setText(business.getDetails());
 
-            // Set image dynamically
-            if (business.getImage() != null && !business.getImage().isEmpty()) {
-                loadImageFromUrl(business.getImage(), holder.businessImageView);
-            }
+            holder.businessImageView.setImageBitmap(ImageUtil.convertFrom64base(business.getImage()));
         }
+
+
+
 
         @Override
         public int getItemCount() {
@@ -101,15 +102,15 @@
                 super(itemView);
 
                 // Initialize views
-                businessImageView = itemView.findViewById(R.id.businessImageView);
-                nameTextView = itemView.findViewById(R.id.nameTextView);
-                categoryTextView = itemView.findViewById(R.id.categoryTextView);
-                cityTextView = itemView.findViewById(R.id.cityTextView);
-                phoneTextView = itemView.findViewById(R.id.phoneTextView);
-                websiteTextView = itemView.findViewById(R.id.websiteTextView);
-                detailsTextView = itemView.findViewById(R.id.detailsTextView);
-                emailTextView = itemView.findViewById(R.id.emailTextView);
-                streetTextView = itemView.findViewById(R.id.streetTextView);
+                businessImageView = itemView.findViewById(R.id.ivBusiness);
+                nameTextView = itemView.findViewById(R.id.tvNname);
+                categoryTextView = itemView.findViewById(R.id.tvCategory);
+                cityTextView = itemView.findViewById(R.id.tvCity);
+                phoneTextView = itemView.findViewById(R.id.tvPhone);
+                websiteTextView = itemView.findViewById(R.id.tvWebsite);
+                detailsTextView = itemView.findViewById(R.id.tvDetails);
+                emailTextView = itemView.findViewById(R.id.tvEmail);
+                streetTextView = itemView.findViewById(R.id.tvStreet);
             }
         }
     }
