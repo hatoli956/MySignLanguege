@@ -44,7 +44,7 @@ public class    AddBusiness extends AppCompatActivity implements View.OnClickLis
 
 
 
-    private DatabaseService databaseService;
+
 
     /// Activity result launcher for selecting image from gallery
     private ActivityResultLauncher<Intent> selectImageLauncher;
@@ -54,7 +54,7 @@ public class    AddBusiness extends AppCompatActivity implements View.OnClickLis
     private String uid;
     private User user=new User();
 
-
+    private DatabaseService databaseService;
 
     // constant to compare
     // the activity result code
@@ -224,7 +224,7 @@ public class    AddBusiness extends AppCompatActivity implements View.OnClickLis
         /// create a new business object
 
 
-            Business business = new Business(id, businessName,  businessType,  businessPhone,  businessEmail,  businessAddress,  businessWebsite,   businessCity,  businessDetails,  imageBase64,user);
+            Business business = new Business(id, businessName,  businessType,  businessPhone,  businessEmail,  businessAddress,  businessWebsite,   businessCity,  businessDetails,  imageBase64);
 
         /// save the business to the database and get the result in the callback
         databaseService.createNewBusiness(business, new DatabaseService.DatabaseCallback<Void>() {

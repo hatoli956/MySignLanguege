@@ -79,7 +79,7 @@ public class DatabaseService {
     /// @param callback the callback to call when the operation is completed
     /// @return void
     /// @see DatabaseCallback
-    private void writeData(@NotNull final String path, @NotNull final Object data, final @Nullable DatabaseCallback<Void> callback) {
+    public void writeData(@NotNull final String path, @NotNull final Object data, final @Nullable DatabaseCallback<Void> callback) {
         databaseReference.child(path).setValue(data).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (callback == null) return;
@@ -90,6 +90,32 @@ public class DatabaseService {
             }
         });
     }
+    public void removeBusiness(String businessId, DatabaseCallback<Void> callback) {
+        // Reference to the "businesses" node and the business to be deleted by its ID
+        DatabaseReference businessRef = databaseReference.child("businesses").child(businessId);
+
+        // Log the business ID to ensure it's correct
+        Log.d("DatabaseService", "Removing business with ID: " + businessId);
+
+        businessRef.removeValue()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // Successfully removed
+                        Log.d("DatabaseService", "Business successfully removed from Firebase");
+                        callback.onCompleted(null);
+                    } else {
+                        // Handle failure (log the error)
+                        Log.e("DatabaseService", "Error removing business", task.getException());
+                        callback.onFailed(task.getException());
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    // This will catch issues like network failures
+                    Log.e("DatabaseService", "Failed to remove business from Firebase", e);
+                    callback.onFailed(e);
+                });
+    }
+
 
     /// read data from the database at a specific path
     /// @param path the path to read the data from

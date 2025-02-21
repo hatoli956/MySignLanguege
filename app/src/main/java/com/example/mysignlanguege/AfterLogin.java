@@ -1,6 +1,8 @@
 package com.example.mysignlanguege;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,7 @@ public class AfterLogin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_after_login);
@@ -20,5 +23,17 @@ public class AfterLogin extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+    }
+
+    public void goShowBuisness(View view) {
+
+        Intent go = new Intent(getApplicationContext(), ShowBusinessForUser.class);
+        startActivity(go);
+    }
+    public void goIntrested(View view) {
+
+        Intent go = new Intent(getApplicationContext(), InterestedBusinessesActivity.class);
+        startActivity(go);
     }
 }

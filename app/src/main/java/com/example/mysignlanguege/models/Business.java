@@ -10,7 +10,7 @@ public class Business {
    protected User admin;
 
 
-    public Business(String id, String name, String category, String phone, String email, String street, String website, String city, String details, String image, User admin) {
+    public Business(String id, String name, String category, String phone, String email, String street, String website, String city, String details, String image) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -22,6 +22,23 @@ public class Business {
         this.details = details;
         this.image = image;
         this.admin = admin;
+    }
+
+
+
+
+    public Business(Business business   ) {
+        this.id = business.id;
+        this.name = business.name;
+        this.category = business.category;
+        this.phone = business.phone;
+        this.email = business.email;
+        this.street = business.street;
+        this.website = business.website;
+        this.city = business.city;
+        this.details = business.details;
+        this.image = business.image;
+
     }
 
     public Business() {

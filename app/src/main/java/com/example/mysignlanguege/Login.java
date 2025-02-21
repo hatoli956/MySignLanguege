@@ -1,22 +1,19 @@
 package com.example.mysignlanguege;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.mysignlanguege.models.User;
+import com.example.mysignlanguege.services.AuthenticationService;
+import com.example.mysignlanguege.services.DatabaseService;
+import com.example.mysignlanguege.utils.SharedPreferencesUtil;
 
 public class Login extends AppCompatActivity {
 
@@ -30,11 +27,24 @@ public class Login extends AppCompatActivity {
     String email, pass;
 
     // Firebase Auth instance
-    private FirebaseAuth mAuth;
+
 
     // SharedPreferences to store login data
-    public static final String MyPREFERENCES = "MyPrefs";
-    SharedPreferences sharedpreferences;
+
+
+    public  static  boolean isAdmin=false;
+
+
+
+    private static final String TAG = "LoginActivity";
+
+
+
+    private AuthenticationService authenticationService;
+    private DatabaseService databaseService;
+    public static User user=null;
+    User user2=null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +53,13 @@ public class Login extends AppCompatActivity {
 
         initViews();
 
-        // Retrieve saved email and password if available
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        email = sharedpreferences.getString("email", "");
-        pass = sharedpreferences.getString("password", "");
-        etEmail.setText(email);
-        etPassword.setText(pass);
+        /// get the instance of the authentication service
+        authenticationService = AuthenticationService.getInstance();
+        /// get the instance of the database service
+        databaseService = DatabaseService.getInstance();
+
+
+
     }
 
     private void initViews() {
@@ -57,9 +68,13 @@ public class Login extends AppCompatActivity {
         etPassword = findViewById(R.id.etPasswordLogin);
         btnLog = findViewById(R.id.btnLogin);
         btnForgotPassword = findViewById(R.id.btnForgotPassword);
-
+        user2= SharedPreferencesUtil.getUser(Login.this);
+        if(user2!=null) {
+            etEmail.setText(user2.getEmail());
+            etPassword.setText(user2.getPassword());
+        }
         // Initialize FirebaseAuth
-        mAuth = FirebaseAuth.getInstance();
+
 
         // Set click listeners
         btnLog.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +93,12 @@ public class Login extends AppCompatActivity {
         });
     }
 
+
+
+
+
+
+
     private void handleLogin() {
         // Get user input
         email = etEmail.getText().toString().trim();
@@ -88,38 +109,74 @@ public class Login extends AppCompatActivity {
             return;
         }
 
-        // Sign in with FirebaseAuth
-        mAuth.signInWithEmailAndPassword(email, pass)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign-in successful
-                            FirebaseUser user = mAuth.getCurrentUser();
 
-                            // Save email and password in SharedPreferences
-                            SharedPreferences.Editor editor = sharedpreferences.edit();
-                            editor.putString("email", email);  // Store email
-                            editor.putString("password", pass);  // Store password
-                            editor.apply();  // Commit changes
 
-                            // Check if the logged-in user is an admin (using Firebase user email)
-                            if (email.equals(AdminEmail) && pass.equals(AdminPassword)) {
-                                // Admin credentials match, redirect to AdminPage
-                                Intent go = new Intent(getApplicationContext(), AdminPage.class);
-                                startActivity(go);
-                                finish(); // Ensure user can't go back to login screen
-                            } else {
-                                // Regular user, redirect to AfterLogin activity
-                                Intent go = new Intent(getApplicationContext(), AfterLogin.class);
-                                startActivity(go);
-                                finish(); // Ensure user can't go back to login screen
-                            }
-                        } else {
-                            // Sign-in failed
-                            Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+        authenticationService.signIn(email, pass, new AuthenticationService.AuthCallback<String>() {
+        /// Callback method called when the operation is completed
+        /// @param uid the user ID of the user that is logged in
+@Override
+public void onCompleted(String uid) {
+        Log.d(TAG, "onCompleted: User logged in successfully");
+        /// get the user data from the database
+
+
+        databaseService.getUser(uid, new DatabaseService.DatabaseCallback<User>() {
+@Override
+public void onCompleted(User u) {
+        user = u;
+        Log.d(TAG, "onCompleted: User data retrieved successfully");
+        /// save the user data to shared preferences
+        SharedPreferencesUtil.saveUser(Login.this, user);
+        /// Redirect to main activity and clear back stack to prevent user from going back to login screen
+
+        /// Clear the back stack (clear history) and start the MainActivity
+      //  mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+    // Check if the logged-in user is an admin (using Firebase user email)
+    if (email.equals(AdminEmail) && pass.equals(AdminPassword)) {
+        // Admin credentials match, redirect to AdminPage
+        isAdmin=true;
+        Intent go = new Intent(getApplicationContext(), AdminPage.class);
+        startActivity(go);
+
+    } else {
+        // Regular user, redirect to AfterLogin activity
+        Intent go = new Intent(getApplicationContext(), AfterLogin.class);
+        startActivity(go);
+
+    }
+
+        }
+
+@Override
+public void onFailed(Exception e) {
+        Log.e(TAG, "onFailed: Failed to retrieve user data", e);
+        /// Show error message to user
+        etPassword.setError("Invalid email or password");
+        etPassword.requestFocus();
+        /// Sign out the user if failed to retrieve user data
+        /// This is to prevent the user from being logged in again
+        authenticationService.signOut();
+
+        }
+        });
+
+
+
+
+
+
+
+
+
                         }
-                    }
-                });
+
+            @Override
+            public void onFailed(Exception e) {
+
+            }
+
+        });
     }
 }
+

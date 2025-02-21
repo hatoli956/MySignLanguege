@@ -1,10 +1,11 @@
 package com.example.mysignlanguege.adapters;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mysignlanguege.Login;
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.Business;
 import com.example.mysignlanguege.services.DatabaseService;
@@ -25,27 +27,30 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 
-public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.BusinessViewHolder> {
+public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapter.BusinessViewHolder> {
 
     private List<Business> businessList;
+    private Context context;
 
-    // Add constructor to initialize business list
-    public BusinessAdapter(List<Business> businessList) {
+    public BusinessUserAdapter(List<Business> businessList, Context context) {
         this.businessList = businessList;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public BusinessViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_business, parent, false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.item_business_user, parent, false);
         return new BusinessViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BusinessViewHolder holder, int position) {
-        final Business business = businessList.get(position);
+        Business business = businessList.get(position);
 
-        // Set data to the views
+        business= new Business(business);
+
+        // Set business data to the views
         holder.nameTextView.setText(business.getName());
         holder.categoryTextView.setText(business.getCategory());
         holder.cityTextView.setText(business.getCity());
@@ -54,10 +59,16 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         holder.streetTextView.setText(business.getStreet());
         holder.websiteTextView.setText(business.getWebsite());
         holder.detailsTextView.setText(business.getDetails());
+
+
+        // Load business image
         holder.businessImageView.setImageBitmap(ImageUtil.convertFrom64base(business.getImage()));
 
-        // Handle remove button click
-        holder.removeButton.setOnClickListener(v -> removeBusiness(business, position));
+        if(!Login.isAdmin) {
+            // Handle "Add to Interested" button click
+            Business finalBusiness = business;
+            holder.addToInterestedButton.setOnClickListener(v -> addBusinessToInterestedList(finalBusiness));
+        }
     }
 
     @Override
@@ -65,8 +76,40 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         return businessList.size();
     }
 
-    // Method to load image from URL (if needed)
+    private void addBusinessToInterestedList(Business business) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Retrieve existing list of interested businesses
+        String interestedBusinesses = sharedPreferences.getString("interestedBusinesses", "");
+        interestedBusinesses += business.getId() + ","; // Append business ID
+
+        // Save updated list of interested businesses
+        editor.putString("interestedBusinesses", interestedBusinesses);
+        editor.apply();
+
+
+
+       if( Login.user!=null) {
+           DatabaseService databaseService = DatabaseService.getInstance();
+
+           databaseService.writeData("Users/" + Login.user.getId() + "/interestedBusinesses/" + business.getId(), business, new DatabaseService.DatabaseCallback<Void>() {
+               @Override
+               public void onCompleted(Void object) {
+
+               }
+
+               @Override
+               public void onFailed(Exception e) {
+
+               }
+           });
+
+
+       }
+    }
     private void loadImageFromUrl(final String imageUrl, final ImageView imageView) {
+        // Use a separate thread to download the image (to avoid blocking UI thread)
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -93,58 +136,29 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         }).start();
     }
 
-    // Remove business from the list and Firebase
-    private void removeBusiness(Business business, int position) {
-        // Remove from the local list first
-        businessList.remove(position);
-        notifyItemRemoved(position); // Update the RecyclerView to remove the item visually
-
-        // Now remove the business from Firebase
-        DatabaseService databaseService = DatabaseService.getInstance();
-
-        // Log the business ID to ensure we're sending the correct ID to Firebase
-        Log.d("BusinessAdapter", "Attempting to remove business with ID: " + business.getId());
-
-        // Ensure you're using the correct Firebase node to remove the business
-        // Assuming "businesses" is the node containing your business records
-        databaseService.removeBusiness(business.getId(), new DatabaseService.DatabaseCallback<Void>() {
-            @Override
-            public void onCompleted(Void object) {
-                // Successfully removed from Firebase, you can show a Toast or log message if needed
-                Log.d("BusinessAdapter", "Business removed from Firebase successfully");
-            }
-
-            @Override
-            public void onFailed(Exception e) {
-                // Handle failure (e.g., show an error message)
-                Log.e("BusinessAdapter", "Failed to remove business from Firebase", e);
-            }
-        });
-    }
-
-
-
     public static class BusinessViewHolder extends RecyclerView.ViewHolder {
 
+        TextView nameTextView, categoryTextView, cityTextView, phoneTextView, emailTextView;
+        TextView streetTextView, websiteTextView, detailsTextView, adminTextView;
+        Button addToInterestedButton;
         ImageView businessImageView;
-        TextView nameTextView, categoryTextView, cityTextView, phoneTextView, websiteTextView, detailsTextView;
-        TextView emailTextView, streetTextView;
-        Button removeButton; // Remove button
 
         public BusinessViewHolder(View itemView) {
             super(itemView);
 
             // Initialize views
-            businessImageView = itemView.findViewById(R.id.ivBusiness);
-            nameTextView = itemView.findViewById(R.id.tvNname);
+            businessImageView = itemView.findViewById(R.id.ivBusinessImage);
+            nameTextView = itemView.findViewById(R.id.tvName);
             categoryTextView = itemView.findViewById(R.id.tvCategory);
             cityTextView = itemView.findViewById(R.id.tvCity);
             phoneTextView = itemView.findViewById(R.id.tvPhone);
-            websiteTextView = itemView.findViewById(R.id.tvWebsite);
-            detailsTextView = itemView.findViewById(R.id.tvDetails);
             emailTextView = itemView.findViewById(R.id.tvEmail);
             streetTextView = itemView.findViewById(R.id.tvStreet);
-            removeButton = itemView.findViewById(R.id.btnRemove); // Initialize remove button
+            websiteTextView = itemView.findViewById(R.id.tvWebsite);
+            detailsTextView = itemView.findViewById(R.id.tvDetails);
+            addToInterestedButton = itemView.findViewById(R.id.btnAddToInterested);
+            if(Login.isAdmin)
+                addToInterestedButton.setVisibility(View.INVISIBLE);
         }
     }
 }

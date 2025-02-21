@@ -29,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
         Intent go = new Intent(getApplicationContext(), Register.class);
         startActivity(go);
     }
+    public void GOadmin(View view) {
 
+        Intent go = new Intent(getApplicationContext(), AdminPage.class);
+        startActivity(go);
+    }
 
 
     public void goLogin(View view) {

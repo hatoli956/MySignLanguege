@@ -1,8 +1,6 @@
 package com.example.mysignlanguege;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,21 +11,15 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mysignlanguege.models.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.mysignlanguege.services.AuthenticationService;
+import com.example.mysignlanguege.services.DatabaseService;
+import com.example.mysignlanguege.utils.SharedPreferencesUtil;
 
 public class Register extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     EditText etfName,etlName, etPhone, etEmail, etPassword;
@@ -35,11 +27,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
     Button btnReg;
     Spinner SpCity;
 
-    private FirebaseAuth mAuth;
-    private FirebaseDatabase database;
-    private DatabaseReference myRef;
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    SharedPreferences sharedpreferences;
+
+
+
+    private AuthenticationService authenticationService;
+    private DatabaseService databaseService;
+    private static final String TAG = "RegisterActivity";
+
 
 
     @Override
@@ -54,14 +48,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         });
         initViews();
 
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        /// get the instance of the authentication service
+        authenticationService = AuthenticationService.getInstance();
+        /// get the instance of the database service
+        databaseService = DatabaseService.getInstance();
 
 
-        // Write a message to the database
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("Users");
 
-        mAuth = FirebaseAuth.getInstance();
 
 
 
@@ -120,38 +113,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         }
 
         if (isValid == true) {
-
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d("TAG", "createUserWithEmail:success");
-                                FirebaseUser fireuser = mAuth.getCurrentUser();
-                                User newUser = new User(fireuser.getUid(), fName, lName, phone, email, password);
-                                myRef.child(fireuser.getUid()).setValue(newUser);
-                                SharedPreferences.Editor editor = sharedpreferences.edit();
-
-                                editor.putString("email", email);
-                                editor.putString("password", password);
-
-                                editor.commit();
-                                Intent goLog = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(goLog);
+            registerUser(email, password, fName,lName,phone);
 
 
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w("TAG", "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(Register.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-
-                            }
-
-                            // ...
-                        }
-                    });
         }
     }
 
@@ -174,4 +138,63 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    /// Register the user
+    private void registerUser(String email, String password, String fName, String lName, String phone) {
+        Log.d(TAG, "registerUser: Registering user...");
+
+        /// call the sign up method of the authentication service
+        authenticationService.signUp(email, password, new AuthenticationService.AuthCallback<String>() {
+
+            @Override
+            public void onCompleted(String uid) {
+                Log.d(TAG, "onCompleted: User registered successfully");
+                /// create a new user object
+                User user = new User();
+                user.setId(uid);
+                user.setEmail(email);
+                user.setPassword(password);
+                user.setfName(fName);
+                user.setlName(lName);
+                user.setPhone(phone);
+
+                /// call the createNewUser method of the database service
+                databaseService.createNewUser(user, new DatabaseService.DatabaseCallback<Void>() {
+
+                    @Override
+                    public void onCompleted(Void object) {
+                        Log.d(TAG, "onCompleted: User registered successfully");
+                        /// save the user to shared preferences
+                        SharedPreferencesUtil.saveUser(Register.this, user);
+                        Log.d(TAG, "onCompleted: Redirecting to MainActivity");
+                        /// Redirect to MainActivity and clear back stack to prevent user from going back to register screen
+                        Intent mainIntent = new Intent(Register.this, MainActivity.class);
+                        /// clear the back stack (clear history) and start the MainActivity
+                        mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(mainIntent);
+                    }
+
+                    @Override
+                    public void onFailed(Exception e) {
+                        Log.e(TAG, "onFailed: Failed to register user", e);
+                        /// show error message to user
+                        Toast.makeText(Register.this, "Failed to register user", Toast.LENGTH_SHORT).show();
+                        /// sign out the user if failed to register
+                        /// this is to prevent the user from being logged in again
+                        authenticationService.signOut();
+                    }
+                });
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+                Log.e(TAG, "onFailed: Failed to sign up user", e);
+                /// show error message to user
+                Toast.makeText(Register.this, "Failed to register user", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
 }
