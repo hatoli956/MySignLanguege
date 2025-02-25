@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f4f6f9"
+
     tools:context=".AfterLogin">
 
 
@@ -39,6 +41,7 @@
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
+
         app:layout_constraintBottom_toTopOf="@+id/btnGoPersonalArea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +56,7 @@
         android:layout_marginBottom="60dp"
         android:backgroundTint="#EADD6F"
         android:text="לאיזור האישי"
+        android:onClick="UpdateUser"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"

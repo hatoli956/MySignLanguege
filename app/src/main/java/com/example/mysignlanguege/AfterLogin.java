@@ -36,4 +36,9 @@ public class AfterLogin extends AppCompatActivity {
         Intent go = new Intent(getApplicationContext(), InterestedBusinessesActivity.class);
         startActivity(go);
     }
+    public void UpdateUser(View view) {
+
+        Intent go = new Intent(getApplicationContext(), UpdateUserDetails.class);
+        startActivity(go);
+    }
 }

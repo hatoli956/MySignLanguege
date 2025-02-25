@@ -43,7 +43,7 @@ public class ShowUsers extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
         // Set up adapter for RecyclerView
-        userAdapter = new UserAdapter(filteredList);
+        userAdapter = new UserAdapter(filteredList, this); // Pass context to adapter
         recyclerView.setAdapter(userAdapter);
 
         // Fetch data from Firebase
@@ -92,10 +92,7 @@ public class ShowUsers extends AppCompatActivity {
             filteredList.addAll(userList);
         } else {
             for (User user : userList) {
-                if (user.getfName().toLowerCase().contains(query.toLowerCase()) ||
-                        user.getlName().toLowerCase().contains(query.toLowerCase()) ||
-                        user.getEmail().toLowerCase().contains(query.toLowerCase()) ||
-                        user.getPhone().toLowerCase().contains(query.toLowerCase())) {
+                if (user.getfName().toLowerCase().contains(query.toLowerCase())) {
                     filteredList.add(user);
                 }
             }

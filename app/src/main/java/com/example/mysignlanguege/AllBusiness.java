@@ -45,6 +45,10 @@ public class AllBusiness extends AppCompatActivity {
         businessAdapter = new BusinessAdapter(businessList);
         recyclerView.setAdapter(businessAdapter);
 
+
+
+
+
         databaseService.getBusinesss(new DatabaseService.DatabaseCallback<List<Business>>() {
             @Override
             public void onCompleted(List<Business> object) {
