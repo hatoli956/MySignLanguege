@@ -69,32 +69,6 @@ public class DatabaseService {
         });
     }
 
-    public void removeBusiness(String businessId, DatabaseCallback<Void> callback) {
-        // Reference to the "businesses" node and the business to be deleted by its ID
-        DatabaseReference businessRef = databaseReference.child("businesses").child(businessId);
-
-        // Log the business ID to ensure it's correct
-        Log.d("DatabaseService", "Removing business with ID: " + businessId);
-
-        businessRef.removeValue()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        // Successfully removed
-                        Log.d("DatabaseService", "Business successfully removed from Firebase");
-                        callback.onCompleted(null);
-                    } else {
-                        // Handle failure (log the error)
-                        Log.e("DatabaseService", "Error removing business", task.getException());
-                        callback.onFailed(task.getException());
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    // This will catch issues like network failures
-                    Log.e("DatabaseService", "Failed to remove business from Firebase", e);
-                    callback.onFailed(e);
-                });
-    }
-
     /// read data from the database at a specific path
     private DatabaseReference readData(@NotNull final String path) {
         return databaseReference.child(path);
@@ -110,6 +84,35 @@ public class DatabaseService {
             }
             T data = task.getResult().getValue(clazz);
             callback.onCompleted(data);
+        });
+    }
+
+    private <T> void getDataList(@NotNull final String path, @NotNull final Class<T> clazz, @NotNull final DatabaseCallback<List<T>> callback) {
+        readData(path).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Log.e(TAG, "Error getting data", task.getException());
+                callback.onFailed(task.getException());
+                return;
+            }
+            List<T> tList = new ArrayList<>();
+            task.getResult().getChildren().forEach(dataSnapshot -> {
+                T t = dataSnapshot.getValue(clazz);
+                tList.add(t);
+            });
+
+            callback.onCompleted(tList);
+        });
+    }
+
+    private void deleteData(@NotNull final String path, @Nullable final DatabaseCallback<Void> callback) {
+        readData(path).removeValue((error, ref) -> {
+            if (error != null) {
+                if (callback == null) return;
+                callback.onFailed(error.toException());
+            } else {
+                if (callback == null) return;
+                callback.onCompleted(null);
+            }
         });
     }
 
@@ -141,21 +144,11 @@ public class DatabaseService {
     }
 
     public void getBusinesss(@NotNull final DatabaseCallback<List<Business>> callback) {
-        readData("businesss").get().addOnCompleteListener(task -> {
-            if (!task.isSuccessful()) {
-                Log.e(TAG, "Error getting data", task.getException());
-                callback.onFailed(task.getException());
-                return;
-            }
-            List<Business> businesss = new ArrayList<>();
-            task.getResult().getChildren().forEach(dataSnapshot -> {
-                Business business = dataSnapshot.getValue(Business.class);
-                Log.d(TAG, "Got business: " + business);
-                businesss.add(business);
-            });
+        getDataList("businesss", Business.class, callback);
+    }
 
-            callback.onCompleted(businesss);
-        });
+    public void removeBusiness(String businessId, DatabaseCallback<Void> callback) {
+        deleteData("businesss/"+ businessId, callback);
     }
 
     public void getUsers(@NotNull final DatabaseCallback<List<User>> callback) {
@@ -178,37 +171,6 @@ public class DatabaseService {
 
     /// Update user details in the database
     public void updateUserDetails(@NotNull final User user, @Nullable final DatabaseCallback<Void> callback) {
-        // Reference to the "Users" node and the specific user by their ID
-        DatabaseReference userRef = databaseReference.child("Users").child(user.getId());
-
-        // Create a map of the updated fields
-        Map<String, Object> userUpdates = new HashMap<>();
-        userUpdates.put("fName", user.getfName());
-        userUpdates.put("lName", user.getlName());
-        userUpdates.put("phone", user.getPhone());
-        userUpdates.put("email", user.getEmail());
-        userUpdates.put("password", user.getPassword());
-
-        // Perform the update
-        userRef.updateChildren(userUpdates)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        if (callback != null) {
-                            callback.onCompleted(null);  // Indicate success
-                        }
-                        Log.d(TAG, "User details updated successfully");
-                    } else {
-                        if (callback != null) {
-                            callback.onFailed(task.getException());  // Indicate failure
-                        }
-                        Log.e(TAG, "Error updating user details", task.getException());
-                    }
-                })
-                .addOnFailureListener(e -> {
-                    if (callback != null) {
-                        callback.onFailed(e);  // Indicate failure
-                    }
-                    Log.e(TAG, "Failed to update user details", e);
-                });
+        createNewUser(user, callback);
     }
 }

@@ -65,40 +65,8 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         return businessList.size();
     }
 
-    // Method to load image from URL (if needed)
-    private void loadImageFromUrl(final String imageUrl, final ImageView imageView) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL(imageUrl);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    InputStream input = connection.getInputStream();
-                    final Bitmap bitmap = BitmapFactory.decodeStream(input);
-
-                    // Run the code to update UI on the main thread
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
-                            imageView.setImageBitmap(bitmap);
-                        }
-                    });
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-
     // Remove business from the list and Firebase
     private void removeBusiness(Business business, int position) {
-        // Remove from the local list first
-        businessList.remove(position);
-        notifyItemRemoved(position); // Update the RecyclerView to remove the item visually
-
         // Now remove the business from Firebase
         DatabaseService databaseService = DatabaseService.getInstance();
 
@@ -112,6 +80,9 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
             public void onCompleted(Void object) {
                 // Successfully removed from Firebase, you can show a Toast or log message if needed
                 Log.d("BusinessAdapter", "Business removed from Firebase successfully");
+                // Remove from the local list first
+                businessList.remove(position);
+                notifyItemRemoved(position); // Update the RecyclerView to remove the item visually
             }
 
             @Override
