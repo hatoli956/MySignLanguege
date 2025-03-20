@@ -69,4 +69,9 @@ public class ShowBusinessForUser extends AppCompatActivity {
             }
         });
     }
+
+    public void GoBack(View view) {
+        Intent go = new Intent(getApplicationContext(), AfterLogin.class);
+        startActivity(go);
+    }
 }

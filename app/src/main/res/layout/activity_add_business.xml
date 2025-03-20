@@ -4,25 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:background="#f4f6f9"
-
     android:layout_height="match_parent"
+
+    android:background="#f4f6f9"
     tools:context=".AddBusiness">
 
     <EditText
         android:id="@+id/etBusinessDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginStart="25dp"
         android:layout_marginBottom="18dp"
         android:ems="10"
         android:hint="פרטי האתר"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/imageRef"
-        app:layout_constraintEnd_toStartOf="@+id/textView11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etBusinessWebsite" />
+        app:layout_constraintStart_toStartOf="@+id/imageRef" />
 
     <TextView
         android:id="@+id/textView4"
@@ -30,12 +27,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="33dp"
-        android:layout_marginBottom="13dp"
         android:text="הוספת עסק"
         android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/etBusinessName"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -44,16 +39,13 @@
         android:id="@+id/etBusinessName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="19dp"
         android:ems="10"
         android:hint="שם העסק"
         android:inputType="text"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/spBusinessType"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:ignore="MissingConstraints" />
 
@@ -63,17 +55,18 @@
         android:layout_height="wrap_content"
         android:text="שם העסק"
         app:layout_constraintBaseline_toBaselineOf="@+id/etBusinessName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etBusinessName"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
         tools:ignore="MissingConstraints" />
 
     <Spinner
         android:id="@+id/spBusinessType"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="48dp"
         android:layout_marginStart="47dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="45dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="17dp"
         android:entries="@array/CityArr"
         app:layout_constraintBottom_toTopOf="@+id/etBusinessPhone"
         app:layout_constraintEnd_toStartOf="@+id/textView6"
@@ -85,64 +78,55 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="53dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="52dp"
         android:layout_marginBottom="37dp"
         android:text="קטגוריה"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spBusinessType"
+        app:layout_constraintStart_toEndOf="@+id/etBusinessName"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etBusinessPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="214dp"
         android:ems="10"
         android:hint="מספר טלפון"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/etBusinessEmail"
-        app:layout_constraintEnd_toStartOf="@+id/textView7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spBusinessType" />
+        app:layout_constraintStart_toStartOf="@+id/spBusinessType"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="44dp"
         android:text="מספר טלפון"
         app:layout_constraintBaseline_toBaselineOf="@+id/etBusinessPhone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etBusinessPhone" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/etBusinessEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="אימייל"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/etBusinessAddress"
-        app:layout_constraintEnd_toStartOf="@+id/textView8"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etBusinessPhone"
         app:layout_constraintTop_toBottomOf="@+id/etBusinessPhone" />
 
     <EditText
         android:id="@+id/etBusinessAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="כתובת "
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/spBusinessCity"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etBusinessEmail"
         app:layout_constraintTop_toBottomOf="@+id/etBusinessEmail" />
 
     <EditText
@@ -150,75 +134,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginBottom="174dp"
         android:ems="10"
         android:hint="אתר העסק"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/etBusinessDetails"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spBusinessCity" />
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="@+id/spBusinessCity"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="18dp"
+        android:layout_marginEnd="7dp"
         android:text="אימייל"
         app:layout_constraintBaseline_toBaselineOf="@+id/etBusinessEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etBusinessEmail" />
+        app:layout_constraintEnd_toEndOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="11dp"
         android:text="כתובת "
         app:layout_constraintBaseline_toBaselineOf="@+id/etBusinessAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etBusinessAddress" />
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintStart_toStartOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="43dp"
+        android:layout_marginEnd="43dp"
         android:text="אתר העסק"
         app:layout_constraintBaseline_toBaselineOf="@+id/etBusinessWebsite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etBusinessWebsite" />
+        app:layout_constraintStart_toEndOf="@+id/btnAddItem" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
         android:text="פרטי האתר"
         app:layout_constraintBaseline_toBaselineOf="@+id/etBusinessDetails"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etBusinessDetails" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnAddItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:text="הוסף עסק"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageRef" />
+        app:layout_constraintStart_toEndOf="@+id/button4" />
 
     <ImageView
         android:id="@+id/imageRef"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="128dp"
+        android:layout_height="48dp"
         android:layout_marginStart="23dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="37dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddItem"
-        app:layout_constraintEnd_toStartOf="@+id/btnGallery"
+        android:layout_marginTop="89dp"
+        android:layout_marginBottom="85dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etBusinessDetails"
+        app:layout_constraintTop_toBottomOf="@+id/etBusinessWebsite"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
@@ -229,7 +210,6 @@
         android:layout_marginEnd="28dp"
         android:text="גלריה"
         app:layout_constraintEnd_toStartOf="@+id/btnCamera"
-        app:layout_constraintStart_toEndOf="@+id/imageRef"
         app:layout_constraintTop_toBottomOf="@+id/etBusinessDetails" />
 
     <Button
@@ -239,29 +219,36 @@
         android:layout_marginEnd="16dp"
         android:text="מצלמה"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnGallery"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnGallery" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Spinner
         android:id="@+id/spBusinessCity"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="23dp"
+        android:layout_width="214dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginBottom="68dp"
         android:entries="@array/CategoryArr"
-        app:layout_constraintBottom_toTopOf="@+id/etBusinessWebsite"
-        app:layout_constraintEnd_toStartOf="@+id/textView12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etBusinessAddress" />
+        app:layout_constraintBottom_toBottomOf="@+id/etBusinessWebsite"
+        app:layout_constraintEnd_toEndOf="@+id/etBusinessAddress"
+        app:layout_constraintTop_toTopOf="@+id/etBusinessAddress" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
         android:text="עיר מגורים"
         app:layout_constraintBaseline_toBaselineOf="@+id/spBusinessCity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spBusinessCity" />
+        app:layout_constraintEnd_toEndOf="@+id/textView10"
+        app:layout_constraintStart_toStartOf="@+id/textView10" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:onClick="GoBack"
+        android:text="חזור אחורה"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

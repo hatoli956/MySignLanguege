@@ -1,7 +1,9 @@
 package com.example.mysignlanguege;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -78,4 +80,8 @@ public class AllBusiness extends AppCompatActivity {
     }
 
 
+    public void btnGoBack1(View view) {
+        Intent go = new Intent(getApplicationContext(), AdminPage.class);
+        startActivity(go);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.mysignlanguege;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -145,5 +146,10 @@ public class UpdateUserDetails extends AppCompatActivity implements View.OnClick
         } else {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void GoBack(View view) {
+        Intent go = new Intent(getApplicationContext(), AfterLogin.class);
+        startActivity(go);
     }
 }

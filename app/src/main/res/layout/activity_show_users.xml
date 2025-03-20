@@ -10,17 +10,24 @@
     <!-- SearchView for searching users -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
-        android:layout_width="match_parent"
+        android:layout_width="394dp"
         android:layout_height="wrap_content"
-        android:queryHint="Search Users"
         android:iconifiedByDefault="false"
-        android:padding="8dp"/>
+        android:padding="8dp"
+        android:queryHint="Search Users" />
 
     <!-- RecyclerView to display user data -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="392dp"
+        android:layout_height="624dp"
         android:layout_weight="1"
         android:padding="16dp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="GoBack"
+        android:text="Button" />
 </LinearLayout>

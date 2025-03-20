@@ -1,6 +1,8 @@
 package com.example.mysignlanguege;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,7 +66,10 @@ public class ShowUsers extends AppCompatActivity {
             }
         });
     }
-
+    public void btnGoBack1(View view) {
+        Intent go = new Intent(getApplicationContext(), AdminPage.class);
+        startActivity(go);
+    }
     private void fetchUsersFromFirebase() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

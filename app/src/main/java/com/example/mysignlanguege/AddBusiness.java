@@ -154,7 +154,10 @@ public class    AddBusiness extends AppCompatActivity implements View.OnClickLis
         btnAddItem.setOnClickListener(this);
     }
 
-
+    public void btnGoBack1(View view) {
+        Intent go = new Intent(getApplicationContext(), AdminPage.class);
+        startActivity(go);
+    }
     @Override
     public void onClick(View v) {
 
