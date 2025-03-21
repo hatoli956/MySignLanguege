@@ -57,10 +57,7 @@ public class ShowBusinessForUser extends AppCompatActivity {
                 // Notify the adapter that the data has changed
                 businessUserAdapter.notifyDataSetChanged();
             }
-            public void Intrested(View view) {
-                Intent go = new Intent(getApplicationContext(), InterestedBusinessesActivity.class);
-                startActivity(go);
-            }
+
             @Override
             public void onFailed(Exception e) {
                 // Log the error and show a failure message to the user
@@ -72,6 +69,11 @@ public class ShowBusinessForUser extends AppCompatActivity {
 
     public void GoBack(View view) {
         Intent go = new Intent(getApplicationContext(), AfterLogin.class);
+        startActivity(go);
+    }
+
+    public void Intrested(View view) {
+        Intent go = new Intent(getApplicationContext(), InterestedBusinessesActivity.class);
         startActivity(go);
     }
 }

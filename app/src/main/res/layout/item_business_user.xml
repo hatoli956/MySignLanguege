@@ -86,12 +86,13 @@
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
 
-        <!-- Button to Add to Interested list -->
         <Button
             android:id="@+id/btnAddToInterested"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add to Interested" />
+            android:text="מחק" />
+
+        <!-- Button to Add to Interested list -->
     </LinearLayout>
 
     <!-- Business Image - Placed on the right side -->
