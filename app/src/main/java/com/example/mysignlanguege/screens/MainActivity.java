@@ -1,4 +1,4 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.mysignlanguege.R;
+import com.example.mysignlanguege.models.User;
+import com.example.mysignlanguege.services.AuthenticationService;
+import com.example.mysignlanguege.utils.SharedPreferencesUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +27,21 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        
+        if (AuthenticationService.getInstance().isUserSignedIn()) {
+            User user = SharedPreferencesUtil.getUser(this);
+            if (user.isAdmin()) {
+                Intent go = new Intent(getApplicationContext(), AdminPage.class);
+                startActivity(go);
+            } else {
+                Intent go = new Intent(getApplicationContext(), AfterLogin.class);
+                startActivity(go);
+            }
+            finish();
+            return;
+        }
+
+
     }
 
     public void goReg(View view) {

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysignlanguege.R;
-import com.example.mysignlanguege.UserDetailsActivity;
+import com.example.mysignlanguege.screens.UserDetailsActivity;
 import com.example.mysignlanguege.models.User;
 
 import java.util.List;

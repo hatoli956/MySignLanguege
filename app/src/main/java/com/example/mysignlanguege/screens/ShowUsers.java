@@ -1,4 +1,4 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.adapters.UserAdapter;
 import com.example.mysignlanguege.models.User;
 import com.google.firebase.database.DataSnapshot;

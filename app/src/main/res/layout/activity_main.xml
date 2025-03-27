@@ -8,7 +8,7 @@
     android:background="#f4f6f9"
 
 
-    tools:context=".MainActivity">
+    tools:context=".screens.MainActivity">
 
     <!-- Title TextView -->
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:background="#f4f6f9"
     android:layout_height="match_parent"
-    tools:context=".AdminPage">
+    tools:context=".screens.AdminPage">
 
     <TextView
         android:id="@+id/tvAdmin"

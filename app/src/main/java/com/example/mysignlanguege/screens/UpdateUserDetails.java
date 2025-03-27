@@ -1,4 +1,4 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.User;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;

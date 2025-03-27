@@ -1,4 +1,4 @@
-    package com.example.mysignlanguege;
+    package com.example.mysignlanguege.screens;
 
     import android.content.Intent;
     import android.content.SharedPreferences;
@@ -10,6 +10,7 @@
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
 
+    import com.example.mysignlanguege.R;
     import com.example.mysignlanguege.adapters.BusinessUserAdapter;
     import com.example.mysignlanguege.models.Business;
 

@@ -2,10 +2,6 @@ package com.example.mysignlanguege.adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +12,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mysignlanguege.Login;
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.Business;
+import com.example.mysignlanguege.models.User;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.ImageUtil;
+import com.example.mysignlanguege.utils.SharedPreferencesUtil;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
 
 public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapter.BusinessViewHolder> {
@@ -64,7 +58,11 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
         // Load business image
         holder.businessImageView.setImageBitmap(ImageUtil.convertFrom64base(business.getImage()));
 
-        if(!Login.isAdmin) {
+        User user = SharedPreferencesUtil.getUser(this.context);
+        assert user != null;
+        if(user.isAdmin())
+        {
+            holder.addToInterestedButton.setVisibility(View.INVISIBLE);
             // Handle "Add to Interested" button click
             Business finalBusiness = business;
             holder.addToInterestedButton.setOnClickListener(v -> addBusinessToInterestedList(finalBusiness));
@@ -88,12 +86,12 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
         editor.putString("interestedBusinesses", interestedBusinesses);
         editor.apply();
 
+        User user = SharedPreferencesUtil.getUser(this.context);
 
-
-       if( Login.user!=null) {
+       if(user != null) {
            DatabaseService databaseService = DatabaseService.getInstance();
 
-           databaseService.writeData("Users/" + Login.user.getId() + "/interestedBusinesses/" + business.getId(), business, new DatabaseService.DatabaseCallback<Void>() {
+           databaseService.writeData("Users/" + user.getId() + "/interestedBusinesses/" + business.getId(), business, new DatabaseService.DatabaseCallback<Void>() {
                @Override
                public void onCompleted(Void object) {
 
@@ -104,37 +102,9 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
 
                }
            });
-
-
        }
     }
-    private void loadImageFromUrl(final String imageUrl, final ImageView imageView) {
-        // Use a separate thread to download the image (to avoid blocking UI thread)
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL(imageUrl);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    InputStream input = connection.getInputStream();
-                    final Bitmap bitmap = BitmapFactory.decodeStream(input);
 
-                    // Run the code to update UI on the main thread
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
-                            imageView.setImageBitmap(bitmap);
-                        }
-                    });
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
 
     public static class BusinessViewHolder extends RecyclerView.ViewHolder {
 
@@ -157,8 +127,6 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
             websiteTextView = itemView.findViewById(R.id.tvWebsite);
             detailsTextView = itemView.findViewById(R.id.tvDetails);
             addToInterestedButton = itemView.findViewById(R.id.btnAddToInterested);
-            if(Login.isAdmin)
-                addToInterestedButton.setVisibility(View.INVISIBLE);
         }
     }
 }

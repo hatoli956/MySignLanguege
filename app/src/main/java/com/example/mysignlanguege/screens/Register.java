@@ -1,4 +1,4 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.User;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;

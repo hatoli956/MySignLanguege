@@ -1,4 +1,4 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.adapters.BusinessAdapter;
 import com.example.mysignlanguege.models.Business;
 import com.example.mysignlanguege.services.DatabaseService;
