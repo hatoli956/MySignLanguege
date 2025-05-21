@@ -1,80 +1,140 @@
 package com.example.mysignlanguege;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.MainThread;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysignlanguege.adapters.BusinessUserAdapter;
 import com.example.mysignlanguege.models.Business;
+import com.example.mysignlanguege.services.DatabaseService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public class InterestedBusinessesActivity extends AppCompatActivity {
+public class  InterestedBusinessesActivity extends BaseActivity implements BusinessUserAdapter.OnBusinessRemoveListener {
 
     private RecyclerView recyclerView;
     private BusinessUserAdapter businessUserAdapter;
     private List<Business> interestedBusinessList;
+    private DatabaseService databaseService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interested_businesses);
 
+        databaseService = DatabaseService.getInstance();
+
         recyclerView = findViewById(R.id.recyclerViewInterested);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         interestedBusinessList = new ArrayList<>();
-        loadInterestedBusinesses();
-
         businessUserAdapter = new BusinessUserAdapter(interestedBusinessList, this);
+        businessUserAdapter.setOnBusinessRemoveListener(this);
         recyclerView.setAdapter(businessUserAdapter);
+
+        loadInterestedBusinesses();
     }
 
-    public void btnGoBack1(View view) {
-        Intent go = new Intent(getApplicationContext(), AfterLogin.class);
-        startActivity(go);
+    @Override
+    public void onBusinessRemove(@NonNull Business business) {
+        if (Login.user == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String userId = Login.user.getId();
+        String businessId = business.getId();
+
+        Toast.makeText(this, "Removing business...", Toast.LENGTH_SHORT).show();
+
+        databaseService.writeData("Users/" + userId + "/interestedBusinesses/" + businessId, null, new DatabaseService.DatabaseCallback<Void>() {
+            @Override
+            @MainThread
+            public void onCompleted(Void object) {
+                interestedBusinessList.remove(business);
+                businessUserAdapter.notifyDataSetChanged();
+                updateInterestedBusinessesPreferences();
+                Toast.makeText(InterestedBusinessesActivity.this, "Business removed from interests", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            @MainThread
+            public void onFailed(Exception e) {
+                Toast.makeText(InterestedBusinessesActivity.this,
+                        "Failed to remove business: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void updateInterestedBusinessesPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
+        // שמירת מזהי העסקים כטקסט אחד מופרד בפסיקים
+        String updatedBusinesses = interestedBusinessList.stream()
+                .map(Business::getId)
+                .collect(Collectors.joining(","));
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("interestedBusinesses", updatedBusinesses);
+        editor.apply();
     }
 
     private void loadInterestedBusinesses() {
-        SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
-        String interestedBusinesses = sharedPreferences.getString("interestedBusinesses", "");
+        if (Login.user == null) {
+            Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        String[] businessIds = interestedBusinesses.split(",");
-        for (String id : businessIds) {
-            if (!id.isEmpty()) {
-                Business business = getBusinessById(id); // Fetch business from local DB or API
-                interestedBusinessList.add(business);
+        interestedBusinessList.clear();
+        businessUserAdapter.notifyDataSetChanged();
+
+        String path = "Users/" + Login.user.getId() + "/interestedBusinesses";
+
+        databaseService.getDataAtPath(path, new DatabaseService.DatabaseCallback<Map<String, Object>>() {
+            @Override
+            @MainThread
+            public void onCompleted(Map<String, Object> data) {
+                if (data != null && !data.isEmpty()) {
+                    List<String> businessIds = new ArrayList<>(data.keySet());
+
+                    for (String businessId : businessIds) {
+                        databaseService.getBusiness(businessId, new DatabaseService.DatabaseCallback<Business>() {
+                            @Override
+                            @MainThread
+                            public void onCompleted(Business business) {
+                                if (business != null) {
+                                    interestedBusinessList.add(business);
+                                    businessUserAdapter.notifyDataSetChanged();
+                                }
+                            }
+
+                            @Override
+                            @MainThread
+                            public void onFailed(Exception e) {
+                                // שים לב להוסיף טיפול בטעויות בעתיד, למשל Log.e
+                            }
+                        });
+                    }
+                } else {
+                    Toast.makeText(InterestedBusinessesActivity.this,
+                            "You have no interested businesses", Toast.LENGTH_SHORT).show();
+                }
             }
-        }
 
-        if (interestedBusinessList.isEmpty()) {
-            Toast.makeText(this, "No interested businesses found.", Toast.LENGTH_SHORT).show();
-        }
+            @Override
+            @MainThread
+            public void onFailed(Exception e) {
+                Toast.makeText(InterestedBusinessesActivity.this,
+                        "Failed to load interested businesses", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
-    private Business getBusinessById(String id) {
-        // In a real app, you'd fetch the business data from a database or API.
-
-        // Return a new Business instance with all parameters correctly populated
-        return new Business(
-                id,                               // Business ID
-                "Sample Business",                // Name
-                "Category",                       // Category
-                "123-456-7890",                   // Phone
-                "business@example.com",           // Email
-                "123 Sample St",                  // Street
-                "http://www.samplebusiness.com",  // Website
-                "Sample City",                    // City
-                "Sample business details",        // Details
-                "sampleBase64ImageString"         // Image (this should be a base64 string)
-        );
-    }
-
 }

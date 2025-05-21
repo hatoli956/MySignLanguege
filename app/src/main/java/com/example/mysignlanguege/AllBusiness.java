@@ -2,7 +2,9 @@ package com.example.mysignlanguege;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,68 +16,68 @@ import com.example.mysignlanguege.services.DatabaseService;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllBusiness extends AppCompatActivity {
+public class AllBusiness extends BaseActivity implements BusinessAdapter.OnBusinessInteractionListener {
 
-    private static final String TAG ="ReadBusineess" ;
-    private RecyclerView recyclerView;  // RecyclerView for businesses
-    private BusinessAdapter businessAdapter;  // Adapter for displaying businesses
-    private List<Business> businessList;  // List to hold businesses
-
+    private static final String TAG = "AllBusinessActivity";
+    private RecyclerView recyclerView;
+    private BusinessAdapter businessAdapter;
+    private List<Business> businessList;
     private DatabaseService databaseService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_business);  // Use the correct layout for businesses
+        setContentView(R.layout.activity_all_business);
 
-          databaseService=DatabaseService.getInstance();
+        databaseService = DatabaseService.getInstance();
 
-        // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
-
-        // Create a list for the businesses
-        businessList = new ArrayList<>();
-
-;
-
-        // Set the layout manager for RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize the BusinessAdapter
-        businessAdapter = new BusinessAdapter(businessList);
+        businessList = new ArrayList<>();
+        // העברת context כארגומנט ראשון
+        businessAdapter = new BusinessAdapter(this, businessList, this);
         recyclerView.setAdapter(businessAdapter);
 
-
-
-
-
-        databaseService.getBusinesss(new DatabaseService.DatabaseCallback<List<Business>>() {
-            @Override
-            public void onCompleted(List<Business> object) {
-
-                businessList.clear();
-                businessList.addAll(object);
-                /// notify the adapter that the data has changed
-                /// this specifies that the data has changed
-                /// and the adapter should update the view
-                /// @see FoodSpinnerAdapter#notifyDataSetChanged()
-                businessAdapter.notifyDataSetChanged();
-
-
-            }
-
-            @Override
-            public void onFailed(Exception e) {
-                Log.e(TAG, "onFailed: ", e);
-
-
-            }
-        });
-
-
-
-
+        loadBusinesses();
     }
 
+    private void loadBusinesses() {
+        databaseService.getBusinesss(new DatabaseService.DatabaseCallback<List<Business>>() {
+            @Override
+            @MainThread
+            public void onCompleted(List<Business> businesses) {
+                businessList.clear();
+                businessList.addAll(businesses);
+                businessAdapter.notifyDataSetChanged();
+            }
 
+            @Override
+            @MainThread
+            public void onFailed(Exception e) {
+                Log.e(TAG, "Failed to load businesses", e);
+                Toast.makeText(AllBusiness.this, "Failed to load businesses", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void onDeleteBusinessClicked(Business business) {
+        if (business == null) return;
+
+        databaseService.removeBusiness(business.getId(), new DatabaseService.DatabaseCallback<Void>() {
+            @Override
+            @MainThread
+            public void onCompleted(Void unused) {
+                Toast.makeText(AllBusiness.this, "העסק נמחק בהצלחה", Toast.LENGTH_SHORT).show();
+                loadBusinesses();
+            }
+
+            @Override
+            @MainThread
+            public void onFailed(Exception e) {
+                Toast.makeText(AllBusiness.this, "שגיאה במחיקת העסק: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

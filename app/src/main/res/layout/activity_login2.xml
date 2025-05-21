@@ -8,6 +8,18 @@
     android:background="#f4f6f9"
     tools:context=".Login">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginBottom="48dp"
+        android:background="#1A237E"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <!-- Title Text -->
 
     <!-- Email Input -->

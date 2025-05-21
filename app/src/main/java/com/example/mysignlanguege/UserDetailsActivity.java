@@ -1,11 +1,13 @@
 package com.example.mysignlanguege;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mysignlanguege.models.User;
@@ -15,38 +17,38 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class UserDetailsActivity extends AppCompatActivity {
+public class UserDetailsActivity extends BaseActivity {
 
-    private TextView fName, lName, email, phone, password;
+    private EditText fName, lName, email, phone, password;
+    private Button btnSave;
     private DatabaseReference databaseReference;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
 
-        // Initialize the views
         fName = findViewById(R.id.fName);
         lName = findViewById(R.id.lName);
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
         password = findViewById(R.id.password);
+        btnSave = findViewById(R.id.btnSave);
 
-        // Get the user ID passed from ShowUsers activity
-        String userId = getIntent().getStringExtra("USER_ID");
-
-        // Initialize Firebase Database reference
+        userId = getIntent().getStringExtra("USER_ID");
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
 
-        // Fetch the user details from Firebase
-        fetchUserDetails(userId);
+        fetchUserDetails();
+
+        btnSave.setOnClickListener(v -> saveUserDetails());
     }
 
-    private void fetchUserDetails(String userId) {
-        databaseReference.addValueEventListener(new ValueEventListener() {
+    private void fetchUserDetails() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
                 if (user != null) {
                     fName.setText(user.getfName());
                     lName.setText(user.getlName());
@@ -57,14 +59,34 @@ public class UserDetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(UserDetailsActivity.this, "Failed to load user data", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void GoBack(View view) {
-        Intent go = new Intent(getApplicationContext(), AdminPage.class);
-        startActivity(go);
+    private void saveUserDetails() {
+        String firstName = fName.getText().toString().trim();
+        String lastName = lName.getText().toString().trim();
+        String userEmail = email.getText().toString().trim();
+        String userPhone = phone.getText().toString().trim();
+        String userPassword = password.getText().toString().trim();
+
+        if (TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) ||
+                TextUtils.isEmpty(userEmail) || TextUtils.isEmpty(userPhone) ||
+                TextUtils.isEmpty(userPassword)) {
+            Toast.makeText(this, "נא למלא את כל השדות", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        User updatedUser = new User(userId, firstName, lastName, userEmail, userPhone, userPassword);
+
+        databaseReference.setValue(updatedUser).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Toast.makeText(UserDetailsActivity.this, "השינויים נשמרו בהצלחה", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(UserDetailsActivity.this, "שגיאה בשמירת השינויים", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

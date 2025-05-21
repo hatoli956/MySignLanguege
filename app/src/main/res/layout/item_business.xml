@@ -1,104 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="#f4f6f9"
+    android:padding="12dp"
+    android:background="@android:color/white"
+    android:layout_marginBottom="8dp"
+    android:elevation="2dp"
+    android:gravity="center_vertical">
 
-    android:padding="16dp">
 
-    <!-- Vertical container for text information (on the left side) -->
-    <LinearLayout
-        android:layout_width="218dp"
-        android:layout_height="233dp"
-        android:orientation="vertical">
 
-        <!-- Business Name -->
-        <TextView
-            android:id="@+id/tvNname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Business Name"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+    <!-- שם העסק -->
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Business Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
 
-        <!-- Business Category -->
-        <TextView
-            android:id="@+id/tvCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Category"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
+    <!-- כפתור מחיקה -->
+    <Button
+        android:id="@+id/btnDeleteBusiness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="מחק"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#D32F2F"
+        android:textSize="12sp" />
 
-        <!-- Business City -->
-        <TextView
-            android:id="@+id/tvCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="City"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
+    <!-- תמונת העסק -->
 
-        <!-- Business Phone -->
-        <TextView
-            android:id="@+id/tvPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
-
-        <!-- Business Email -->
-        <TextView
-            android:id="@+id/tvEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="email"
-            android:text="Email"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
-
-        <!-- Business Street -->
-        <TextView
-            android:id="@+id/tvStreet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Street"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
-
-        <!-- Business Website -->
-        <TextView
-            android:id="@+id/tvWebsite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:autoLink="web"
-            android:text="Website"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
-
-        <!-- Business Details -->
-        <TextView
-            android:id="@+id/tvDetails"
-            android:layout_width="74dp"
-            android:layout_height="wrap_content"
-            android:text="Details"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
-
-        <!-- Remove Business Button -->
-        <Button
-            android:id="@+id/btnRemove"
-            android:layout_width="wrap_content"
-            android:layout_height="37dp"
-            android:layout_marginTop="8dp"
-            android:text="Remove" />
-    </LinearLayout>
-
-    <!-- Business Image -->
-    <ImageView
-        android:id="@+id/ivBusiness"
-        android:layout_width="175dp"
-        android:layout_height="157dp"
-        android:layout_marginStart="16dp" />
 </LinearLayout>

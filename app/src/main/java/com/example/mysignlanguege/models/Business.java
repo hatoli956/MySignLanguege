@@ -1,16 +1,18 @@
 package com.example.mysignlanguege.models;
 
-public class Business {
+import java.io.Serializable;
 
-  protected   String id;
-  protected   String name,category,phone,email,street,website,city,details;
-
-  protected   String image;
-
-   protected User admin;
+public class Business implements Serializable {
 
 
-    public Business(String id, String name, String category, String phone, String email, String street, String website, String city, String details, String image) {
+    protected String id;
+    protected String name, category, phone, email, street, website, city, details;
+    protected String image;     // נתיב התמונה ב-Storage
+    protected String imageUrl;  // כתובת URL לתמונה מ-Firebase Storage
+    protected User admin;
+
+    public Business(String id, String name, String category, String phone, String email, String street,
+                    String website, String city, String details, String image) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -24,10 +26,7 @@ public class Business {
         this.admin = admin;
     }
 
-
-
-
-    public Business(Business business   ) {
+    public Business(Business business) {
         this.id = business.id;
         this.name = business.name;
         this.category = business.category;
@@ -38,11 +37,15 @@ public class Business {
         this.city = business.city;
         this.details = business.details;
         this.image = business.image;
-
+        this.imageUrl = business.imageUrl;
+        this.admin = business.admin;
     }
 
     public Business() {
     }
+
+    // גטרים וסטרים רגילים
+
     public String getId() {
         return id;
     }
@@ -99,7 +102,6 @@ public class Business {
         this.website = website;
     }
 
-
     public String getCity() {
         return city;
     }
@@ -124,6 +126,16 @@ public class Business {
         this.image = image;
     }
 
+    // גטר וסטר חדשים ל-imageUrl
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public User getAdmin() {
         return admin;
     }
@@ -131,9 +143,6 @@ public class Business {
     public void setAdmin(User admin) {
         this.admin = admin;
     }
-
-
-
 
     @Override
     public String toString() {
@@ -145,10 +154,10 @@ public class Business {
                 ", email='" + email + '\'' +
                 ", street='" + street + '\'' +
                 ", website='" + website + '\'' +
-
                 ", city='" + city + '\'' +
                 ", details='" + details + '\'' +
                 ", image='" + image + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", admin=" + admin +
                 '}';
     }

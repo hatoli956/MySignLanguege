@@ -14,7 +14,7 @@ import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.SharedPreferencesUtil;
 
-public class UpdateUserDetails extends AppCompatActivity implements View.OnClickListener {
+public class UpdateUserDetails extends BaseActivity implements View.OnClickListener {
 
     EditText etfName, etlName, etPhone, etEmail, etPassword;
     Button btnUpdate;

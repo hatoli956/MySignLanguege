@@ -8,8 +8,8 @@
 
     <!-- Vertical container for text information (on the left side) -->
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="220dp"
+        android:layout_width="218dp"
+        android:layout_height="233dp"
         android:orientation="vertical">
 
         <!-- Business Name -->
@@ -86,20 +86,33 @@
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
 
-        <!-- Button to Add to Interested list -->
+        <!-- Add to Interested Button -->
         <Button
             android:id="@+id/btnAddToInterested"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#EADD6F"
+            android:textColor="@android:color/black"
             android:text="Add to Interested" />
+
+        <!-- Delete Business Button -->
+        <Button
+            android:id="@+id/btnDeleteBusiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#FF4444"
+            android:textColor="@android:color/white"
+            android:text="Delete Business" />
+
     </LinearLayout>
 
-    <!-- Business Image - Placed on the right side -->
+    <!-- Business Image -->
     <ImageView
         android:id="@+id/ivBusinessImage"
         android:layout_width="175dp"
         android:layout_height="157dp"
         android:layout_marginStart="16dp"
-        android:scaleType="centerCrop" />
-
+        android:contentDescription="Business Image" />
 </LinearLayout>

@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">MySignLanguege</string>
+    <string name="app_name"></string>
+
+    <!-- Add these to your strings.xml file -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Make sure these are added to your existing strings.xml file in the res/values folder -->
 </resources>

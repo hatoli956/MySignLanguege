@@ -4,17 +4,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#f4f6f9"
-
-    android:padding="8dp">
+    android:padding="16dp">
 
     <!-- SearchView for searching users -->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp" />
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search Users"
         android:iconifiedByDefault="false"
-        android:padding="8dp"/>
+        android:padding="8dp"
+        android:queryHint="Search Users" />
 
     <!-- RecyclerView to display user data -->
     <androidx.recyclerview.widget.RecyclerView

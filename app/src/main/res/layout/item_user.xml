@@ -1,16 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_margin="8dp"
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="6dp"
+    android:background="@android:color/transparent">
 
-    <TextView
-        android:id="@+id/fName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="First Name"
-        android:textSize="16sp" />
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:background="@android:color/white">
 
+        <!-- שם המשתמש -->
+        <TextView
+            android:id="@+id/fName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="שם פרטי"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:textStyle="bold" />
 
-</LinearLayout>
+        <!-- כפתור מחיקה -->
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="מחק"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#F44336"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@android:drawable/btn_default"
+            android:elevation="4dp"
+            android:clipToOutline="true"
+            android:outlineProvider="background" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

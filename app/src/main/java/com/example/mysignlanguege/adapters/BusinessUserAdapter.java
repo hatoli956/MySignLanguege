@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,10 +32,32 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
 
     private List<Business> businessList;
     private Context context;
+    private OnBusinessInteractionListener interactionListener;
+    private OnBusinessRemoveListener removeListener;
+    private boolean isInterestedView;
+
+    // ממשק להוספה
+    public interface OnBusinessInteractionListener {
+        void onAddToInterestedClicked(Business business);
+    }
+
+    // ממשק להסרה
+    public interface OnBusinessRemoveListener {
+        void onBusinessRemove(Business business);
+    }
+
+    public void setOnBusinessInteractionListener(OnBusinessInteractionListener listener) {
+        this.interactionListener = listener;
+    }
+
+    public void setOnBusinessRemoveListener(OnBusinessRemoveListener listener) {
+        this.removeListener = listener;
+    }
 
     public BusinessUserAdapter(List<Business> businessList, Context context) {
         this.businessList = businessList;
         this.context = context;
+        this.isInterestedView = context.getClass().getSimpleName().equals("InterestedBusinessesActivity");
     }
 
     @NonNull
@@ -48,9 +71,8 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
     public void onBindViewHolder(@NonNull BusinessViewHolder holder, int position) {
         Business business = businessList.get(position);
 
-        business= new Business(business);
+        business = new Business(business);
 
-        // Set business data to the views
         holder.nameTextView.setText(business.getName());
         holder.categoryTextView.setText(business.getCategory());
         holder.cityTextView.setText(business.getCity());
@@ -60,14 +82,32 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
         holder.websiteTextView.setText(business.getWebsite());
         holder.detailsTextView.setText(business.getDetails());
 
+        String imageBase64 = business.getImage();
+        if (imageBase64 != null && !imageBase64.isEmpty()) {
+            holder.businessImageView.setImageBitmap(ImageUtil.convertFrom64base(imageBase64));
+            holder.businessImageView.setVisibility(View.VISIBLE);
+        } else {
+            holder.businessImageView.setVisibility(View.GONE);
+        }
 
-        // Load business image
-        holder.businessImageView.setImageBitmap(ImageUtil.convertFrom64base(business.getImage()));
-
-        if(!Login.isAdmin) {
-            // Handle "Add to Interested" button click
+        if (isInterestedView) {
+            holder.addToInterestedButton.setText("Remove");
             Business finalBusiness = business;
-            holder.addToInterestedButton.setOnClickListener(v -> addBusinessToInterestedList(finalBusiness));
+            holder.addToInterestedButton.setOnClickListener(v -> {
+                if (removeListener != null) {
+                    removeListener.onBusinessRemove(finalBusiness);
+                }
+            });
+        } else {
+            holder.addToInterestedButton.setText("Add to Interested");
+            Business finalBusiness = business;
+            holder.addToInterestedButton.setOnClickListener(v -> {
+                if (Login.user != null) {
+                    addBusinessToInterestedList(finalBusiness);
+                } else {
+                    Toast.makeText(context, "Please log in first", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
@@ -77,76 +117,41 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
     }
 
     private void addBusinessToInterestedList(Business business) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (Login.user == null) return;
 
-        // Retrieve existing list of interested businesses
-        String interestedBusinesses = sharedPreferences.getString("interestedBusinesses", "");
-        interestedBusinesses += business.getId() + ","; // Append business ID
-
-        // Save updated list of interested businesses
-        editor.putString("interestedBusinesses", interestedBusinesses);
-        editor.apply();
-
-
-
-       if( Login.user!=null) {
-           DatabaseService databaseService = DatabaseService.getInstance();
-
-           databaseService.writeData("Users/" + Login.user.getId() + "/interestedBusinesses/" + business.getId(), business, new DatabaseService.DatabaseCallback<Void>() {
-               @Override
-               public void onCompleted(Void object) {
-
-               }
-
-               @Override
-               public void onFailed(Exception e) {
-
-               }
-           });
-
-
-       }
-    }
-    private void loadImageFromUrl(final String imageUrl, final ImageView imageView) {
-        // Use a separate thread to download the image (to avoid blocking UI thread)
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL(imageUrl);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setDoInput(true);
-                    connection.connect();
-                    InputStream input = connection.getInputStream();
-                    final Bitmap bitmap = BitmapFactory.decodeStream(input);
-
-                    // Run the code to update UI on the main thread
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
-                            imageView.setImageBitmap(bitmap);
+        DatabaseService databaseService = DatabaseService.getInstance();
+        databaseService.writeData("Users/" + Login.user.getId() + "/interestedBusinesses/" + business.getId(),
+                business, new DatabaseService.DatabaseCallback<Void>() {
+                    @Override
+                    public void onCompleted(Void object) {
+                        Toast.makeText(context, "Added to interested businesses", Toast.LENGTH_SHORT).show();
+                        // עדכון SharedPreferences
+                        SharedPreferences sharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+                        String interestedBusinesses = sharedPreferences.getString("interestedBusinesses", "");
+                        if (!interestedBusinesses.contains(business.getId())) {
+                            interestedBusinesses += business.getId() + ",";
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("interestedBusinesses", interestedBusinesses);
+                            editor.apply();
                         }
-                    });
+                    }
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+                    @Override
+                    public void onFailed(Exception e) {
+                        Toast.makeText(context, "Failed to add to interested businesses", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     public static class BusinessViewHolder extends RecyclerView.ViewHolder {
-
         TextView nameTextView, categoryTextView, cityTextView, phoneTextView, emailTextView;
-        TextView streetTextView, websiteTextView, detailsTextView, adminTextView;
+        TextView streetTextView, websiteTextView, detailsTextView;
         Button addToInterestedButton;
         ImageView businessImageView;
 
         public BusinessViewHolder(View itemView) {
             super(itemView);
 
-            // Initialize views
             businessImageView = itemView.findViewById(R.id.ivBusinessImage);
             nameTextView = itemView.findViewById(R.id.tvName);
             categoryTextView = itemView.findViewById(R.id.tvCategory);
@@ -157,8 +162,6 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
             websiteTextView = itemView.findViewById(R.id.tvWebsite);
             detailsTextView = itemView.findViewById(R.id.tvDetails);
             addToInterestedButton = itemView.findViewById(R.id.btnAddToInterested);
-            if(Login.isAdmin)
-                addToInterestedButton.setVisibility(View.INVISIBLE);
         }
     }
 }

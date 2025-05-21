@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowUsers extends AppCompatActivity {
+public class ShowUsers extends BaseActivity {
 
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;

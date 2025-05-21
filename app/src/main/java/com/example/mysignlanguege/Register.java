@@ -21,7 +21,7 @@ import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.SharedPreferencesUtil;
 
-public class Register extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class Register extends BaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     EditText etfName,etlName, etPhone, etEmail, etPassword;
     String fName,lName, phone, email, password,city;
     Button btnReg;

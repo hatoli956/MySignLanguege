@@ -8,6 +8,7 @@ import com.example.mysignlanguege.models.Business;
 import com.example.mysignlanguege.models.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -68,10 +69,49 @@ public class DatabaseService {
             }
         });
     }
+    public void getBusinessById(String businessId, DatabaseCallback<Business> callback) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("businesses")
+                .document(businessId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        Business business = documentSnapshot.toObject(Business.class);
+                        callback.onCompleted(business);
+                    } else {
+                        callback.onCompleted(null);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    callback.onFailed(e);
+                });
+    }
+
 
     /// read data from the database at a specific path
     private DatabaseReference readData(@NotNull final String path) {
         return databaseReference.child(path);
+    }
+    public void getDataAtPath(String path, DatabaseCallback<Map<String, Object>> callback) {
+        readData(path).get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                callback.onFailed(task.getException());
+                return;
+            }
+            Map<String, Object> data = (Map<String, Object>) task.getResult().getValue();
+            callback.onCompleted(data);
+        });
+    }
+
+    public void getInterestedBusinesses(String userId, DatabaseCallback<Map<String, Object>> callback) {
+        readData("Users/" + userId + "/interestedBusinesses").get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                callback.onFailed(task.getException());
+                return;
+            }
+            Map<String, Object> data = (Map<String, Object>) task.getResult().getValue();
+            callback.onCompleted(data);
+        });
     }
 
     /// get data from the database at a specific path
@@ -172,5 +212,9 @@ public class DatabaseService {
     /// Update user details in the database
     public void updateUserDetails(@NotNull final User user, @Nullable final DatabaseCallback<Void> callback) {
         createNewUser(user, callback);
+    }
+
+    public void getBusinesssFromPath(@NotNull final String path, @NotNull final DatabaseCallback<List<Business>> callback) {
+        getDataList(path, Business.class, callback);
     }
 }
