@@ -1,7 +1,10 @@
 package com.example.mysignlanguege;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
 import android.widget.Toast;
 
 import androidx.annotation.MainThread;
@@ -30,6 +33,11 @@ public class AllBusiness extends BaseActivity implements BusinessAdapter.OnBusin
         setContentView(R.layout.activity_all_business);
 
         databaseService = DatabaseService.getInstance();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(Color.parseColor("#1A237E"));
+        }
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

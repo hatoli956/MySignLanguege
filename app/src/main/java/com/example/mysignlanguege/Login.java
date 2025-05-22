@@ -1,14 +1,14 @@
 package com.example.mysignlanguege;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mysignlanguege.models.User;
 import com.example.mysignlanguege.services.AuthenticationService;
@@ -18,19 +18,14 @@ import com.example.mysignlanguege.utils.SharedPreferencesUtil;
 public class Login extends BaseActivity {
 
     private static final String TAG = "LoginActivity";
-
-    // מזהי אדמין - לפי אימייל
     private static final String ADMIN_EMAIL = "nadavroki@gmail.com";
 
-    // רכיבי UI
     private EditText etEmail, etPassword;
     private Button btnLogin, btnForgotPassword;
 
-    // שירותים
     private AuthenticationService authenticationService;
     private DatabaseService databaseService;
 
-    // מצבים
     public static boolean isAdmin = false;
     public static User user = null;
 
@@ -43,6 +38,11 @@ public class Login extends BaseActivity {
 
         authenticationService = AuthenticationService.getInstance();
         databaseService = DatabaseService.getInstance();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(Color.parseColor("#1A237E"));
+        }
     }
 
     private void initViews() {
@@ -51,7 +51,6 @@ public class Login extends BaseActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnForgotPassword = findViewById(R.id.btnForgotPassword);
 
-        // טעינת נתוני משתמש מזיכרון (אם יש)
         User savedUser = SharedPreferencesUtil.getUser(Login.this);
         if (savedUser != null) {
             etEmail.setText(savedUser.getEmail());
@@ -85,21 +84,25 @@ public class Login extends BaseActivity {
                     public void onCompleted(User u) {
                         user = u;
 
+                        // Save user to SharedPreferences
                         SharedPreferencesUtil.saveUser(Login.this, user);
 
-                        // *** Set login flag to true here ***
+                        // ✅ Save login session and user email
                         setUserLoggedIn(true);
+                        getSharedPreferences("MyPrefs", MODE_PRIVATE)
+                                .edit()
+                                .putString("userEmail", email)
+                                .apply();
 
+                        // Redirect based on admin status
                         if (email.equals(ADMIN_EMAIL)) {
                             isAdmin = true;
-                            Intent adminIntent = new Intent(Login.this, AdminPage.class);
-                            adminIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(adminIntent);
+                            startActivity(new Intent(Login.this, AdminPage.class)
+                                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         } else {
                             isAdmin = false;
-                            Intent userIntent = new Intent(Login.this, AfterLogin.class);
-                            userIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(userIntent);
+                            startActivity(new Intent(Login.this, AfterLogin.class)
+                                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         }
 
                         finish();
@@ -123,4 +126,5 @@ public class Login extends BaseActivity {
                 etPassword.requestFocus();
             }
         });
-    }}
+    }
+}

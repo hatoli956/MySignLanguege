@@ -1,8 +1,11 @@
 package com.example.mysignlanguege;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -23,7 +26,11 @@ public class AfterLogin extends BaseActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_after_login);
-        
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(Color.parseColor("#1A237E"));
+        }
         // Initialize authentication service
         authenticationService = AuthenticationService.getInstance();
         

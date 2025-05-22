@@ -1,6 +1,9 @@
 package com.example.mysignlanguege;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +32,10 @@ public class ShowUsers extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(Color.parseColor("#1A237E"));
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_users);
 

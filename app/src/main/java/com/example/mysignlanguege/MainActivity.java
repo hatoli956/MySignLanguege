@@ -1,8 +1,12 @@
 package com.example.mysignlanguege;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -24,8 +28,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(Color.parseColor("#1A237E"));
+        }
+        setUserLoggedIn(false);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);  // Your layout with DrawerLayout and Toolbar
+        setContentView(R.layout.activity_main);
 
         // Initialize views
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -35,7 +44,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         registerButton = findViewById(R.id.button2);
         adminButton = findViewById(R.id.button3);
 
-        // Setup toolbar and drawer toggle
+        // Setup toolbar and drawer
         setSupportActionBar(toolbar);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -44,7 +53,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Setup buttons
+        // ✅ Hide login button if already logged in
+        if (checkUserLoginStatus()) {
+            loginButton.setVisibility(View.GONE);
+            // Optional: hide register button too
+            // registerButton.setVisibility(View.GONE);
+        }
+
+        // Set click listeners
         loginButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Login.class));
         });
@@ -61,22 +77,24 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     protected void onResume() {
         super.onResume();
-        invalidateOptionsMenu();  // Refresh toolbar menu when returning from login/logout
+        invalidateOptionsMenu();  // Refresh toolbar menu
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_main) {
-            Toast.makeText(this, "Main Activity", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.menu_login) {
+        if (id == R.id.menu_login) {
             startActivity(new Intent(this, Login.class));
         } else if (id == R.id.menu_logout) {
             setUserLoggedIn(false);
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
             invalidateOptionsMenu();
+            recreate(); // Refresh activity to show login button again
+        } else if (id == R.id.menu_user_details) {
+            startActivity(new Intent(this, UpdateUserDetails.class));
         }
+
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

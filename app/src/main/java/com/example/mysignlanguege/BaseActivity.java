@@ -2,9 +2,12 @@ package com.example.mysignlanguege;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +17,10 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(Color.parseColor("#1A237E"));
+        }
         super.onCreate(savedInstanceState);
     }
 
@@ -36,42 +43,43 @@ public class BaseActivity extends AppCompatActivity {
 
         MenuItem loginItem = menu.findItem(R.id.menu_login);
         MenuItem logoutItem = menu.findItem(R.id.menu_logout);
+        MenuItem userDetailsItem = menu.findItem(R.id.menu_user_details);
 
         boolean isLoggedIn = checkUserLoginStatus();
 
         loginItem.setVisible(!isLoggedIn);
         logoutItem.setVisible(isLoggedIn);
+        userDetailsItem.setVisible(isLoggedIn);
 
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_main) {
-            startActivity(new Intent(this, MainActivity.class));
-            return true;
-        } else if (id == R.id.menu_login) {
+        if (id == R.id.menu_login) {
             startActivity(new Intent(this, Login.class));
             return true;
         } else if (id == R.id.menu_logout) {
             Toast.makeText(this, "התנתקת בהצלחה", Toast.LENGTH_SHORT).show();
-            // Update login status on logout
             setUserLoggedIn(false);
+            SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+            prefs.edit().remove("userEmail").apply();
 
-            // Sign out from authentication (if applicable)
-            // authenticationService.signOut(); // if you have this accessible here
-
-            // Go back to MainActivity and clear activity stack
             Intent intent = new Intent(this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-
+            return true;
+        } else if (id == R.id.menu_user_details) {
+            startActivity(new Intent(this, UpdateUserDetails.class));
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
+
 
 
     protected boolean checkUserLoginStatus() {

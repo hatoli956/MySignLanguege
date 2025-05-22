@@ -1,7 +1,10 @@
 package com.example.mysignlanguege;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +37,11 @@ public class BusinessDetailsActivity extends BaseActivity {
 
         if (business != null) {
             populateViews(business);
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(Color.parseColor("#1A237E"));
         }
     }
 
