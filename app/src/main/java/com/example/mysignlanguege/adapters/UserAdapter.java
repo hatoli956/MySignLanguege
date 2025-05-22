@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysignlanguege.R;
-import com.example.mysignlanguege.UserDetailsActivity;
+import com.example.mysignlanguege.screens.UserDetailsActivity;
 import com.example.mysignlanguege.models.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
