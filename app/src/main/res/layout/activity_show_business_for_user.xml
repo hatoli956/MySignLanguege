@@ -29,4 +29,11 @@
         android:backgroundTint="#1A237E"
         android:text="View Interested Businesses"
         android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:onClick="GoBack"
+        android:layout_height="wrap_content"
+        android:text="חזור אחורה" />
 </LinearLayout>

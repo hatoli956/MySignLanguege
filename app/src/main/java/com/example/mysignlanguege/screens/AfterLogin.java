@@ -9,11 +9,11 @@ import android.view.Window;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.mysignlanguege.screens.BaseActivity;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.utils.SharedPreferencesUtil;
 
@@ -38,7 +38,7 @@ public class AfterLogin extends BaseActivity {
         if (!authenticationService.isUserSignedIn() || !SharedPreferencesUtil.isUserLoggedIn(this)) {
             // If not authenticated, redirect to login
             Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show();
-            Intent loginIntent = new Intent(this, Login.class);
+            Intent loginIntent = new Intent(this, com.example.mysignlanguege.Login.class);
             startActivity(loginIntent);
             finish();
             return;
@@ -54,7 +54,7 @@ public class AfterLogin extends BaseActivity {
     private void checkAuthenticationBeforeAction() {
         if (!authenticationService.isUserSignedIn() || !SharedPreferencesUtil.isUserLoggedIn(this)) {
             Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show();
-            Intent loginIntent = new Intent(this, Login.class);
+            Intent loginIntent = new Intent(this, com.example.mysignlanguege.Login.class);
             startActivity(loginIntent);
             finish();
             return;
@@ -63,7 +63,7 @@ public class AfterLogin extends BaseActivity {
 
     public void goShowBuisness(View view) {
         checkAuthenticationBeforeAction();
-        Intent go = new Intent(getApplicationContext(), ShowBusinessForUser.class);
+        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.ShowBusinessForUser.class);
         startActivity(go);
     }
 
@@ -75,7 +75,7 @@ public class AfterLogin extends BaseActivity {
 
     public void UpdateUser(View view) {
         checkAuthenticationBeforeAction();
-        Intent go = new Intent(getApplicationContext(), UpdateUserDetails.class);
+        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.UpdateUserDetails.class);
         startActivity(go);
     }
 }

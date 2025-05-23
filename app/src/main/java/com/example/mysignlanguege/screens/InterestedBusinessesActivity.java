@@ -10,6 +10,7 @@
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
 
+    import com.example.mysignlanguege.AfterLogin;
     import com.example.mysignlanguege.R;
     import com.example.mysignlanguege.adapters.BusinessUserAdapter;
     import com.example.mysignlanguege.models.Business;
@@ -60,7 +61,10 @@
                 Toast.makeText(this, "No interested businesses found.", Toast.LENGTH_SHORT).show();
             }
         }
-
+        public void GoBack(View view) {
+            Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AfterLogin.class);
+            startActivity(go);
+        }
 
         private Business getBusinessById(String id) {
             // In a real app, you'd fetch the business data from a database or API.

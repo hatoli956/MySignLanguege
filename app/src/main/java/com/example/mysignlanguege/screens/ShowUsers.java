@@ -1,18 +1,20 @@
 package com.example.mysignlanguege;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysignlanguege.adapters.UserAdapter;
 import com.example.mysignlanguege.models.User;
+import com.example.mysignlanguege.screens.BaseActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -70,6 +72,10 @@ public class ShowUsers extends BaseActivity {
                 return false;
             }
         });
+    }
+    public void GoBack(View view) {
+        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AdminPage.class);
+        startActivity(go);
     }
 
     private void fetchUsersFromFirebase() {

@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysignlanguege.adapters.BusinessUserAdapter;
 import com.example.mysignlanguege.models.Business;
+import com.example.mysignlanguege.screens.BaseActivity;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.SharedPreferencesUtil;
@@ -47,7 +47,7 @@ public class ShowBusinessForUser extends BaseActivity implements BusinessUserAda
         // Check if user is authenticated
         if (!authenticationService.isUserSignedIn() || !SharedPreferencesUtil.isUserLoggedIn(this)) {
             Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show();
-            Intent loginIntent = new Intent(this, Login.class);
+            Intent loginIntent = new Intent(this, com.example.mysignlanguege.Login.class);
             loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(loginIntent);
             finish();
@@ -71,13 +71,18 @@ public class ShowBusinessForUser extends BaseActivity implements BusinessUserAda
         loadBusinesses();
     }
 
+    public void GoBack(View view) {
+        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AfterLogin.class);
+        startActivity(go);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         // Check authentication state when activity resumes
         if (!authenticationService.isUserSignedIn() || !SharedPreferencesUtil.isUserLoggedIn(this)) {
             Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show();
-            Intent loginIntent = new Intent(this, Login.class);
+            Intent loginIntent = new Intent(this, com.example.mysignlanguege.Login.class);
             loginIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(loginIntent);
             finish();
@@ -104,8 +109,8 @@ public class ShowBusinessForUser extends BaseActivity implements BusinessUserAda
 
     @Override
     public void onAddToInterestedClicked(Business business) {
-        if (Login.user != null && business != null) {
-            String userId = Login.user.getId();
+        if (com.example.mysignlanguege.Login.user != null && business != null) {
+            String userId = com.example.mysignlanguege.Login.user.getId();
             String businessId = business.getId();
             
             String path = "Users/" + userId + "/interestedBusinesses/" + businessId;

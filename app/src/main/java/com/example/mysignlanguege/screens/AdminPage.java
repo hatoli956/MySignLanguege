@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.Window;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.mysignlanguege.screens.BaseActivity;
+import com.example.mysignlanguege.screens.MainActivity;
 
 public class AdminPage extends BaseActivity {
 
@@ -35,7 +37,7 @@ public class AdminPage extends BaseActivity {
 
 
     public void AddBusiness(View view) {
-            Intent go = new Intent(getApplicationContext(), AddBusiness.class);
+            Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AddBusiness.class);
             startActivity(go);
     }
     public void MainPage(View view) {
@@ -44,11 +46,11 @@ public class AdminPage extends BaseActivity {
 
     }
     public void goAllBusiness(View view) {
-        Intent go = new Intent(getApplicationContext(), AllBusiness.class);
+        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AllBusiness.class);
         startActivity(go);
     }
     public void SearchUser(View view) {
-        Intent go = new Intent(getApplicationContext(), ShowUsers.class);
+        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.ShowUsers.class);
         startActivity(go);
     }
 

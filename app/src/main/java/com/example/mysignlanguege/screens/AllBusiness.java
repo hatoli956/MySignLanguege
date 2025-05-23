@@ -1,19 +1,21 @@
 package com.example.mysignlanguege;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
 import androidx.annotation.MainThread;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysignlanguege.adapters.BusinessAdapter;
 import com.example.mysignlanguege.models.Business;
+import com.example.mysignlanguege.screens.BaseActivity;
 import com.example.mysignlanguege.services.DatabaseService;
 
 import java.util.ArrayList;
@@ -48,6 +50,10 @@ public class AllBusiness extends BaseActivity implements BusinessAdapter.OnBusin
         recyclerView.setAdapter(businessAdapter);
 
         loadBusinesses();
+    }
+    public void GoBack(View view) {
+        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AdminPage.class);
+        startActivity(go);
     }
 
     private void loadBusinesses() {

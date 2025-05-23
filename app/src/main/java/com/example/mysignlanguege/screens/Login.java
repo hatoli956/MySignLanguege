@@ -5,12 +5,15 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mysignlanguege.models.User;
+import com.example.mysignlanguege.screens.BaseActivity;
+import com.example.mysignlanguege.screens.ResetPassword;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.SharedPreferencesUtil;
@@ -97,11 +100,11 @@ public class Login extends BaseActivity {
                         // Redirect based on admin status
                         if (email.equals(ADMIN_EMAIL)) {
                             isAdmin = true;
-                            startActivity(new Intent(Login.this, AdminPage.class)
+                            startActivity(new Intent(Login.this, com.example.mysignlanguege.AdminPage.class)
                                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         } else {
                             isAdmin = false;
-                            startActivity(new Intent(Login.this, AfterLogin.class)
+                            startActivity(new Intent(Login.this, com.example.mysignlanguege.AfterLogin.class)
                                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         }
 
@@ -116,6 +119,11 @@ public class Login extends BaseActivity {
                         SharedPreferencesUtil.signOutUser(Login.this);
                     }
                 });
+            }
+
+            public void GoBack(View view) {
+                Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.ShowBusinessForUser.class);
+                startActivity(go);
             }
 
             @Override

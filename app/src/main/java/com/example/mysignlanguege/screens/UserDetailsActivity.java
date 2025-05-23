@@ -1,5 +1,6 @@
 package com.example.mysignlanguege.screens;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.User;
@@ -73,6 +73,11 @@ public class UserDetailsActivity extends BaseActivity {
         });
     }
 
+    public void GoBack(View view) {
+        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AfterLogin.class);
+        startActivity(go);
+    }
+
     private void saveUserDetails() {
         String firstName = fName.getText().toString().trim();
         String lastName = lName.getText().toString().trim();
@@ -86,6 +91,7 @@ public class UserDetailsActivity extends BaseActivity {
             Toast.makeText(this, "נא למלא את כל השדות", Toast.LENGTH_SHORT).show();
             return;
         }
+
 
         User updatedUser = new User(userId, firstName, lastName, userEmail, userPhone, userPassword);
 

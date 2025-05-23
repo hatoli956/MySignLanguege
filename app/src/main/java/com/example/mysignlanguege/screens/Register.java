@@ -14,7 +14,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -69,7 +68,10 @@ public class Register extends BaseActivity implements View.OnClickListener, Adap
 
 
     }
-
+    public void GoBack(View view) {
+        Intent go = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(go);
+    }
     private void initViews() {
         etfName=findViewById(R.id.etfName);
         etlName=findViewById(R.id.etlName);

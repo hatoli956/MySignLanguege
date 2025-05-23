@@ -1,4 +1,4 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.mysignlanguege.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -62,7 +63,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         // Set click listeners
         loginButton.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, Login.class));
+            startActivity(new Intent(MainActivity.this, com.example.mysignlanguege.Login.class));
         });
 
         registerButton.setOnClickListener(v -> {
@@ -70,7 +71,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         });
 
         adminButton.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, AdminPage.class));
+            startActivity(new Intent(MainActivity.this, com.example.mysignlanguege.AdminPage.class));
         });
     }
 
@@ -85,14 +86,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         int id = item.getItemId();
 
         if (id == R.id.menu_login) {
-            startActivity(new Intent(this, Login.class));
+            startActivity(new Intent(this, com.example.mysignlanguege.Login.class));
         } else if (id == R.id.menu_logout) {
             setUserLoggedIn(false);
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
             invalidateOptionsMenu();
             recreate(); // Refresh activity to show login button again
         } else if (id == R.id.menu_user_details) {
-            startActivity(new Intent(this, UpdateUserDetails.class));
+            startActivity(new Intent(this, com.example.mysignlanguege.UpdateUserDetails.class));
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

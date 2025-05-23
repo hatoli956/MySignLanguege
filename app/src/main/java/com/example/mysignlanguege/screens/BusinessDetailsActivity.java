@@ -1,5 +1,6 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,9 +9,9 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.Business;
+import com.example.mysignlanguege.screens.BaseActivity;
 import com.example.mysignlanguege.utils.ImageUtil;
 
 public class BusinessDetailsActivity extends BaseActivity {
@@ -47,6 +48,11 @@ public class BusinessDetailsActivity extends BaseActivity {
 
     private Business getBusinessFromIntent() {
         return (Business) getIntent().getSerializableExtra("business");
+    }
+
+    public void GoBack(View view) {
+        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AllBusiness.class);
+        startActivity(go);
     }
 
     private void populateViews(Business business) {

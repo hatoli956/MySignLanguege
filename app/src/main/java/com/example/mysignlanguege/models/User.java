@@ -7,7 +7,7 @@ public class User {
 
 
 
-    public User(String id, String fName, String lName, String phone, String email, String password, boolean isAdmin) {
+    public User(String id, String fName, String lName, String phone, String email, String password) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;

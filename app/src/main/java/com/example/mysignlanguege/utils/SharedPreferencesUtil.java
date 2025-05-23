@@ -133,7 +133,7 @@ public class SharedPreferencesUtil {
         String lName = sharedPreferences.getString("lName", "");
         String phone = sharedPreferences.getString("phone", "");
         boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false);
-        return new User(uid, fName, lName, phone, email, password, isAdmin);
+        return new User(uid, fName, lName, phone, email, password);
     }
 
     /// Sign out the user by removing user data from shared preferences

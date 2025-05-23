@@ -19,13 +19,13 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mysignlanguege.models.Business;
 import com.example.mysignlanguege.models.User;
+import com.example.mysignlanguege.screens.BaseActivity;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.ImageUtil;
@@ -107,6 +107,8 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
             }
         });
     }
+
+
 
     private void initViews() {
         btnAddItem = findViewById(R.id.btnAddItem);
@@ -198,13 +200,16 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
             saveBusinessToDatabase(business);
         }
     }
-
+    public void GoBack(View view) {
+        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.ShowBusinessForUser.class);
+        startActivity(go);
+    }
     private void saveBusinessToDatabase(Business business) {
         databaseService.createNewBusiness(business, new DatabaseService.DatabaseCallback<Void>() {
             @Override
             public void onCompleted(Void object) {
                 Toast.makeText(AddBusiness.this, "Business added successfully", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(AddBusiness.this, AfterLogin.class));
+                startActivity(new Intent(AddBusiness.this, com.example.mysignlanguege.AfterLogin.class));
                 finish();
             }
 
