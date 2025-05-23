@@ -1,4 +1,4 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,13 +16,14 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.mysignlanguege.BaseActivity;
+import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.Business;
 import com.example.mysignlanguege.models.User;
 import com.example.mysignlanguege.screens.BaseActivity;
@@ -54,7 +55,6 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_add_business);
 
         initViews();
@@ -134,19 +134,15 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v.getId() == btnAddItem.getId()) {
-            Log.d(TAG, "Add business button clicked");
             addBusinessToDatabase();
             return;
         }
         if (v.getId() == btnGallery.getId()) {
-            Log.d(TAG, "Select image button clicked");
             selectImageFromGallery();
             return;
         }
         if (v.getId() == btnCamera.getId()) {
-            Log.d(TAG, "Capture image button clicked");
             captureImageFromCamera();
-            return;
         }
     }
 
@@ -184,8 +180,18 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
             uploadImageToFirebase(selectedImageUri, id, new OnImageUploadCallback() {
                 @Override
                 public void onUploadSuccess(String imageUrl) {
-                    Business business = new Business(id, businessName, businessType, businessPhone, businessEmail,
-                            businessAddress, businessWebsite, businessCity, businessDetails, imageUrl);
+                    Business business = new Business();
+                    business.setId(id);
+                    business.setName(businessName);
+                    business.setCategory(businessType);
+                    business.setPhone(businessPhone);
+                    business.setEmail(businessEmail);
+                    business.setStreet(businessAddress);
+                    business.setWebsite(businessWebsite);
+                    business.setCity(businessCity);
+                    business.setDetails(businessDetails);
+                    business.setImageUrl(imageUrl);
+
                     saveBusinessToDatabase(business);
                 }
 
@@ -195,8 +201,18 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
                 }
             });
         } else {
-            Business business = new Business(id, businessName, businessType, businessPhone, businessEmail,
-                    businessAddress, businessWebsite, businessCity, businessDetails, null);
+            Business business = new Business();
+            business.setId(id);
+            business.setName(businessName);
+            business.setCategory(businessType);
+            business.setPhone(businessPhone);
+            business.setEmail(businessEmail);
+            business.setStreet(businessAddress);
+            business.setWebsite(businessWebsite);
+            business.setCity(businessCity);
+            business.setDetails(businessDetails);
+            business.setImageUrl(null);
+
             saveBusinessToDatabase(business);
         }
     }

@@ -14,64 +14,49 @@
         android:theme="@style/Theme.MySignLanguege"
         tools:targetApi="31">
         <activity
-            android:name=".screens.BusinessDetailsActivity"
+            android:name=".About"
             android:exported="false" />
         <activity
-            android:name=".BusinessDetails"
+            android:name=".BusinessDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".Rating"
+            android:name=".screens.UserDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".RatingList"
-            android:exported="false" />
-        <activity
-            android:name=".utils.RatingSystem"
-            android:exported="false" />
-        <activity
-            android:name=".UserDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".adapters.UserDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UpdateUserDetails"
+            android:name=".screens.UpdateUserDetails"
             android:exported="false" />
         <activity
             android:name=".InterestedBusinessesActivity"
             android:exported="false" />
         <activity
-            android:name=".ShowBusinessForUser"
+            android:name=".screens.ShowBusinessForUser"
             android:exported="false" />
         <activity
-            android:name=".AllBusiness"
+            android:name=".screens.AllBusiness"
             android:exported="false" />
         <activity
-            android:name=".ShowUsers"
+            android:name=".screens.ShowUsers"
             android:exported="false" />
         <activity
-            android:name=".AfterLogin"
+            android:name=".screens.AfterLogin"
             android:exported="false" />
         <activity
-            android:name=".AdminPage"
+            android:name=".screens.AdminPage"
             android:exported="false" />
         <activity
-            android:name=".AddBusiness"
+            android:name=".screens.AddBusiness"
             android:exported="false" />
         <activity
-            android:name=".Business"
+            android:name=".screens.UpdatePassword"
             android:exported="false" />
         <activity
-            android:name=".UpdatePassword"
+            android:name=".screens.ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".ResetPassword"
+            android:name=".screens.Login"
             android:exported="false" />
         <activity
-            android:name=".Login"
-            android:exported="false" />
-        <activity
-            android:name=".Register"
+            android:name=".screens.Register"
             android:exported="false" />
         <activity
             android:name=".screens.MainActivity"
@@ -82,9 +67,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AllBusinessesActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

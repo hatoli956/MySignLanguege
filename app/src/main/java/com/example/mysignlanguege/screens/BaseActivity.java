@@ -1,4 +1,4 @@
-package com.example.mysignlanguege.screens;
+package com.example.mysignlanguege;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,9 +13,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.mysignlanguege.Login;
-import com.example.mysignlanguege.R;
-import com.example.mysignlanguege.UpdateUserDetails;
+import com.example.mysignlanguege.screens.Login;
+import com.example.mysignlanguege.screens.MainActivity;
+import com.example.mysignlanguege.screens.UpdateUserDetails;
 
 public class BaseActivity extends AppCompatActivity {
 

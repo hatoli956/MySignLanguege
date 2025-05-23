@@ -1,6 +1,6 @@
-    package com.example.mysignlanguege.screens;
+package com.example.mysignlanguege.screens;
 
-    import android.content.Intent;
+import android.content.Intent;
     import android.content.SharedPreferences;
     import android.os.Bundle;
     import android.view.View;
@@ -10,7 +10,7 @@
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
 
-    import com.example.mysignlanguege.AfterLogin;
+    import com.example.mysignlanguege.screens.AfterLogin;
     import com.example.mysignlanguege.R;
     import com.example.mysignlanguege.adapters.BusinessUserAdapter;
     import com.example.mysignlanguege.models.Business;
@@ -40,10 +40,7 @@
         }
 
 
-        public void btnGoBack1(View view) {
-            Intent go = new Intent(getApplicationContext(), AfterLogin.class);
-            startActivity(go);
-        }
+
 
         private void loadInterestedBusinesses() {
             SharedPreferences sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE);
@@ -61,10 +58,7 @@
                 Toast.makeText(this, "No interested businesses found.", Toast.LENGTH_SHORT).show();
             }
         }
-        public void GoBack(View view) {
-            Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AfterLogin.class);
-            startActivity(go);
-        }
+
 
         private Business getBusinessById(String id) {
             // In a real app, you'd fetch the business data from a database or API.

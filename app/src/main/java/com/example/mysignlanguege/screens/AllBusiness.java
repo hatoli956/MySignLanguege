@@ -1,4 +1,4 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +13,8 @@ import androidx.annotation.MainThread;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mysignlanguege.BaseActivity;
+import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.adapters.BusinessAdapter;
 import com.example.mysignlanguege.models.Business;
 import com.example.mysignlanguege.screens.BaseActivity;
@@ -74,7 +76,10 @@ public class AllBusiness extends BaseActivity implements BusinessAdapter.OnBusin
             }
         });
     }
-
+    public void GoBack(View view) {
+        Intent go = new Intent(getApplicationContext(), AdminPage.class);
+        startActivity(go);
+    }
     @Override
     public void onDeleteBusinessClicked(Business business) {
         if (business == null) return;

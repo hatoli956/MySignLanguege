@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#f4f6f9"
-    android:padding="16dp">
+    android:padding="0dp">
 
+    <!-- Toolbar מקובע למעלה -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -13,19 +14,31 @@
         android:background="#1A237E"
         android:elevation="4dp" />
 
-    <!-- RecyclerView for displaying the list of businesses -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <!-- תוכן המסך מתחת לטולבר -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- Button at the bottom -->
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Go Back"
-        android:onClick="GoBack" />
+        <!-- רשימת העסקים -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- כפתור חזרה -->
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="GoBack"
+            android:text="חזור"
+            android:backgroundTint="#1A237E"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
 
 </LinearLayout>

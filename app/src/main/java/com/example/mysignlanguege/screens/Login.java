@@ -1,4 +1,4 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mysignlanguege.BaseActivity;
+import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.User;
 import com.example.mysignlanguege.screens.BaseActivity;
 import com.example.mysignlanguege.screens.ResetPassword;

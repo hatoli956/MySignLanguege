@@ -9,12 +9,13 @@ import android.widget.Toast;
 
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysignlanguege.adapters.BusinessUserAdapter;
 import com.example.mysignlanguege.models.Business;
-import com.example.mysignlanguege.screens.BaseActivity;
+import com.example.mysignlanguege.screens.Login;
 import com.example.mysignlanguege.services.DatabaseService;
 
 import java.util.ArrayList;
@@ -54,12 +55,12 @@ public class  InterestedBusinessesActivity extends BaseActivity implements Busin
 
     @Override
     public void onBusinessRemove(@NonNull Business business) {
-        if (com.example.mysignlanguege.Login.user == null) {
+        if (Login.user == null) {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String userId = com.example.mysignlanguege.Login.user.getId();
+        String userId = Login.user.getId();
         String businessId = business.getId();
 
         Toast.makeText(this, "Removing business...", Toast.LENGTH_SHORT).show();
@@ -96,7 +97,7 @@ public class  InterestedBusinessesActivity extends BaseActivity implements Busin
     }
 
     private void loadInterestedBusinesses() {
-        if (com.example.mysignlanguege.Login.user == null) {
+        if (Login.user == null) {
             Toast.makeText(this, "Please log in first", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -104,7 +105,7 @@ public class  InterestedBusinessesActivity extends BaseActivity implements Busin
         interestedBusinessList.clear();
         businessUserAdapter.notifyDataSetChanged();
 
-        String path = "Users/" + com.example.mysignlanguege.Login.user.getId() + "/interestedBusinesses";
+        String path = "Users/" + Login.user.getId() + "/interestedBusinesses";
 
         databaseService.getDataAtPath(path, new DatabaseService.DatabaseCallback<Map<String, Object>>() {
             @Override

@@ -16,7 +16,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.mysignlanguege.About;
+import com.example.mysignlanguege.screens.AdminPage;
+import com.example.mysignlanguege.BaseActivity;
+import com.example.mysignlanguege.screens.Login;
 import com.example.mysignlanguege.R;
+import com.example.mysignlanguege.screens.UpdateUserDetails;
+import com.example.mysignlanguege.screens.Register;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,6 +32,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private NavigationView navigationView;
     private Toolbar toolbar;
     private Button loginButton, registerButton, adminButton;
+    private Button aboutButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         toolbar = findViewById(R.id.toolbar);
         loginButton = findViewById(R.id.button);
         registerButton = findViewById(R.id.button2);
+        aboutButton = findViewById(R.id.buttonAbout);
         adminButton = findViewById(R.id.button3);
 
         // Setup toolbar and drawer
@@ -63,15 +72,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         // Set click listeners
         loginButton.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, com.example.mysignlanguege.Login.class));
+            startActivity(new Intent(MainActivity.this, Login.class));
         });
 
         registerButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Register.class));
         });
 
+        aboutButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, About.class));
+        });
+
         adminButton.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, com.example.mysignlanguege.AdminPage.class));
+            startActivity(new Intent(MainActivity.this, AdminPage.class));
         });
     }
 
@@ -86,19 +99,21 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         int id = item.getItemId();
 
         if (id == R.id.menu_login) {
-            startActivity(new Intent(this, com.example.mysignlanguege.Login.class));
+            startActivity(new Intent(this, Login.class));
         } else if (id == R.id.menu_logout) {
             setUserLoggedIn(false);
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
-            invalidateOptionsMenu();
-            recreate(); // Refresh activity to show login button again
+            recreate();
         } else if (id == R.id.menu_user_details) {
-            startActivity(new Intent(this, com.example.mysignlanguege.UpdateUserDetails.class));
+            startActivity(new Intent(this, UpdateUserDetails.class));
+        } else if (id == R.id.menu_about) {
+            startActivity(new Intent(this, About.class));
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     @Override
     public void onBackPressed() {

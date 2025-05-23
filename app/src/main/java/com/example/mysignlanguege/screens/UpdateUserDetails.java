@@ -1,6 +1,5 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,8 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mysignlanguege.BaseActivity;
+import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.User;
-import com.example.mysignlanguege.screens.BaseActivity;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.SharedPreferencesUtil;
@@ -55,10 +57,7 @@ public class UpdateUserDetails extends BaseActivity implements View.OnClickListe
         btnUpdate = findViewById(R.id.btnUpdate);
         btnUpdate.setOnClickListener(this);
     }
-    public void GoBack(View view) {
-        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AfterLogin.class);
-        startActivity(go);
-    }
+
     private void loadUserDetails() {
         // Retrieve the saved user from SharedPreferences
         User user = SharedPreferencesUtil.getUser(this);

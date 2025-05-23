@@ -1,4 +1,4 @@
-package com.example.mysignlanguege;
+package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,10 +8,15 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
+import com.example.mysignlanguege.InterestedBusinessesActivity;
+
+
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mysignlanguege.BaseActivity;
+import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.adapters.BusinessUserAdapter;
 import com.example.mysignlanguege.models.Business;
 import com.example.mysignlanguege.screens.BaseActivity;
