@@ -14,11 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mysignlanguege.BaseActivity;
-import com.example.mysignlanguege.BusinessDetailsActivity;
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.adapters.BusinessAdapter;
 import com.example.mysignlanguege.models.Business;
-import com.example.mysignlanguege.screens.BaseActivity;
 import com.example.mysignlanguege.services.DatabaseService;
 
 import java.util.ArrayList;
@@ -55,7 +53,7 @@ public class AllBusiness extends BaseActivity implements BusinessAdapter.OnBusin
         loadBusinesses();
     }
     public void GoBack(View view) {
-        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AdminPage.class);
+        Intent go = new Intent(getApplicationContext(), AdminPage.class);
         startActivity(go);
     }
 
@@ -76,10 +74,6 @@ public class AllBusiness extends BaseActivity implements BusinessAdapter.OnBusin
                 Toast.makeText(AllBusiness.this, "Failed to load businesses", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-    public void GoBack(View view) {
-        Intent go = new Intent(getApplicationContext(), AdminPage.class);
-        startActivity(go);
     }
     @Override
     public void onDeleteBusinessClicked(Business business) {

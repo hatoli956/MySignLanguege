@@ -7,10 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
-import com.example.mysignlanguege.InterestedBusinessesActivity;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -72,7 +70,7 @@ public class AfterLogin extends BaseActivity {
 
     public void goIntrested(View view) {
         checkAuthenticationBeforeAction();
-        Intent go = new Intent(getApplicationContext(), InterestedBusinessesActivity.class);
+        Intent go = new Intent(getApplicationContext(), UpdatePassword.InterestedBusinessesActivity.class);
         startActivity(go);
     }
 

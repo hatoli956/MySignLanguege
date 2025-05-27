@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mysignlanguege.BaseActivity;
-import com.example.mysignlanguege.EmployerPage;
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.User;
 import com.example.mysignlanguege.services.AuthenticationService;
@@ -107,7 +106,7 @@ public class Login extends BaseActivity {
                             startActivity(new Intent(Login.this, AdminPage.class)
                                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         } else if (isEmployer) {
-                            startActivity(new Intent(Login.this, EmployerPage.class)
+                            startActivity(new Intent(Login.this, UpdatePassword.EmployerPage.class)
                                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         } else {
                             startActivity(new Intent(Login.this, AfterLogin.class)

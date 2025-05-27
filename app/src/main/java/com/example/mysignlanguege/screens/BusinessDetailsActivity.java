@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.Business;
-import com.example.mysignlanguege.screens.BaseActivity;
+import com.example.mysignlanguege.BaseActivity;
 import com.example.mysignlanguege.utils.ImageUtil;
 
 public class BusinessDetailsActivity extends BaseActivity {
@@ -51,7 +51,7 @@ public class BusinessDetailsActivity extends BaseActivity {
     }
 
     public void GoBack(View view) {
-        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AllBusiness.class);
+        Intent go = new Intent(getApplicationContext(), AllBusiness.class);
         startActivity(go);
     }
 

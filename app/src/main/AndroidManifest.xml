@@ -17,13 +17,13 @@
             android:name=".screens.UpdateBusiness"
             android:exported="false" />
         <activity
-            android:name=".MyBusinessesList"
+            android:name=".screens.UpdatePassword$MyBusinessesList"
             android:exported="false" />
         <activity
-            android:name=".EmployerPage"
+            android:name=".screens.UpdatePassword$EmployerPage"
             android:exported="false" /> <!-- Splash screen activity is now the launcher -->
         <activity
-            android:name=".SplashActivity"
+            android:name=".screens.UpdatePassword$SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,10 +32,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".About"
+            android:name=".screens.UpdatePassword$About"
             android:exported="false" />
         <activity
-            android:name=".BusinessDetailsActivity"
+            android:name=".screens.BusinessDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".screens.UserDetailsActivity"
@@ -44,7 +44,7 @@
             android:name=".screens.UpdateUserDetails"
             android:exported="false" />
         <activity
-            android:name=".InterestedBusinessesActivity"
+            android:name=".screens.UpdatePassword$InterestedBusinessesActivity"
             android:exported="false" />
         <activity
             android:name=".screens.ShowBusinessForUser"

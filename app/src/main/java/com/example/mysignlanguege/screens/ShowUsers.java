@@ -16,7 +16,6 @@ import com.example.mysignlanguege.BaseActivity;
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.adapters.UserAdapter;
 import com.example.mysignlanguege.models.User;
-import com.example.mysignlanguege.screens.BaseActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -76,7 +75,7 @@ public class ShowUsers extends BaseActivity {
         });
     }
     public void GoBack(View view) {
-        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AdminPage.class);
+        Intent go = new Intent(getApplicationContext(), AdminPage.class);
         startActivity(go);
     }
 
