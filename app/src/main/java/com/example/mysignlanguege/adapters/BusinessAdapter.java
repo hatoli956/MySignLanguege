@@ -2,6 +2,7 @@ package com.example.mysignlanguege.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mysignlanguege.screens.BusinessDetailsActivity;
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.Business;
+import com.example.mysignlanguege.screens.UpdateBusiness;
 
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
 
     public interface OnBusinessInteractionListener {
         void onDeleteBusinessClicked(Business business);
+        void onClickListener(Business business);
     }
 
     public BusinessAdapter(Context context, List<Business> businesses, OnBusinessInteractionListener listener) {
@@ -44,7 +47,17 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
     @Override
     public void onBindViewHolder(@NonNull BusinessViewHolder holder, int position) {
         Business business = businesses.get(position);
-        holder.bind(business);
+        holder.nameTextView.setText(business.getName());
+
+        Log.d("DEBUG_ADAPTER", "ImageUrl length: " + (business.getImageUrl() != null ? business.getImageUrl().length() : "null"));
+
+        holder.itemView.setOnClickListener(v -> this.listener.onClickListener(business));
+
+        holder.deleteBusinessButton.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onDeleteBusinessClicked(business);
+            }
+        });
     }
 
     @Override
@@ -67,21 +80,38 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
             deleteBusinessButton = itemView.findViewById(R.id.btnDeleteBusiness);
         }
 
-        void bind(final Business business) {
-            nameTextView.setText(business.getName());
+//        void bind(final Business business) {
+//            nameTextView.setText(business.getName());
+//
+//            Log.d("DEBUG_ADAPTER", "ImageUrl length: " + (business.getImageUrl() != null ? business.getImageUrl().length() : "null"));
+//
+//            itemView.setOnClickListener(v -> );
+//
+//            deleteBusinessButton.setOnClickListener(v -> {
+//                if (listener != null) {
+//                    listener.onDeleteBusinessClicked(business);
+//                }
+//            });
+//        }
+//        void bind2(final Business business) {
+//            nameTextView.setText(business.getName());
+//
+//            Log.d("DEBUG_ADAPTER", "ImageUrl length: " + (business.getImageUrl() != null ? business.getImageUrl().length() : "null"));
+//
+//            itemView.setOnClickListener(v -> {
+//                Intent intent = new Intent(context, UpdateBusiness.class);
+//                intent.putExtra("business", business);
+//                context.startActivity(intent);
+//            });
+//
+//            deleteBusinessButton.setOnClickListener(v -> {
+//                if (listener != null) {
+//                    listener.onDeleteBusinessClicked(business);
+//                }
+//            });
+//        }
 
-            // On business name click, pass the whole business object:
-            itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(context, BusinessDetailsActivity.class);
-                intent.putExtra("business", business);
-                context.startActivity(intent);
-            });
 
-            deleteBusinessButton.setOnClickListener(v -> {
-                if (listener != null) {
-                    listener.onDeleteBusinessClicked(business);
-                }
-            });
-        }
+
     }
 }

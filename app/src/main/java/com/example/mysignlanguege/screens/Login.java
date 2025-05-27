@@ -5,17 +5,15 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mysignlanguege.BaseActivity;
+import com.example.mysignlanguege.EmployerPage;
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.User;
-import com.example.mysignlanguege.screens.BaseActivity;
-import com.example.mysignlanguege.screens.ResetPassword;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.SharedPreferencesUtil;
@@ -32,6 +30,8 @@ public class Login extends BaseActivity {
     private DatabaseService databaseService;
 
     public static boolean isAdmin = false;
+    public static boolean isEmployer = false;
+
     public static User user = null;
 
     @Override
@@ -89,10 +89,13 @@ public class Login extends BaseActivity {
                     public void onCompleted(User u) {
                         user = u;
 
+                        // Set isAdmin based on the fetched user object
+                        isAdmin = user.isAdmin();
+                        isEmployer=user.isEmployer();
+
                         // Save user to SharedPreferences
                         SharedPreferencesUtil.saveUser(Login.this, user);
 
-                        // ✅ Save login session and user email
                         setUserLoggedIn(true);
                         getSharedPreferences("MyPrefs", MODE_PRIVATE)
                                 .edit()
@@ -100,15 +103,17 @@ public class Login extends BaseActivity {
                                 .apply();
 
                         // Redirect based on admin status
-                        if (email.equals(ADMIN_EMAIL)) {
-                            isAdmin = true;
-                            startActivity(new Intent(Login.this, com.example.mysignlanguege.AdminPage.class)
+                        if (isAdmin) {
+                            startActivity(new Intent(Login.this, AdminPage.class)
+                                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                        } else if (isEmployer) {
+                            startActivity(new Intent(Login.this, EmployerPage.class)
                                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         } else {
-                            isAdmin = false;
-                            startActivity(new Intent(Login.this, com.example.mysignlanguege.AfterLogin.class)
+                            startActivity(new Intent(Login.this, AfterLogin.class)
                                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         }
+
 
                         finish();
                     }
@@ -123,11 +128,6 @@ public class Login extends BaseActivity {
                 });
             }
 
-            public void GoBack(View view) {
-                Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.ShowBusinessForUser.class);
-                startActivity(go);
-            }
-
             @Override
             public void onFailed(Exception e) {
                 Log.e(TAG, "התחברות נכשלה", e);
@@ -136,5 +136,4 @@ public class Login extends BaseActivity {
                 etPassword.requestFocus();
             }
         });
-    }
-}
+    }}

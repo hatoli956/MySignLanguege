@@ -65,7 +65,7 @@ public class BusinessDetailsActivity extends BaseActivity {
         tvWebsite.setText(business.getWebsite());
         tvDetails.setText(business.getDetails());
 
-        String imageBase64 = business.getImage();
+        String imageBase64 = business.getImageUrl(); // ← השינוי כאן
         if (imageBase64 != null && !imageBase64.isEmpty()) {
             ivBusinessImage.setImageBitmap(ImageUtil.convertFrom64base(imageBase64));
             ivBusinessImage.setVisibility(View.VISIBLE);
@@ -73,4 +73,5 @@ public class BusinessDetailsActivity extends BaseActivity {
             ivBusinessImage.setVisibility(View.GONE);
         }
     }
+
 }

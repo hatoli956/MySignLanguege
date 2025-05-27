@@ -4,15 +4,24 @@ import java.io.Serializable;
 
 public class Business implements Serializable {
 
-
     protected String id;
     protected String name, category, phone, email, street, website, city, details;
     protected String image;     // נתיב התמונה ב-Storage
     protected String imageUrl;  // כתובת URL לתמונה מ-Firebase Storage
     protected User admin;
+    protected String ownerId;
+
+    public Business() {
+        // Default constructor
+    }
 
     public Business(String id, String name, String category, String phone, String email, String street,
                     String website, String city, String details, String image) {
+        this(id, name, category, phone, email, street, website, city, details, image, null, null);
+    }
+
+    public Business(String id, String name, String category, String phone, String email, String street,
+                    String website, String city, String details, String image, User admin, String ownerId) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -24,6 +33,7 @@ public class Business implements Serializable {
         this.details = details;
         this.image = image;
         this.admin = admin;
+        this.ownerId = ownerId;
     }
 
     public Business(Business business) {
@@ -39,12 +49,10 @@ public class Business implements Serializable {
         this.image = business.image;
         this.imageUrl = business.imageUrl;
         this.admin = business.admin;
+        this.ownerId = business.ownerId;
     }
 
-    public Business() {
-    }
-
-    // גטרים וסטרים רגילים
+    // Getters and setters
 
     public String getId() {
         return id;
@@ -126,8 +134,6 @@ public class Business implements Serializable {
         this.image = image;
     }
 
-    // גטר וסטר חדשים ל-imageUrl
-
     public String getImageUrl() {
         return imageUrl;
     }
@@ -142,6 +148,14 @@ public class Business implements Serializable {
 
     public void setAdmin(User admin) {
         this.admin = admin;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 
     @Override
@@ -159,6 +173,7 @@ public class Business implements Serializable {
                 ", image='" + image + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", admin=" + admin +
+                ", ownerId='" + ownerId + '\'' +
                 '}';
     }
 }

@@ -2,11 +2,14 @@ package com.example.mysignlanguege.screens;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -26,16 +29,14 @@ import com.example.mysignlanguege.BaseActivity;
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.Business;
 import com.example.mysignlanguege.models.User;
-import com.example.mysignlanguege.screens.BaseActivity;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.ImageUtil;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 public class AddBusiness extends BaseActivity implements View.OnClickListener {
-
-    private static final String TAG = "AddBusinessActivity";
 
     Spinner spBusinessType, spBusinessCity;
     EditText etBusinessName, etBusinessPhone, etBusinessEmail, etBusinessAddress, etBusinessWebsite, etBusinessDetails;
@@ -91,7 +92,7 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                         Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
                         imageBusiness.setImageBitmap(bitmap);
-                        selectedImageUri = null; // אין Uri במקרה של צילום
+                        selectedImageUri = null;
                     }
                 });
 
@@ -103,12 +104,10 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
 
             @Override
             public void onFailed(Exception e) {
-                Log.e(TAG, "Failed to get user", e);
+                Log.e("AddBusiness", "Failed to get user", e);
             }
         });
     }
-
-
 
     private void initViews() {
         btnAddItem = findViewById(R.id.btnAddItem);
@@ -135,13 +134,9 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == btnAddItem.getId()) {
             addBusinessToDatabase();
-            return;
-        }
-        if (v.getId() == btnGallery.getId()) {
+        } else if (v.getId() == btnGallery.getId()) {
             selectImageFromGallery();
-            return;
-        }
-        if (v.getId() == btnCamera.getId()) {
+        } else if (v.getId() == btnCamera.getId()) {
             captureImageFromCamera();
         }
     }
@@ -150,7 +145,7 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        selectImageLauncher.launch(Intent.createChooser(intent, "Select Picture"));
+        selectImageLauncher.launch(Intent.createChooser(intent, "בחר תמונה"));
     }
 
     private void captureImageFromCamera() {
@@ -175,81 +170,77 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
         }
 
         String id = databaseService.generateBusinessId();
+        Business business = new Business();
+        business.setId(id);
+        business.setName(businessName);
+        business.setCategory(businessType);
+        business.setPhone(businessPhone);
+        business.setEmail(businessEmail);
+        business.setStreet(businessAddress);
+        business.setWebsite(businessWebsite);
+        business.setCity(businessCity);
+        business.setDetails(businessDetails);
+
+        // Set current user as owner
+        business.setOwnerId(uid);
+
+        String imageBase64 = null;
 
         if (selectedImageUri != null) {
-            uploadImageToFirebase(selectedImageUri, id, new OnImageUploadCallback() {
-                @Override
-                public void onUploadSuccess(String imageUrl) {
-                    Business business = new Business();
-                    business.setId(id);
-                    business.setName(businessName);
-                    business.setCategory(businessType);
-                    business.setPhone(businessPhone);
-                    business.setEmail(businessEmail);
-                    business.setStreet(businessAddress);
-                    business.setWebsite(businessWebsite);
-                    business.setCity(businessCity);
-                    business.setDetails(businessDetails);
-                    business.setImageUrl(imageUrl);
-
-                    saveBusinessToDatabase(business);
-                }
-
-                @Override
-                public void onUploadFailed(Exception e) {
-                    Toast.makeText(AddBusiness.this, "Failed to upload image", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            Business business = new Business();
-            business.setId(id);
-            business.setName(businessName);
-            business.setCategory(businessType);
-            business.setPhone(businessPhone);
-            business.setEmail(businessEmail);
-            business.setStreet(businessAddress);
-            business.setWebsite(businessWebsite);
-            business.setCity(businessCity);
-            business.setDetails(businessDetails);
-            business.setImageUrl(null);
-
-            saveBusinessToDatabase(business);
+            imageBase64 = encodeImageToBase64(selectedImageUri);
+        } else if (imageBusiness.getDrawable() != null) {
+            imageBusiness.setDrawingCacheEnabled(true);
+            imageBusiness.buildDrawingCache();
+            Bitmap bitmap = ((BitmapDrawable) imageBusiness.getDrawable()).getBitmap();
+            imageBase64 = encodeBitmapToBase64(bitmap);
         }
+
+        business.setImageUrl(imageBase64); // Save base64 in imageUrl
+
+        saveBusinessToDatabase(business);
     }
-    public void GoBack(View view) {
-        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.ShowBusinessForUser.class);
-        startActivity(go);
-    }
+
+
     private void saveBusinessToDatabase(Business business) {
         databaseService.createNewBusiness(business, new DatabaseService.DatabaseCallback<Void>() {
             @Override
             public void onCompleted(Void object) {
-                Toast.makeText(AddBusiness.this, "Business added successfully", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(AddBusiness.this, com.example.mysignlanguege.AfterLogin.class));
+                Toast.makeText(AddBusiness.this, "העסק נוסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(AddBusiness.this, AfterLogin.class));
                 finish();
             }
 
             @Override
             public void onFailed(Exception e) {
-                Toast.makeText(AddBusiness.this, "Failed to add business", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "Failed to add business", e);
+                Toast.makeText(AddBusiness.this, "נכשלה הוספת העסק", Toast.LENGTH_SHORT).show();
+                Log.e("AddBusiness", "Failed to add business", e);
             }
         });
     }
 
-    private interface OnImageUploadCallback {
-        void onUploadSuccess(String imageUrl);
-        void onUploadFailed(Exception e);
+    private String encodeImageToBase64(Uri imageUri) {
+        try {
+            InputStream inputStream = getContentResolver().openInputStream(imageUri);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream);
+            byte[] imageBytes = outputStream.toByteArray();
+            return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    private void uploadImageToFirebase(Uri imageUri, String businessId, OnImageUploadCallback callback) {
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-        StorageReference imageRef = storageRef.child("business_images/" + businessId + ".jpg");
-
-        imageRef.putFile(imageUri)
-                .addOnSuccessListener(taskSnapshot -> imageRef.getDownloadUrl()
-                        .addOnSuccessListener(uri -> callback.onUploadSuccess(uri.toString()))
-                        .addOnFailureListener(callback::onUploadFailed))
-                .addOnFailureListener(callback::onUploadFailed);
+    private String encodeBitmapToBase64(Bitmap bitmap) {
+        try {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream);
+            byte[] imageBytes = outputStream.toByteArray();
+            return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

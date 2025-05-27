@@ -35,13 +35,13 @@
             android:text="מחק"
             android:textSize="14sp"
             android:textColor="@android:color/white"
-            android:backgroundTint="#F44336"
+            android:backgroundTint="#1A237E"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:background="@android:drawable/btn_default"
             android:elevation="4dp"
             android:clipToOutline="true"
             android:outlineProvider="background" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

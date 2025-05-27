@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f4f6f9">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:background="#1A237E"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="@color/black" />
+
+    <!-- Scrollable content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Editable Business Name -->
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#1A237E"
+                android:layout_marginBottom="12dp"
+                android:background="@android:color/transparent"
+                android:hint="Business Name"
+                android:textColorHint="#888888"
+                android:gravity="center" />
+
+            <!-- Editable Info block -->
+            <EditText
+                android:id="@+id/etCategory"
+                style="@style/DetailTextStyle"
+                android:hint="Category"
+                android:background="@android:color/transparent"
+                android:textColorHint="#888888"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/etCity"
+                style="@style/DetailTextStyle"
+                android:hint="City"
+                android:background="@android:color/transparent"
+                android:textColorHint="#888888"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/etPhone"
+                style="@style/DetailTextStyle"
+                android:hint="Phone"
+                android:background="@android:color/transparent"
+                android:textColorHint="#888888"
+                android:inputType="phone"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/etEmail"
+                style="@style/DetailTextStyle"
+                android:hint="Email"
+                android:background="@android:color/transparent"
+                android:textColorHint="#888888"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/etStreet"
+                style="@style/DetailTextStyle"
+                android:hint="Street"
+                android:background="@android:color/transparent"
+                android:textColorHint="#888888"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/etWebsite"
+                style="@style/DetailTextStyle"
+                android:hint="Website"
+                android:background="@android:color/transparent"
+                android:textColorHint="#888888"
+                android:inputType="textUri"
+                android:layout_marginBottom="6dp"/>
+
+            <EditText
+                android:id="@+id/etDetails"
+                style="@style/DetailTextStyle"
+                android:hint="Details"
+                android:background="@android:color/transparent"
+                android:textColorHint="#888888"
+                android:layout_marginBottom="12dp"
+                android:minLines="3"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
+
+            <!-- Business Image (unchanged) -->
+            <ImageView
+                android:id="@+id/ivBusinessImage"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/button_rounded"
+                android:contentDescription="Business Image" />
+
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="שמור שינויים"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#1A237E"
+                android:padding="14dp"
+                android:textSize="18sp"
+                android:elevation="4dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

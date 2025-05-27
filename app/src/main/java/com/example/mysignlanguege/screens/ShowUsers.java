@@ -101,17 +101,23 @@ public class ShowUsers extends BaseActivity {
         });
     }
 
+
+
     private void filterUsers(String query) {
         filteredList.clear();
         if (query.isEmpty()) {
             filteredList.addAll(userList);
         } else {
             for (User user : userList) {
-                if (user.getfName().toLowerCase().contains(query.toLowerCase())) {
+                if (user.getfName() != null && user.getfName().toLowerCase().contains(query.toLowerCase())) {
                     filteredList.add(user);
                 }
             }
         }
         userAdapter.notifyDataSetChanged();
+
+        if (filteredList.isEmpty()) {
+            Toast.makeText(this, "לא נמצאו תוצאות", Toast.LENGTH_SHORT).show();
+        }
     }
 }

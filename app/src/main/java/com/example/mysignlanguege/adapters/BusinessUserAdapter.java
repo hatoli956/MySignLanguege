@@ -82,7 +82,7 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
         holder.websiteTextView.setText(business.getWebsite());
         holder.detailsTextView.setText(business.getDetails());
 
-        String imageBase64 = business.getImage();
+        String imageBase64 = business.getImageUrl();
         if (imageBase64 != null && !imageBase64.isEmpty()) {
             holder.businessImageView.setImageBitmap(ImageUtil.convertFrom64base(imageBase64));
             holder.businessImageView.setVisibility(View.VISIBLE);

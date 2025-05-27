@@ -5,5 +5,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="error_short_firstname">שם פרטי קצר מדי</string>
+    <string name="error_invalid_phone">מספר הטלפון לא תקין</string>
+
+
     <!-- Make sure these are added to your existing strings.xml file in the res/values folder -->
 </resources>

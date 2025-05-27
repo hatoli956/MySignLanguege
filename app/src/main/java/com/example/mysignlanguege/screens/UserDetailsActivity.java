@@ -1,13 +1,9 @@
 package com.example.mysignlanguege.screens;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,7 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 public class UserDetailsActivity extends BaseActivity {
 
     private EditText fName, lName, email, phone, password;
-    private Button btnSave;
     private DatabaseReference databaseReference;
     private String userId;
 
@@ -43,14 +38,23 @@ public class UserDetailsActivity extends BaseActivity {
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
         password = findViewById(R.id.password);
-        btnSave = findViewById(R.id.btnSave);
+
+        // Optional: Disable editing programmatically in case XML was not updated
+        disableEditText(fName);
+        disableEditText(lName);
+        disableEditText(email);
+        disableEditText(phone);
+        disableEditText(password);
 
         userId = getIntent().getStringExtra("USER_ID");
+        if (userId == null) {
+            Toast.makeText(this, "משתמש לא נמצא", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(userId);
-
         fetchUserDetails();
-
-        btnSave.setOnClickListener(v -> saveUserDetails());
     }
 
     private void fetchUserDetails() {
@@ -64,44 +68,21 @@ public class UserDetailsActivity extends BaseActivity {
                     email.setText(user.getEmail());
                     phone.setText(user.getPhone());
                     password.setText(user.getPassword());
+                } else {
+                    Toast.makeText(UserDetailsActivity.this, "המשתמש לא נמצא", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(UserDetailsActivity.this, "Failed to load user data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserDetailsActivity.this, "שגיאה בטעינת פרטי המשתמש", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void GoBack(View view) {
-        Intent go = new Intent(getApplicationContext(), com.example.mysignlanguege.AfterLogin.class);
-        startActivity(go);
-    }
-
-    private void saveUserDetails() {
-        String firstName = fName.getText().toString().trim();
-        String lastName = lName.getText().toString().trim();
-        String userEmail = email.getText().toString().trim();
-        String userPhone = phone.getText().toString().trim();
-        String userPassword = password.getText().toString().trim();
-
-        if (TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) ||
-                TextUtils.isEmpty(userEmail) || TextUtils.isEmpty(userPhone) ||
-                TextUtils.isEmpty(userPassword)) {
-            Toast.makeText(this, "נא למלא את כל השדות", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-
-        User updatedUser = new User(userId, firstName, lastName, userEmail, userPhone, userPassword);
-
-        databaseReference.setValue(updatedUser).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(UserDetailsActivity.this, "השינויים נשמרו בהצלחה", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(UserDetailsActivity.this, "שגיאה בשמירת השינויים", Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void disableEditText(EditText editText) {
+        editText.setEnabled(false);
+        editText.setFocusable(false);
+        editText.setCursorVisible(false);
     }
 }

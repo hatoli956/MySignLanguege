@@ -1,258 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f4f6f9">
+    android:background="#FFFFFF"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        tools:context=".AddBusiness">
+        android:layout_height="?attr/actionBarSize"
+        android:background="#1A237E"
+        android:elevation="4dp"
+        android:title="הוספת עסק"
+        android:titleTextColor="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#1A237E"
-            android:elevation="4dp"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:layout_marginStart="16dp"
-            android:text="Add Business"
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:padding="16dp"
+            android:textDirection="rtl"
+            android:layoutDirection="rtl">
 
-        <EditText
-            android:id="@+id/etBusinessName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="Business Name"
-            android:inputType="text"
-            android:gravity="start"
-            android:padding="12dp"
-            android:background="@drawable/edittext_background"
-            app:layout_constraintTop_toBottomOf="@id/textView4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textView5" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="פרטי העסק"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Business Name"
-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessName"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <EditText
+                android:id="@+id/etBusinessName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="שם העסק"
+                android:inputType="text"
+                android:gravity="end"
+                android:padding="12dp"
+                android:background="@drawable/edittext_background"
+                app:layout_constraintTop_toBottomOf="@id/textView4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView5" />
 
-        <Spinner
-            android:id="@+id/spBusinessType"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:entries="@array/CityArr"
-            android:background="@drawable/edittext_background"
-            app:layout_constraintTop_toBottomOf="@id/etBusinessName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textView6" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="שם העסק"
+                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessName"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="City"
-            app:layout_constraintBaseline_toBaselineOf="@id/spBusinessType"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <Spinner
+                android:id="@+id/spBusinessType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:entries="@array/CityArr"
+                android:background="@drawable/edittext_background"
+                app:layout_constraintTop_toBottomOf="@id/etBusinessName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView6" />
 
-        <EditText
-            android:id="@+id/etBusinessPhone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="Phone Number"
-            android:inputType="phone"
-            android:gravity="start"
-            android:padding="12dp"
-            android:background="@drawable/edittext_background"
-            app:layout_constraintTop_toBottomOf="@id/spBusinessType"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textView7" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="עיר"
+                app:layout_constraintBaseline_toBaselineOf="@id/spBusinessType"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone"
-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessPhone"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <EditText
+                android:id="@+id/etBusinessPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="מספר טלפון"
+                android:inputType="phone"
+                android:gravity="end"
+                android:padding="12dp"
+                android:background="@drawable/edittext_background"
+                app:layout_constraintTop_toBottomOf="@id/spBusinessType"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView7" />
 
-        <EditText
-            android:id="@+id/etBusinessEmail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:gravity="start"
-            android:padding="12dp"
-            android:background="@drawable/edittext_background"
-            app:layout_constraintTop_toBottomOf="@id/etBusinessPhone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textView8" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="טלפון"
+                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessPhone"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessEmail"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <EditText
+                android:id="@+id/etBusinessEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="אימייל"
+                android:inputType="textEmailAddress"
+                android:gravity="end"
+                android:padding="12dp"
+                android:background="@drawable/edittext_background"
+                app:layout_constraintTop_toBottomOf="@id/etBusinessPhone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView8" />
 
-        <EditText
-            android:id="@+id/etBusinessAddress"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="Address"
-            android:inputType="text"
-            android:gravity="start"
-            android:padding="12dp"
-            android:background="@drawable/edittext_background"
-            app:layout_constraintTop_toBottomOf="@id/etBusinessEmail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textView9" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="אימייל"
+                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessEmail"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Address"
-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessAddress"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <EditText
+                android:id="@+id/etBusinessAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="כתובת"
+                android:inputType="text"
+                android:gravity="end"
+                android:padding="12dp"
+                android:background="@drawable/edittext_background"
+                app:layout_constraintTop_toBottomOf="@id/etBusinessEmail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView9" />
 
-        <Spinner
-            android:id="@+id/spBusinessCity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:entries="@array/CategoryArr"
-            android:background="@drawable/edittext_background"
-            app:layout_constraintTop_toBottomOf="@id/etBusinessAddress"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textView12" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="כתובת"
+                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessAddress"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Category"
-            app:layout_constraintBaseline_toBaselineOf="@id/spBusinessCity"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <Spinner
+                android:id="@+id/spBusinessCity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:entries="@array/CategoryArr"
+                android:background="@drawable/edittext_background"
+                app:layout_constraintTop_toBottomOf="@id/etBusinessAddress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView12" />
 
-        <EditText
-            android:id="@+id/etBusinessWebsite"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="Website"
-            android:inputType="textUri"
-            android:gravity="start"
-            android:padding="12dp"
-            android:background="@drawable/edittext_background"
-            app:layout_constraintTop_toBottomOf="@id/spBusinessCity"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textView10" />
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="קטגוריה"
+                app:layout_constraintBaseline_toBaselineOf="@id/spBusinessCity"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Website"
-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessWebsite"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <EditText
+                android:id="@+id/etBusinessWebsite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="אתר אינטרנט"
+                android:inputType="textUri"
+                android:gravity="end"
+                android:padding="12dp"
+                android:background="@drawable/edittext_background"
+                app:layout_constraintTop_toBottomOf="@id/spBusinessCity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView10" />
 
-        <EditText
-            android:id="@+id/etBusinessDetails"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="Business Details"
-            android:inputType="textMultiLine"
-            android:gravity="start"
-            android:padding="12dp"
-            android:background="@drawable/edittext_background"
-            app:layout_constraintTop_toBottomOf="@id/etBusinessWebsite"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/textView11" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="אתר"
+                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessWebsite"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Details"
-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessDetails"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <EditText
+                android:id="@+id/etBusinessDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="פרטים נוספים"
+                android:inputType="textMultiLine"
+                android:gravity="end"
+                android:padding="12dp"
+                android:background="@drawable/edittext_background"
+                app:layout_constraintTop_toBottomOf="@id/etBusinessWebsite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView11" />
 
-        <ImageView
-            android:id="@+id/imageRef"
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="centerCrop"
-            android:background="#e0e0e0"
-            app:layout_constraintTop_toBottomOf="@id/etBusinessDetails"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="פרטים"
+                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessDetails"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
-            android:id="@+id/btnGallery"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Gallery"
-            android:backgroundTint="#1A237E"
-            android:textColor="#FFFFFF"
-            app:layout_constraintTop_toBottomOf="@id/imageRef"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnCamera"
-            app:layout_constraintHorizontal_chainStyle="spread" />
+            <ImageView
+                android:id="@+id/imageRef"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                android:background="#e0e0e0"
+                app:layout_constraintTop_toBottomOf="@id/etBusinessDetails"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
-        <Button
-            android:id="@+id/btnCamera"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Camera"
-            android:backgroundTint="#1A237E"
-            android:textColor="#FFFFFF"
-            app:layout_constraintTop_toBottomOf="@id/imageRef"
-            app:layout_constraintStart_toEndOf="@id/btnGallery"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <Button
+                android:id="@+id/btnGallery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="גלריה"
+                android:backgroundTint="#1A237E"
+                android:textColor="#FFFFFF"
+                app:layout_constraintTop_toBottomOf="@id/imageRef"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnCamera"
+                app:layout_constraintHorizontal_chainStyle="spread" />
 
-        <Button
-            android:id="@+id/btnAddItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="32dp"
-            android:text="Add Business"
-            android:backgroundTint="#388E3C"
-            android:textColor="#FFFFFF"
-            app:layout_constraintTop_toBottomOf="@id/btnCamera"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/btnCamera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="מצלמה"
+                android:backgroundTint="#1A237E"
+                android:textColor="#FFFFFF"
+                app:layout_constraintTop_toBottomOf="@id/imageRef"
+                app:layout_constraintStart_toEndOf="@id/btnGallery"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/btnAddItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="32dp"
+                android:text="הוסף עסק"
+                android:backgroundTint="#388E3C"
+                android:textColor="#FFFFFF"
+                app:layout_constraintTop_toBottomOf="@id/btnCamera"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

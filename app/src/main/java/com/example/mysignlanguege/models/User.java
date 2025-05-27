@@ -1,13 +1,12 @@
 package com.example.mysignlanguege.models;
 
 public class User {
-    String id;
-    String fName,lName, phone, email, password;
-    boolean isAdmin;
+    private String id;
+    private String fName, lName, phone, email, password;
+    private boolean isAdmin, isEmployer;
 
-
-
-    public User(String id, String fName, String lName, String phone, String email, String password) {
+    public User(String id, String fName, String lName, String phone, String email, String password,
+                boolean isAdmin, boolean isEmployer) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
@@ -15,6 +14,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.isAdmin = isAdmin;
+        this.isEmployer = isEmployer;
     }
 
     public User() {
@@ -76,6 +76,14 @@ public class User {
         isAdmin = admin;
     }
 
+    public boolean isEmployer() {
+        return isEmployer;
+    }
+
+    public void setEmployer(boolean employer) {
+        isEmployer = employer;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -86,6 +94,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", isAdmin=" + isAdmin +
+                ", isEmployer=" + isEmployer +
                 '}';
     }
 }

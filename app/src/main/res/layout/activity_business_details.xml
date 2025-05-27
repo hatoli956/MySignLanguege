@@ -1,113 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f4f6f9"
-    android:padding="16dp">
+    android:background="#f4f6f9">
 
-    <!-- Your existing horizontal card layout -->
-    <LinearLayout
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:orientation="horizontal">
+        android:layout_height="73dp"
+        android:background="#1A237E"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="@android:color/white" />
 
-        <!-- Vertical container for text information -->
+
+
+    <!-- Scrollable content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="176dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
+            <!-- Business Image -->
+
+
+            <!-- Business Name -->
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Business Name"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#1A237E"
+                android:layout_marginBottom="12dp" />
 
-            <TextView
-                android:id="@+id/tvCategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvCity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="City"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phone"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="email"
-                android:text="Email"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvStreet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Street"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvWebsite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:text="Website"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Details"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp" />
-
+            <!-- Info block -->
+            <TextView android:id="@+id/tvCategory" style="@style/DetailTextStyle" android:text="Category" />
+            <TextView android:id="@+id/tvCity" style="@style/DetailTextStyle" android:text="City" />
+            <TextView android:id="@+id/tvPhone" style="@style/DetailTextStyle" android:text="Phone" />
+            <TextView android:id="@+id/tvEmail" style="@style/DetailTextStyle" android:text="Email" android:autoLink="email" />
+            <TextView android:id="@+id/tvStreet" style="@style/DetailTextStyle" android:text="Street" />
+            <TextView android:id="@+id/tvWebsite" style="@style/DetailTextStyle" android:text="Website" android:autoLink="web" />
+            <TextView android:id="@+id/tvDetails" style="@style/DetailTextStyle" android:text="Details" />
+            <ImageView
+                android:id="@+id/ivBusinessImage"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/button_rounded"
+                android:contentDescription="Business Image" />
         </LinearLayout>
-
-        <!-- Business Image -->
-        <ImageView
-            android:id="@+id/ivBusinessImage"
-            android:layout_width="175dp"
-            android:layout_height="157dp"
-            android:layout_marginStart="16dp"
-            android:contentDescription="Business Image" />
-    </LinearLayout>
-
-    <!-- Spacer to push the button to bottom -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <!-- Go Back Button at the very bottom of the screen -->
-    <Button
-        android:id="@+id/btnGoBack"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Go Back"
-        android:onClick="GoBack" />
-
+    </ScrollView>
 </LinearLayout>
