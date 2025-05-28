@@ -17,6 +17,7 @@
         android:title="הוספת עסק"
         android:titleTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,10 +52,30 @@
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnMyBusiness"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddJob"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview13" />
+
+    <Button
+        android:id="@+id/btnAddJob"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="18dp"
+        android:backgroundTint="#1A237E"
+        android:elevation="6dp"
+        android:onClick="goAddJob"
+        android:stateListAnimator="@null"
+        android:text="הוסף עבודה"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnMyBusiness"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddBusiness" />
 
     <Button
         android:id="@+id/btnMyBusiness"
@@ -67,14 +88,14 @@
         android:elevation="6dp"
         android:onClick="goIntrested"
         android:stateListAnimator="@null"
-        android:text="רשימה של העסקים שלי"
+        android:text="עדכון העסקים שלי"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnGoPersonalArea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddBusiness" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAddJob" />
 
     <Button
         android:id="@+id/btnGoPersonalArea"
@@ -95,5 +116,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMyBusiness" />
+
+    <Button
+        android:id="@+id/btnShowJobsForEmployer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="רשימת העסקים שלי"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#1A237E"
+        android:onClick="goShowJobsForEmployer"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoPersonalArea"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,12 +2,17 @@ package com.example.mysignlanguege.services;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.mysignlanguege.models.Business;
+import com.example.mysignlanguege.models.Job;
 import com.example.mysignlanguege.models.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
@@ -190,6 +195,30 @@ public class DatabaseService {
     public void removeBusiness(String businessId, DatabaseCallback<Void> callback) {
         deleteData("businesss/"+ businessId, callback);
     }
+
+    public void getJobsForBusiness(String businessId, DatabaseCallback<List<Job>> callback) {
+        DatabaseReference jobsRef = FirebaseDatabase.getInstance().getReference("Jobs");
+
+        jobsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Job> jobs = new ArrayList<>();
+                for (DataSnapshot jobSnap : snapshot.getChildren()) {
+                    Job job = jobSnap.getValue(Job.class);
+                    if (job != null && businessId.equals(job.getBusinessId())) {
+                        jobs.add(job);
+                    }
+                }
+                callback.onCompleted(jobs);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                callback.onFailed(error.toException());
+            }
+        });
+    }
+
 
     public void getUsers(@NotNull final DatabaseCallback<List<User>> callback) {
         readData("Users").get().addOnCompleteListener(task -> {

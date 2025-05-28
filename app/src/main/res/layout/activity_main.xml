@@ -46,7 +46,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="עסקים של למילואימניקים"
+                    android:text="עסקים של מילואימניקים"
                     android:textColor="#1A237E"
                     android:textSize="28sp"
                     android:textStyle="bold"

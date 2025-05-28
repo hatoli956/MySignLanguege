@@ -32,6 +32,5 @@
         android:backgroundTint="#D32F2F"
         android:textSize="12sp" />
 
-    <!-- תמונת העסק -->
 
 </LinearLayout>

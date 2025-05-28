@@ -5,94 +5,110 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f9fafc">
+    android:background="#f9fafc"
+    tools:context=".screens.AfterLogin">
 
+    <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="61dp"
+        android:layout_height="58dp"
         android:background="#1A237E"
         android:elevation="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/textview13"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Title -->
     <TextView
         android:id="@+id/textview13"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="27dp"
-        android:gravity="center"
         android:text="דף משתמש"
         android:textColor="#000000"
         android:textSize="42sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnGoStore2"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
 
+    <!-- Button: מעבר לעסקים -->
     <Button
         android:id="@+id/btnGoStore2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="24dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="44dp"
         android:backgroundTint="#1A237E"
         android:elevation="6dp"
         android:onClick="goShowBuisness"
-        android:stateListAnimator="@null"
         android:text="מעבר לעסקים"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnGoMyCart"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview13" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Button: עסקים שאהבתי -->
     <Button
         android:id="@+id/btnGoMyCart"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="49dp"
         android:backgroundTint="#1A237E"
         android:elevation="6dp"
         android:onClick="goIntrested"
-        android:stateListAnimator="@null"
         android:text="עסקים שאהבתי"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnGoPersonalArea"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnGoStore2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGoStore2" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Button: הגשת מועמדות לעבודה -->
+    <Button
+        android:id="@+id/btnGoBusinessList"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#1A237E"
+        android:elevation="6dp"
+        android:onClick="goToBusinessList"
+        android:text="הגשת מועמדות לעבודה"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/btnGoMyCart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Button: לאיזור האישי -->
     <Button
         android:id="@+id/btnGoPersonalArea"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="58dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="261dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="#1A237E"
         android:elevation="6dp"
         android:onClick="UpdateUser"
-        android:stateListAnimator="@null"
         android:text="לאיזור האישי"
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoBusinessList"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGoMyCart" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

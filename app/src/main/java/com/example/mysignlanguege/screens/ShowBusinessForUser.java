@@ -66,7 +66,7 @@ public class ShowBusinessForUser extends BaseActivity implements BusinessUserAda
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize the BusinessUserAdapter with the interaction listener
-        businessUserAdapter = new BusinessUserAdapter(businessList, this);
+        businessUserAdapter = new BusinessUserAdapter(businessList, this, R.layout.item_business_user);
         recyclerView.setAdapter(businessUserAdapter);
 
         // Fetch businesses from the database
@@ -134,7 +134,7 @@ public class ShowBusinessForUser extends BaseActivity implements BusinessUserAda
     }
 
     public void Intrested(View view) {
-        Intent go = new Intent(getApplicationContext(), UpdatePassword.InterestedBusinessesActivity.class);
+        Intent go = new Intent(getApplicationContext(), InterestedBusinessesActivity.class);
         startActivity(go);
     }
 }

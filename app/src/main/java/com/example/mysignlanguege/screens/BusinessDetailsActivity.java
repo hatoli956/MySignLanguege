@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.models.Business;
@@ -38,6 +40,9 @@ public class BusinessDetailsActivity extends BaseActivity {
 
         if (business != null) {
             populateViews(business);
+        } else {
+            Log.e("BusinessDetails", "Business object is null!");
+            Toast.makeText(this, "שגיאה: לא התקבל מידע על העסק", Toast.LENGTH_LONG).show();
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -57,15 +62,15 @@ public class BusinessDetailsActivity extends BaseActivity {
 
     private void populateViews(Business business) {
         tvName.setText(business.getName());
-        tvCategory.setText(business.getCategory());
-        tvCity.setText(business.getCity());
-        tvPhone.setText(business.getPhone());
-        tvEmail.setText(business.getEmail());
-        tvStreet.setText(business.getStreet());
-        tvWebsite.setText(business.getWebsite());
-        tvDetails.setText(business.getDetails());
+        tvCategory.setText("קטגוריה: " + business.getCategory());
+        tvCity.setText("עיר: " + business.getCity());
+        tvPhone.setText("טלפון: " + business.getPhone());
+        tvEmail.setText("אימייל: " + business.getEmail());
+        tvStreet.setText("רחוב: " + business.getStreet());
+        tvWebsite.setText("אתר: " + business.getWebsite());
+        tvDetails.setText("פרטים: " + business.getDetails());
 
-        String imageBase64 = business.getImageUrl(); // ← השינוי כאן
+        String imageBase64 = business.getImageUrl();
         if (imageBase64 != null && !imageBase64.isEmpty()) {
             ivBusinessImage.setImageBitmap(ImageUtil.convertFrom64base(imageBase64));
             ivBusinessImage.setVisibility(View.VISIBLE);
@@ -73,5 +78,4 @@ public class BusinessDetailsActivity extends BaseActivity {
             ivBusinessImage.setVisibility(View.GONE);
         }
     }
-
 }

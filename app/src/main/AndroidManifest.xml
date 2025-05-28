@@ -14,16 +14,31 @@
         android:theme="@style/Theme.MySignLanguege"
         tools:targetApi="31">
         <activity
+            android:name=".screens.JobApplication"
+            android:exported="false" />
+        <activity
+            android:name=".screens.BusinessJobApplication"
+            android:exported="false" />
+        <activity
+            android:name=".screens.JobsList"
+            android:exported="false" />
+        <activity
+            android:name=".screens.ShowJobsForEmployer"
+            android:exported="false" />
+        <activity
+            android:name=".screens.AddJob"
+            android:exported="false" />
+        <activity
             android:name=".screens.UpdateBusiness"
             android:exported="false" />
         <activity
-            android:name=".screens.UpdatePassword$MyBusinessesList"
+            android:name=".screens.MyBusinessesList"
             android:exported="false" />
         <activity
-            android:name=".screens.UpdatePassword$EmployerPage"
+            android:name=".screens.EmployerPage"
             android:exported="false" /> <!-- Splash screen activity is now the launcher -->
         <activity
-            android:name=".screens.UpdatePassword$SplashActivity"
+            android:name=".screens.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +47,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".screens.UpdatePassword$About"
+            android:name=".screens.About"
             android:exported="false" />
         <activity
             android:name=".screens.BusinessDetailsActivity"
@@ -44,7 +59,7 @@
             android:name=".screens.UpdateUserDetails"
             android:exported="false" />
         <activity
-            android:name=".screens.UpdatePassword$InterestedBusinessesActivity"
+            android:name=".screens.InterestedBusinessesActivity"
             android:exported="false" />
         <activity
             android:name=".screens.ShowBusinessForUser"

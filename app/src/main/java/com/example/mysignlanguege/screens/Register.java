@@ -71,39 +71,52 @@ public class Register extends BaseActivity implements View.OnClickListener, Adap
         btnReg.setOnClickListener(this);
         spCity.setOnItemSelectedListener(this);
     }
-
+    public void GoBack(View view) {
+        finish();
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+    }
     @Override
     public void onClick(View v) {
-        // Trim input values
         fName = etFName.getText().toString().trim();
         lName = etLName.getText().toString().trim();
         phone = etPhone.getText().toString().trim();
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString();
+        city = spCity.getSelectedItem().toString();
 
         boolean isValid = true;
 
         if (fName.length() < 2) {
-            etFName.setError("שם פרטי קצר מדי");
+            etFName.setError("שם פרטי קצר מדי (מינימום 2 תווים)");
             isValid = false;
         }
+
         if (lName.length() < 2) {
-            etLName.setError("שם משפחה קצר מדי");
+            etLName.setError("שם משפחה קצר מדי (מינימום 2 תווים)");
             isValid = false;
         }
-        if (phone.length() < 9 || phone.length() > 10) {
-            etPhone.setError("מספר הטלפון לא תקין");
+
+        if (!phone.matches("^\\d{9,10}$")) {
+            etPhone.setError("מספר טלפון לא תקין (חייב להכיל 9-10 ספרות)");
             isValid = false;
         }
+
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            etEmail.setError("כתובת האימייל לא תקינה");
+            etEmail.setError("כתובת אימייל לא תקינה");
             isValid = false;
         }
+
         if (password.length() < 6) {
-            etPassword.setError("הסיסמה קצרה מדי");
+            etPassword.setError("הסיסמה קצרה מדי (לפחות 6 תווים)");
             isValid = false;
         } else if (password.length() > 20) {
-            etPassword.setError("הסיסמה ארוכה מדי");
+            etPassword.setError("הסיסמה ארוכה מדי (מקסימום 20 תווים)");
+            isValid = false;
+
+        }
+
+        if (spCity.getSelectedItemPosition() == 0 || city.equals("בחר עיר")) {
+            Toast.makeText(this, "אנא בחר עיר מהרשימה", Toast.LENGTH_SHORT).show();
             isValid = false;
         }
 
@@ -136,7 +149,7 @@ public class Register extends BaseActivity implements View.OnClickListener, Adap
                 user.setlName(lName);
                 user.setPhone(phone);
                 user.setAdmin(false);
-                user.setEmployer(false); // Change to true if this user is registering as an Employer
+                user.setEmployer(false);
 
                 databaseService.createNewUser(user, new DatabaseService.DatabaseCallback<Void>() {
                     @Override

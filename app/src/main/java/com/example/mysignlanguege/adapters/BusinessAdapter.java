@@ -70,6 +70,13 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         notifyDataSetChanged();
     }
 
+    // ✅ מתודה חדשה לצפייה בפרטי העסק — לא נוגעת בלוגיקה הקיימת
+    public void openBusinessDetails(Business business) {
+        Intent intent = new Intent(context, BusinessDetailsActivity.class);
+        intent.putExtra("business", business);
+        context.startActivity(intent);
+    }
+
     class BusinessViewHolder extends RecyclerView.ViewHolder {
         private TextView nameTextView;
         private Button deleteBusinessButton;
@@ -80,6 +87,12 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
             deleteBusinessButton = itemView.findViewById(R.id.btnDeleteBusiness);
         }
 
+
+
+
+    }
+
+}
 //        void bind(final Business business) {
 //            nameTextView.setText(business.getName());
 //
@@ -110,8 +123,3 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
 //                }
 //            });
 //        }
-
-
-
-    }
-}

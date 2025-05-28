@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5"
+    android:layoutDirection="rtl"
+    tools:context=".screens.AddJob">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#1A237E"
+        android:elevation="4dp"
+        android:title="הוספת משרה"
+        android:titleTextColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- כותרת -->
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="הוסף עבודה"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/textView13"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layoutDirection="rtl">
+
+            <!-- רשימת עסקים -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="בחר עסק" />
+
+            <Spinner
+                android:id="@+id/spinner_business"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" />
+
+            <!-- כותרת משרה -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="כותרת המשרה" />
+
+            <EditText
+                android:id="@+id/input_job_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="כותרת"
+                android:inputType="textCapWords" />
+
+            <!-- שכר -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="שכר" />
+
+            <EditText
+                android:id="@+id/input_salary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="שכר"
+                android:inputType="numberDecimal" />
+
+            <!-- אימייל -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="אימייל ליצירת קשר" />
+
+            <EditText
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="אימייל"
+                android:inputType="textEmailAddress" />
+
+            <!-- שם מעסיק -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="שם המעסיק" />
+
+            <EditText
+                android:id="@+id/input_employer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="שם המעסיק"
+                android:inputType="textCapWords" />
+
+            <!-- כפתור שמירה -->
+            <Button
+                android:id="@+id/btn_save_job"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="שמור משרה"
+                android:layout_marginTop="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

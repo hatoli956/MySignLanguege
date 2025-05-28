@@ -62,6 +62,12 @@ public class AfterLogin extends BaseActivity {
         }
     }
 
+    public void goToBusinessList(View view) {
+        Intent intent = new Intent(this, BusinessJobApplication.class);
+        startActivity(intent);
+    }
+
+
     public void goShowBuisness(View view) {
         checkAuthenticationBeforeAction();
         Intent go = new Intent(getApplicationContext(), ShowBusinessForUser.class);
@@ -70,7 +76,7 @@ public class AfterLogin extends BaseActivity {
 
     public void goIntrested(View view) {
         checkAuthenticationBeforeAction();
-        Intent go = new Intent(getApplicationContext(), UpdatePassword.InterestedBusinessesActivity.class);
+        Intent go = new Intent(getApplicationContext(), InterestedBusinessesActivity.class);
         startActivity(go);
     }
 

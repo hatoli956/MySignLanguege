@@ -16,8 +16,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:titleTextColor="@android:color/white" />
 
-
-
     <!-- Scrollable content -->
     <ScrollView
         android:layout_width="match_parent"
@@ -29,9 +27,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal">
-
-            <!-- Business Image -->
-
 
             <!-- Business Name -->
             <TextView
@@ -52,6 +47,8 @@
             <TextView android:id="@+id/tvStreet" style="@style/DetailTextStyle" android:text="Street" />
             <TextView android:id="@+id/tvWebsite" style="@style/DetailTextStyle" android:text="Website" android:autoLink="web" />
             <TextView android:id="@+id/tvDetails" style="@style/DetailTextStyle" android:text="Details" />
+
+            <!-- Business Image -->
             <ImageView
                 android:id="@+id/ivBusinessImage"
                 android:layout_width="250dp"
@@ -60,6 +57,17 @@
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/button_rounded"
                 android:contentDescription="Business Image" />
+
+            <!-- חזור אחורה -->
+            <Button
+                android:id="@+id/btnGoBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="חזור"
+                android:onClick="GoBack"
+                android:backgroundTint="#1A237E"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -102,7 +102,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     public void GoAbout(View view) {
-        Intent go = new Intent(getApplicationContext(), UpdatePassword.About.class);
+        Intent go = new Intent(getApplicationContext(),About.class);
         startActivity(go);
     }
 

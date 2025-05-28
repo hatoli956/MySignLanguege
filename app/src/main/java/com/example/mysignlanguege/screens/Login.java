@@ -106,7 +106,7 @@ public class Login extends BaseActivity {
                             startActivity(new Intent(Login.this, AdminPage.class)
                                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         } else if (isEmployer) {
-                            startActivity(new Intent(Login.this, UpdatePassword.EmployerPage.class)
+                            startActivity(new Intent(Login.this, EmployerPage.class)
                                     .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                         } else {
                             startActivity(new Intent(Login.this, AfterLogin.class)
