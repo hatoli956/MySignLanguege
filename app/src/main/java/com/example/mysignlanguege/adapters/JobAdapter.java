@@ -21,9 +21,6 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.JobViewHolder> {
     private List<Job> jobList;
     private OnJobDeleteListener deleteListener;
 
-    public interface OnJobDeleteListener {
-        void onJobDelete(Job job);
-    }
 
     public JobAdapter(Context context, List<Job> jobList, OnJobDeleteListener deleteListener) {
         this.context = context;
@@ -41,27 +38,26 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.JobViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull JobViewHolder holder, int position) {
         Job job = jobList.get(position);
-
         holder.tvTitle.setText(job.getJobTitle());
         holder.tvSalary.setText("שכר: " + job.getSalary());
         holder.tvEmail.setText("אימייל: " + job.getEmail());
         holder.tvEmployerName.setText("מעסיק: " + job.getEmployerName());
 
-        // ✅ כפתור מחיקה רק אם deleteListener לא null
-        if (holder.btnDelete != null) {
+        // טיפול בלחיצה על כפתור מחיקה
+        holder.btnDelete.setOnClickListener(v -> {
             if (deleteListener != null) {
-                holder.btnDelete.setVisibility(View.VISIBLE);
-                holder.btnDelete.setOnClickListener(v -> deleteListener.onJobDelete(job));
-            } else {
-                holder.btnDelete.setVisibility(View.GONE);
+                deleteListener.onDeleteJob(job);
             }
-        }
-
+        });
     }
 
     @Override
     public int getItemCount() {
         return jobList.size();
+    }
+
+    public interface OnJobDeleteListener {
+        void onDeleteJob(Job job);
     }
 
     public static class JobViewHolder extends RecyclerView.ViewHolder {
@@ -74,7 +70,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.JobViewHolder> {
             tvSalary = itemView.findViewById(R.id.tvSalary);
             tvEmail = itemView.findViewById(R.id.tvEmail);
             tvEmployerName = itemView.findViewById(R.id.tvEmployerName);
-            btnDelete = itemView.findViewById(R.id.btnDelete); // יוסתר אוטומטית אם לא צריך
+            btnDelete = itemView.findViewById(R.id.btnDeleteJob);
         }
     }
 }

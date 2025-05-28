@@ -1,0 +1,1962 @@
+Index: app/src/main/res/layout/item_user.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.cardview.widget.CardView xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:card_view=\"http://schemas.android.com/apk/res-auto\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"wrap_content\"\r\n    android:layout_margin=\"8dp\"\r\n    card_view:cardCornerRadius=\"16dp\"\r\n    card_view:cardElevation=\"6dp\"\r\n    android:background=\"@android:color/transparent\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\"\r\n        android:padding=\"16dp\"\r\n        android:gravity=\"center_vertical\"\r\n        android:background=\"@android:color/white\">\r\n\r\n        <!-- שם המשתמש -->\r\n        <TextView\r\n            android:id=\"@+id/fName\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_weight=\"1\"\r\n            android:text=\"שם פרטי\"\r\n            android:textSize=\"18sp\"\r\n            android:textColor=\"#333333\"\r\n            android:textStyle=\"bold\" />\r\n\r\n        <!-- כפתור מחיקה -->\r\n        <Button\r\n            android:id=\"@+id/btnDelete\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"40dp\"\r\n            android:text=\"מחק\"\r\n            android:textSize=\"14sp\"\r\n            android:textColor=\"@android:color/white\"\r\n            android:backgroundTint=\"#F44336\"\r\n            android:paddingLeft=\"20dp\"\r\n            android:paddingRight=\"20dp\"\r\n            android:background=\"@android:drawable/btn_default\"\r\n            android:elevation=\"4dp\"\r\n            android:clipToOutline=\"true\"\r\n            android:outlineProvider=\"background\" />\r\n    </LinearLayout>\r\n\r\n</androidx.cardview.widget.CardView>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_user.xml b/app/src/main/res/layout/item_user.xml
+--- a/app/src/main/res/layout/item_user.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/layout/item_user.xml	(date 1748257446441)
+@@ -35,13 +35,13 @@
+             android:text="מחק"
+             android:textSize="14sp"
+             android:textColor="@android:color/white"
+-            android:backgroundTint="#F44336"
++            android:backgroundTint="#1A237E"
+             android:paddingLeft="20dp"
+             android:paddingRight="20dp"
+-            android:background="@android:drawable/btn_default"
+             android:elevation="4dp"
+             android:clipToOutline="true"
+             android:outlineProvider="background" />
++
+     </LinearLayout>
+ 
+ </androidx.cardview.widget.CardView>
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    package=\"com.example.mysignlanguege\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.MySignLanguege\"\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".About\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".BusinessDetailsActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.UserDetailsActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.UpdateUserDetails\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".InterestedBusinessesActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.ShowBusinessForUser\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.AllBusiness\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.ShowUsers\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.AfterLogin\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.AdminPage\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.AddBusiness\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.UpdatePassword\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.ResetPassword\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.Login\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.Register\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".screens.MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/AndroidManifest.xml	(date 1748281531490)
+@@ -13,60 +13,33 @@
+         android:supportsRtl="true"
+         android:theme="@style/Theme.MySignLanguege"
+         tools:targetApi="31">
+-        <activity
+-            android:name=".About"
+-            android:exported="false" />
+-        <activity
+-            android:name=".BusinessDetailsActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.UserDetailsActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.UpdateUserDetails"
+-            android:exported="false" />
+-        <activity
+-            android:name=".InterestedBusinessesActivity"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.ShowBusinessForUser"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.AllBusiness"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.ShowUsers"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.AfterLogin"
+-            android:exported="false" />
++
++        <!-- Splash screen activity is now the launcher -->
+         <activity
+             android:name=".screens.AdminPage"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.AddBusiness"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.UpdatePassword"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.ResetPassword"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.Login"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.Register"
+-            android:exported="false" />
+-        <activity
+-            android:name=".screens.MainActivity"
+             android:exported="true">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+-
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
++
++        <activity android:name=".About" android:exported="false" />
++        <activity android:name=".BusinessDetailsActivity" android:exported="false" />
++        <activity android:name=".screens.UserDetailsActivity" android:exported="false" />
++        <activity android:name=".screens.UpdateUserDetails" android:exported="false" />
++        <activity android:name=".InterestedBusinessesActivity" android:exported="false" />
++        <activity android:name=".screens.ShowBusinessForUser" android:exported="false" />
++        <activity android:name=".screens.AllBusiness" android:exported="false" />
++        <activity android:name=".screens.ShowUsers" android:exported="false" />
++        <activity android:name=".screens.AfterLogin" android:exported="false" />
++        <activity android:name=".screens.AddBusiness" android:exported="false" />
++        <activity android:name=".screens.UpdatePassword" android:exported="false" />
++        <activity android:name=".screens.ResetPassword" android:exported="false" />
++        <activity android:name=".screens.Login" android:exported="false" />
++        <activity android:name=".screens.Register" android:exported="false" />
++        <activity android:name=".screens.MainActivity" android:exported="true" />
++
+     </application>
+ 
+-</manifest>
+\ No newline at end of file
++</manifest>
+Index: app/src/main/res/values/styles.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <!-- Base application theme -->\r\n    <style name=\"AppTheme\" parent=\"Theme.AppCompat.Light.NoActionBar\">\r\n        <!-- Customize your theme here -->\r\n        <item name=\"colorPrimary\">#6200EE</item>\r\n        <item name=\"colorPrimaryDark\">#3700B3</item>\r\n        <item name=\"colorAccent\">#03DAC5</item>\r\n    </style>\r\n\r\n    <!-- Purple Rounded Button Style -->\r\n    <style name=\"PurpleButton\">\r\n        <item name=\"android:backgroundTint\">#6200EE</item>\r\n        <item name=\"android:textColor\">#FFFFFF</item>\r\n        <item name=\"android:layout_margin\">4dp</item>\r\n        <item name=\"android:padding\">12dp</item>\r\n        <item name=\"android:textSize\">14sp</item>\r\n        <item name=\"android:layout_height\">48dp</item>\r\n        <item name=\"android:layout_width\">wrap_content</item>\r\n        <item name=\"android:background\">@drawable/button_rounded</item>\r\n    </style>\r\n\r\n    <!-- EditText Style with Rounded Background -->\r\n    <style name=\"EditTextStyle\">\r\n        <item name=\"android:layout_width\">0dp</item>\r\n        <item name=\"android:layout_height\">48dp</item>\r\n        <item name=\"android:background\">@drawable/rounded_edittext</item>\r\n        <item name=\"android:paddingStart\">12dp</item>\r\n        <item name=\"android:paddingEnd\">12dp</item>\r\n        <item name=\"android:textColor\">#000000</item>\r\n        <item name=\"android:textSize\">14sp</item>\r\n    </style>\r\n</resources>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/styles.xml b/app/src/main/res/values/styles.xml
+--- a/app/src/main/res/values/styles.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/values/styles.xml	(date 1748264755806)
+@@ -29,4 +29,12 @@
+         <item name="android:textColor">#000000</item>
+         <item name="android:textSize">14sp</item>
+     </style>
++
++    <style name="DetailTextStyle">
++        <item name="android:layout_width">wrap_content</item>
++        <item name="android:layout_height">wrap_content</item>
++        <item name="android:textSize">16sp</item>
++        <item name="android:textColor">#333333</item>
++        <item name="android:layout_marginBottom">8dp</item>
++    </style>
+ </resources>
+Index: app/src/main/res/menu/menu_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><menu xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <item\r\n        android:id=\"@+id/menu_login\"\r\n        android:title=\"Login\" />\r\n    <item\r\n        android:id=\"@+id/menu_logout\"\r\n        android:title=\"Logout\" />\r\n    <item\r\n        android:id=\"@+id/menu_user_details\"\r\n        android:title=\"User Details\" />\r\n    <item\r\n        android:id=\"@+id/menu_about\"\r\n        android:title=\"About\" />\r\n</menu>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/menu/menu_main.xml b/app/src/main/res/menu/menu_main.xml
+--- a/app/src/main/res/menu/menu_main.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/menu/menu_main.xml	(date 1748248332651)
+@@ -8,7 +8,5 @@
+     <item
+         android:id="@+id/menu_user_details"
+         android:title="User Details" />
+-    <item
+-        android:id="@+id/menu_about"
+-        android:title="About" />
++    
+ </menu>
+Index: app/src/main/java/com/example/mysignlanguege/adapters/BusinessUserAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mysignlanguege.adapters;\r\n\r\nimport android.content.Context;\r\nimport android.content.SharedPreferences;\r\nimport android.graphics.Bitmap;\r\nimport android.graphics.BitmapFactory;\r\nimport android.os.Handler;\r\nimport android.os.Looper;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.Button;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.example.mysignlanguege.R;\r\nimport com.example.mysignlanguege.models.Business;\r\nimport com.example.mysignlanguege.screens.Login;\r\nimport com.example.mysignlanguege.services.DatabaseService;\r\nimport com.example.mysignlanguege.utils.ImageUtil;\r\n\r\nimport java.io.InputStream;\r\nimport java.net.HttpURLConnection;\r\nimport java.net.URL;\r\nimport java.util.List;\r\n\r\npublic class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapter.BusinessViewHolder> {\r\n\r\n    private List<Business> businessList;\r\n    private Context context;\r\n    private OnBusinessInteractionListener interactionListener;\r\n    private OnBusinessRemoveListener removeListener;\r\n    private boolean isInterestedView;\r\n\r\n    // ממשק להוספה\r\n    public interface OnBusinessInteractionListener {\r\n        void onAddToInterestedClicked(Business business);\r\n    }\r\n\r\n    // ממשק להסרה\r\n    public interface OnBusinessRemoveListener {\r\n        void onBusinessRemove(Business business);\r\n    }\r\n\r\n    public void setOnBusinessInteractionListener(OnBusinessInteractionListener listener) {\r\n        this.interactionListener = listener;\r\n    }\r\n\r\n    public void setOnBusinessRemoveListener(OnBusinessRemoveListener listener) {\r\n        this.removeListener = listener;\r\n    }\r\n\r\n    public BusinessUserAdapter(List<Business> businessList, Context context) {\r\n        this.businessList = businessList;\r\n        this.context = context;\r\n        this.isInterestedView = context.getClass().getSimpleName().equals(\"InterestedBusinessesActivity\");\r\n    }\r\n\r\n    @NonNull\r\n    @Override\r\n    public BusinessViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\r\n        View itemView = LayoutInflater.from(context).inflate(R.layout.item_business_user, parent, false);\r\n        return new BusinessViewHolder(itemView);\r\n    }\r\n\r\n    @Override\r\n    public void onBindViewHolder(@NonNull BusinessViewHolder holder, int position) {\r\n        Business business = businessList.get(position);\r\n\r\n        business = new Business(business);\r\n\r\n        holder.nameTextView.setText(business.getName());\r\n        holder.categoryTextView.setText(business.getCategory());\r\n        holder.cityTextView.setText(business.getCity());\r\n        holder.phoneTextView.setText(business.getPhone());\r\n        holder.emailTextView.setText(business.getEmail());\r\n        holder.streetTextView.setText(business.getStreet());\r\n        holder.websiteTextView.setText(business.getWebsite());\r\n        holder.detailsTextView.setText(business.getDetails());\r\n\r\n        String imageBase64 = business.getImage();\r\n        if (imageBase64 != null && !imageBase64.isEmpty()) {\r\n            holder.businessImageView.setImageBitmap(ImageUtil.convertFrom64base(imageBase64));\r\n            holder.businessImageView.setVisibility(View.VISIBLE);\r\n        } else {\r\n            holder.businessImageView.setVisibility(View.GONE);\r\n        }\r\n\r\n        if (isInterestedView) {\r\n            holder.addToInterestedButton.setText(\"Remove\");\r\n            Business finalBusiness = business;\r\n            holder.addToInterestedButton.setOnClickListener(v -> {\r\n                if (removeListener != null) {\r\n                    removeListener.onBusinessRemove(finalBusiness);\r\n                }\r\n            });\r\n        } else {\r\n            holder.addToInterestedButton.setText(\"Add to Interested\");\r\n            Business finalBusiness = business;\r\n            holder.addToInterestedButton.setOnClickListener(v -> {\r\n                if (Login.user != null) {\r\n                    addBusinessToInterestedList(finalBusiness);\r\n                } else {\r\n                    Toast.makeText(context, \"Please log in first\", Toast.LENGTH_SHORT).show();\r\n                }\r\n            });\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public int getItemCount() {\r\n        return businessList.size();\r\n    }\r\n\r\n    private void addBusinessToInterestedList(Business business) {\r\n        if (Login.user == null) return;\r\n\r\n        DatabaseService databaseService = DatabaseService.getInstance();\r\n        databaseService.writeData(\"Users/\" + Login.user.getId() + \"/interestedBusinesses/\" + business.getId(),\r\n                business, new DatabaseService.DatabaseCallback<Void>() {\r\n                    @Override\r\n                    public void onCompleted(Void object) {\r\n                        Toast.makeText(context, \"Added to interested businesses\", Toast.LENGTH_SHORT).show();\r\n                        // עדכון SharedPreferences\r\n                        SharedPreferences sharedPreferences = context.getSharedPreferences(\"UserPreferences\", Context.MODE_PRIVATE);\r\n                        String interestedBusinesses = sharedPreferences.getString(\"interestedBusinesses\", \"\");\r\n                        if (!interestedBusinesses.contains(business.getId())) {\r\n                            interestedBusinesses += business.getId() + \",\";\r\n                            SharedPreferences.Editor editor = sharedPreferences.edit();\r\n                            editor.putString(\"interestedBusinesses\", interestedBusinesses);\r\n                            editor.apply();\r\n                        }\r\n                    }\r\n\r\n                    @Override\r\n                    public void onFailed(Exception e) {\r\n                        Toast.makeText(context, \"Failed to add to interested businesses\", Toast.LENGTH_SHORT).show();\r\n                    }\r\n                });\r\n    }\r\n\r\n    public static class BusinessViewHolder extends RecyclerView.ViewHolder {\r\n        TextView nameTextView, categoryTextView, cityTextView, phoneTextView, emailTextView;\r\n        TextView streetTextView, websiteTextView, detailsTextView;\r\n        Button addToInterestedButton;\r\n        ImageView businessImageView;\r\n\r\n        public BusinessViewHolder(View itemView) {\r\n            super(itemView);\r\n\r\n            businessImageView = itemView.findViewById(R.id.ivBusinessImage);\r\n            nameTextView = itemView.findViewById(R.id.tvName);\r\n            categoryTextView = itemView.findViewById(R.id.tvCategory);\r\n            cityTextView = itemView.findViewById(R.id.tvCity);\r\n            phoneTextView = itemView.findViewById(R.id.tvPhone);\r\n            emailTextView = itemView.findViewById(R.id.tvEmail);\r\n            streetTextView = itemView.findViewById(R.id.tvStreet);\r\n            websiteTextView = itemView.findViewById(R.id.tvWebsite);\r\n            detailsTextView = itemView.findViewById(R.id.tvDetails);\r\n            addToInterestedButton = itemView.findViewById(R.id.btnAddToInterested);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/mysignlanguege/adapters/BusinessUserAdapter.java b/app/src/main/java/com/example/mysignlanguege/adapters/BusinessUserAdapter.java
+--- a/app/src/main/java/com/example/mysignlanguege/adapters/BusinessUserAdapter.java	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/java/com/example/mysignlanguege/adapters/BusinessUserAdapter.java	(date 1748262637593)
+@@ -82,7 +82,7 @@
+         holder.websiteTextView.setText(business.getWebsite());
+         holder.detailsTextView.setText(business.getDetails());
+ 
+-        String imageBase64 = business.getImage();
++        String imageBase64 = business.getImageUrl();
+         if (imageBase64 != null && !imageBase64.isEmpty()) {
+             holder.businessImageView.setImageBitmap(ImageUtil.convertFrom64base(imageBase64));
+             holder.businessImageView.setVisibility(View.VISIBLE);
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.drawerlayout.widget.DrawerLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:id=\"@+id/drawer_layout\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <!-- Main content -->\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/main\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:background=\"#FFFFFF\">\r\n\r\n        <!-- Toolbar -->\r\n        <androidx.appcompat.widget.Toolbar\r\n            android:id=\"@+id/toolbar\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"?attr/actionBarSize\"\r\n            android:background=\"#1A237E\"\r\n            android:titleTextColor=\"#FFFFFF\"\r\n            app:popupTheme=\"@style/ThemeOverlay.AppCompat.Light\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <!-- Main Title -->\r\n        <TextView\r\n            android:id=\"@+id/textView3\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"48dp\"\r\n            android:text=\"עבודות למילואימניקים\"\r\n            android:textColor=\"#1A237E\"\r\n            android:textSize=\"28sp\"\r\n            android:textStyle=\"bold\"\r\n            android:fontFamily=\"sans-serif-medium\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/toolbar\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <!-- Decorative underline below title -->\r\n        <View\r\n            android:id=\"@+id/view2\"\r\n            android:layout_width=\"140dp\"\r\n            android:layout_height=\"5dp\"\r\n            android:layout_marginTop=\"14dp\"\r\n            android:background=\"#0724FF\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/textView3\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <!-- User Login Button -->\r\n        <Button\r\n            android:id=\"@+id/button\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"32dp\"\r\n            android:backgroundTint=\"#1A237E\"\r\n            android:padding=\"16dp\"\r\n            android:text=\"כניסת משתמש\"\r\n            android:textColor=\"#FFFFFF\"\r\n            android:textSize=\"16sp\"\r\n            android:textStyle=\"bold\"\r\n            android:fontFamily=\"sans-serif-medium\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/view2\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintWidth_percent=\"0.85\"\r\n            android:elevation=\"6dp\"\r\n            android:clipToOutline=\"true\"\r\n            android:outlineProvider=\"background\"/>\r\n\r\n        <!-- Register Button -->\r\n        <Button\r\n            android:id=\"@+id/button2\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"16dp\"\r\n            android:backgroundTint=\"#1A237E\"\r\n            android:padding=\"16dp\"\r\n            android:text=\"הרשמה\"\r\n            android:textColor=\"#FFFFFF\"\r\n            android:textSize=\"16sp\"\r\n            android:textStyle=\"bold\"\r\n            android:fontFamily=\"sans-serif-medium\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/button\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintWidth_percent=\"0.85\"\r\n            android:elevation=\"6dp\"\r\n            android:clipToOutline=\"true\"\r\n            android:outlineProvider=\"background\"/>\r\n\r\n        <!-- Admin Button -->\r\n        <Button\r\n            android:id=\"@+id/button3\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"24dp\"\r\n            android:text=\"מנהל\"\r\n            android:textColor=\"#757575\"\r\n            android:textSize=\"14sp\"\r\n            android:background=\"?attr/selectableItemBackground\"\r\n            android:fontFamily=\"sans-serif\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/button2\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <!-- ✅ About Button (הכפתור החדש) -->\r\n        <Button\r\n            android:id=\"@+id/buttonAbout\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:text=\"אודות\"\r\n            android:textColor=\"#757575\"\r\n            android:textSize=\"14sp\"\r\n            android:background=\"?attr/selectableItemBackground\"\r\n            android:fontFamily=\"sans-serif\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/button3\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n    <!-- Navigation Drawer -->\r\n    <com.google.android.material.navigation.NavigationView\r\n        android:id=\"@+id/navigation_view\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"match_parent\"\r\n        android:layout_gravity=\"start\"\r\n        android:background=\"#FFFFFF\"\r\n        app:menu=\"@menu/menu_main\" />\r\n\r\n</androidx.drawerlayout.widget.DrawerLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1748267287800)
+@@ -7,123 +7,106 @@
+     android:layout_height="match_parent">
+ 
+     <!-- Main content -->
+-    <androidx.constraintlayout.widget.ConstraintLayout
+-        android:id="@+id/main"
++    <androidx.coordinatorlayout.widget.CoordinatorLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+-        android:background="#FFFFFF">
++        android:background="#FFFFFF"
++        >
+ 
+-        <!-- Toolbar -->
+-        <androidx.appcompat.widget.Toolbar
+-            android:id="@+id/toolbar"
+-            android:layout_width="match_parent"
+-            android:layout_height="?attr/actionBarSize"
+-            android:background="#1A237E"
+-            android:titleTextColor="#FFFFFF"
+-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+-            app:layout_constraintTop_toTopOf="parent"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent" />
++        <!-- AppBar + Toolbar -->
++        <com.google.android.material.appbar.AppBarLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
++
++            <androidx.appcompat.widget.Toolbar
++                android:id="@+id/toolbar"
++                android:layout_width="match_parent"
++                android:layout_height="?attr/actionBarSize"
++                android:background="#1A237E"
++                app:titleTextColor="@color/white"
++                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
++        </com.google.android.material.appbar.AppBarLayout>
++
++        <!-- Scrollable content below the Toolbar -->
++        <ScrollView
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:layout_marginTop="?attr/actionBarSize"
++            android:padding="24dp">
+ 
+-        <!-- Main Title -->
+-        <TextView
+-            android:id="@+id/textView3"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="48dp"
+-            android:text="עבודות למילואימניקים"
+-            android:textColor="#1A237E"
+-            android:textSize="28sp"
+-            android:textStyle="bold"
+-            android:fontFamily="sans-serif-medium"
+-            app:layout_constraintTop_toBottomOf="@id/toolbar"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent" />
++            <LinearLayout
++                android:layout_width="match_parent"
++                android:layout_height="wrap_content"
++                android:orientation="vertical"
++                android:gravity="center_horizontal"
++                android:layout_gravity="center">
++
++                <TextView
++                    android:id="@+id/textView3"
++                    android:layout_width="wrap_content"
++                    android:layout_height="wrap_content"
++                    android:text="עבודות למילואימניקים"
++                    android:textColor="#1A237E"
++                    android:textSize="28sp"
++                    android:textStyle="bold"
++                    android:layout_marginBottom="16dp"
++                    android:fontFamily="sans-serif-medium" />
+ 
+-        <!-- Decorative underline below title -->
+-        <View
+-            android:id="@+id/view2"
+-            android:layout_width="140dp"
+-            android:layout_height="5dp"
+-            android:layout_marginTop="14dp"
+-            android:background="#0724FF"
+-            app:layout_constraintTop_toBottomOf="@id/textView3"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent" />
++                <View
++                    android:layout_width="140dp"
++                    android:layout_height="5dp"
++                    android:layout_marginBottom="24dp"
++                    android:background="#0724FF" />
+ 
+-        <!-- User Login Button -->
+-        <Button
+-            android:id="@+id/button"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="32dp"
+-            android:backgroundTint="#1A237E"
+-            android:padding="16dp"
+-            android:text="כניסת משתמש"
+-            android:textColor="#FFFFFF"
+-            android:textSize="16sp"
+-            android:textStyle="bold"
+-            android:fontFamily="sans-serif-medium"
+-            app:layout_constraintTop_toBottomOf="@id/view2"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintWidth_percent="0.85"
+-            android:elevation="6dp"
+-            android:clipToOutline="true"
+-            android:outlineProvider="background"/>
++                <ImageView
++                    android:id="@+id/logoImage"
++                    android:layout_width="200dp"
++                    android:layout_height="200dp"
++                    android:src="@drawable/logo"
++                    android:contentDescription="App Logo"
++                    android:layout_marginBottom="32dp" />
++
++                <!-- Buttons -->
++                <Button
++                    android:id="@+id/button"
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:layout_marginBottom="16dp"
++                    android:backgroundTint="#1A237E"
++                    android:text="כניסת משתמש"
++                    android:textColor="#FFFFFF"
++                    android:textSize="16sp"
++                    android:textStyle="bold"
++                    android:fontFamily="sans-serif-medium" />
+ 
+-        <!-- Register Button -->
+-        <Button
+-            android:id="@+id/button2"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="16dp"
+-            android:backgroundTint="#1A237E"
+-            android:padding="16dp"
+-            android:text="הרשמה"
+-            android:textColor="#FFFFFF"
+-            android:textSize="16sp"
+-            android:textStyle="bold"
+-            android:fontFamily="sans-serif-medium"
+-            app:layout_constraintTop_toBottomOf="@id/button"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintWidth_percent="0.85"
+-            android:elevation="6dp"
+-            android:clipToOutline="true"
+-            android:outlineProvider="background"/>
++                <Button
++                    android:id="@+id/button2"
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:layout_marginBottom="16dp"
++                    android:backgroundTint="#1A237E"
++                    android:text="הרשמה"
++                    android:textColor="#FFFFFF"
++                    android:textSize="16sp"
++                    android:textStyle="bold"
++                    android:fontFamily="sans-serif-medium" />
+ 
+-        <!-- Admin Button -->
+-        <Button
+-            android:id="@+id/button3"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="24dp"
+-            android:text="מנהל"
+-            android:textColor="#757575"
+-            android:textSize="14sp"
+-            android:background="?attr/selectableItemBackground"
+-            android:fontFamily="sans-serif"
+-            app:layout_constraintTop_toBottomOf="@id/button2"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent" />
+-
+-        <!-- ✅ About Button (הכפתור החדש) -->
+-        <Button
+-            android:id="@+id/buttonAbout"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:text="אודות"
+-            android:textColor="#757575"
+-            android:textSize="14sp"
+-            android:background="?attr/selectableItemBackground"
+-            android:fontFamily="sans-serif"
+-            app:layout_constraintTop_toBottomOf="@id/button3"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent" />
++                <Button
++                    android:id="@+id/buttonAbout"
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:backgroundTint="#1A237E"
++                    android:text="אודות"
++                    android:onClick="GoAbout"
++                    android:textColor="#FFFFFF"
++                    android:textSize="14sp"
++                    android:textStyle="bold"
++                    android:fontFamily="sans-serif" />
+ 
+-    </androidx.constraintlayout.widget.ConstraintLayout>
++            </LinearLayout>
++        </ScrollView>
++    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+ 
+     <!-- Navigation Drawer -->
+     <com.google.android.material.navigation.NavigationView
+Index: app/src/main/res/layout/activity_register.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/main\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#FFFFFF\"\r\n    tools:context=\".screens.Register\">\r\n\r\n\r\n    <androidx.appcompat.widget.Toolbar\r\n        android:id=\"@+id/toolbar\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"?attr/actionBarSize\"\r\n        android:layout_marginBottom=\"48dp\"\r\n        android:background=\"#1A237E\"\r\n        android:elevation=\"4dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <!-- Title Text -->\r\n\r\n    <!-- First Name Input -->\r\n    <TextView\r\n        android:id=\"@+id/textView\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"80dp\"\r\n        android:fontFamily=\"sans-serif-medium\"\r\n        android:text=\"Create Account\"\r\n        android:textColor=\"#1A237E\"\r\n        android:textSize=\"28sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/etfName\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"32dp\"\r\n        android:layout_marginEnd=\"24dp\"\r\n        android:background=\"@drawable/rounded_edittext\"\r\n        android:ems=\"10\"\r\n        android:hint=\"First Name\"\r\n        android:inputType=\"text\"\r\n        android:padding=\"16dp\"\r\n        android:textColor=\"#000000\"\r\n        android:textColorHint=\"#757575\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textView\" />\r\n\r\n    <!-- Last Name Input -->\r\n    <EditText\r\n        android:id=\"@+id/etlName\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:layout_marginEnd=\"24dp\"\r\n        android:background=\"@drawable/rounded_edittext\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Last Name\"\r\n        android:inputType=\"text\"\r\n        android:padding=\"16dp\"\r\n        android:textColor=\"#000000\"\r\n        android:textColorHint=\"#757575\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/etfName\" />\r\n\r\n    <!-- Email Input -->\r\n    <EditText\r\n        android:id=\"@+id/etEmail\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:layout_marginEnd=\"24dp\"\r\n        android:background=\"@drawable/rounded_edittext\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Email\"\r\n        android:inputType=\"textEmailAddress\"\r\n        android:padding=\"16dp\"\r\n        android:textColor=\"#000000\"\r\n        android:textColorHint=\"#757575\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/etlName\" />\r\n\r\n    <!-- City Spinner -->\r\n    <Spinner\r\n        android:id=\"@+id/SpCity\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:layout_marginEnd=\"24dp\"\r\n        android:background=\"@drawable/rounded_edittext\"\r\n        android:entries=\"@array/CityArr\"\r\n        android:padding=\"16dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/etEmail\" />\r\n\r\n    <!-- Phone Number Input -->\r\n    <EditText\r\n        android:id=\"@+id/etPhone\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:layout_marginEnd=\"24dp\"\r\n        android:background=\"@drawable/rounded_edittext\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Phone\"\r\n        android:inputType=\"phone\"\r\n        android:padding=\"16dp\"\r\n        android:textColor=\"#000000\"\r\n        android:textColorHint=\"#757575\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/SpCity\" />\r\n\r\n    <!-- Password Input -->\r\n    <EditText\r\n        android:id=\"@+id/etPassword\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:layout_marginEnd=\"24dp\"\r\n        android:background=\"@drawable/rounded_edittext\"\r\n        android:ems=\"10\"\r\n        android:hint=\"Password\"\r\n        android:inputType=\"textPassword\"\r\n        android:padding=\"16dp\"\r\n        android:textColor=\"#000000\"\r\n        android:textColorHint=\"#757575\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/etPhone\" />\r\n\r\n    <!-- Register Button -->\r\n    <Button\r\n        android:id=\"@+id/btnReg\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"24dp\"\r\n        android:layout_marginTop=\"32dp\"\r\n        android:layout_marginEnd=\"24dp\"\r\n        android:backgroundTint=\"#1A237E\"\r\n        android:padding=\"16dp\"\r\n        android:text=\"Create Account\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"16sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/etPassword\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_register.xml b/app/src/main/res/layout/activity_register.xml
+--- a/app/src/main/res/layout/activity_register.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/layout/activity_register.xml	(date 1748278803597)
+@@ -30,7 +30,7 @@
+         android:layout_height="wrap_content"
+         android:layout_marginTop="80dp"
+         android:fontFamily="sans-serif-medium"
+-        android:text="Create Account"
++        android:text="צור משתמש"
+         android:textColor="#1A237E"
+         android:textSize="28sp"
+         android:textStyle="bold"
+@@ -47,7 +47,7 @@
+         android:layout_marginEnd="24dp"
+         android:background="@drawable/rounded_edittext"
+         android:ems="10"
+-        android:hint="First Name"
++        android:hint="שם"
+         android:inputType="text"
+         android:padding="16dp"
+         android:textColor="#000000"
+@@ -66,7 +66,7 @@
+         android:layout_marginEnd="24dp"
+         android:background="@drawable/rounded_edittext"
+         android:ems="10"
+-        android:hint="Last Name"
++        android:hint="שם משפחה"
+         android:inputType="text"
+         android:padding="16dp"
+         android:textColor="#000000"
+@@ -85,7 +85,7 @@
+         android:layout_marginEnd="24dp"
+         android:background="@drawable/rounded_edittext"
+         android:ems="10"
+-        android:hint="Email"
++        android:hint="אימייל"
+         android:inputType="textEmailAddress"
+         android:padding="16dp"
+         android:textColor="#000000"
+@@ -105,6 +105,7 @@
+         android:background="@drawable/rounded_edittext"
+         android:entries="@array/CityArr"
+         android:padding="16dp"
++        android:autofillHints="עיר"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+@@ -119,7 +120,7 @@
+         android:layout_marginEnd="24dp"
+         android:background="@drawable/rounded_edittext"
+         android:ems="10"
+-        android:hint="Phone"
++        android:hint="מספר טלפון"
+         android:inputType="phone"
+         android:padding="16dp"
+         android:textColor="#000000"
+@@ -138,7 +139,7 @@
+         android:layout_marginEnd="24dp"
+         android:background="@drawable/rounded_edittext"
+         android:ems="10"
+-        android:hint="Password"
++        android:hint="סיסמא"
+         android:inputType="textPassword"
+         android:padding="16dp"
+         android:textColor="#000000"
+@@ -157,7 +158,7 @@
+         android:layout_marginEnd="24dp"
+         android:backgroundTint="#1A237E"
+         android:padding="16dp"
+-        android:text="Create Account"
++        android:text="צור משתמש"
+         android:textColor="#FFFFFF"
+         android:textSize="16sp"
+         android:textStyle="bold"
+Index: app/src/main/res/layout/activity_login2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/main\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#f4f6f9\"\r\n    tools:context=\".screens.Login\">\r\n\r\n    <androidx.appcompat.widget.Toolbar\r\n        android:id=\"@+id/toolbar\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"?attr/actionBarSize\"\r\n        android:layout_marginBottom=\"48dp\"\r\n        android:background=\"#1A237E \"\r\n        android:elevation=\"4dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <!-- Title Text -->\r\n\r\n    <!-- Email Input -->\r\n    <TextView\r\n        android:id=\"@+id/textView2\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"140dp\"\r\n        android:layout_marginTop=\"76dp\"\r\n        android:gravity=\"center\"\r\n        android:text=\"התחברות\"\r\n        android:textColor=\"#000000\"\r\n        android:textSize=\"28sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/etEmailLogin\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:hint=\"אימייל\"\r\n        android:inputType=\"textEmailAddress\"\r\n        android:textColor=\"#333333\"\r\n        android:background=\"@drawable/rounded_edittext\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/textView2\"\r\n        android:paddingStart=\"20dp\"\r\n        android:paddingEnd=\"20dp\"\r\n        android:paddingTop=\"16dp\"\r\n        android:paddingBottom=\"16dp\" />\r\n\r\n    <!-- Password Input -->\r\n    <EditText\r\n        android:id=\"@+id/etPasswordLogin\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:hint=\"סיסמא\"\r\n        android:gravity=\"right\"\r\n        android:inputType=\"textPassword\"\r\n        android:textColor=\"#333333\"\r\n        android:background=\"@drawable/rounded_edittext\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/etEmailLogin\"\r\n        android:paddingStart=\"20dp\"\r\n        android:paddingEnd=\"20dp\"\r\n        android:paddingTop=\"16dp\"\r\n        android:paddingBottom=\"16dp\" />\r\n\r\n    <!-- Login Button -->\r\n\r\n    <!-- Forgot Password Link -->\r\n    <Button\r\n        android:id=\"@+id/btnLogin\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"24dp\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:backgroundTint=\"#27ae60\"\r\n        android:padding=\"16dp\"\r\n        android:text=\"Login\"\r\n        android:textColor=\"#F4F3F3\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/etPasswordLogin\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/btnForgotPassword\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Forgot Password?\"\r\n        android:textColor=\"#0099CC\"\r\n        android:background=\"@android:color/transparent\"\r\n        app:layout_constraintStart_toStartOf=\"@+id/btnLogin\"\r\n        app:layout_constraintEnd_toEndOf=\"@+id/btnLogin\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/btnLogin\"\r\n        android:layout_marginTop=\"16dp\"\r\n        android:padding=\"8dp\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_login2.xml b/app/src/main/res/layout/activity_login2.xml
+--- a/app/src/main/res/layout/activity_login2.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/layout/activity_login2.xml	(date 1748265497354)
+@@ -89,7 +89,7 @@
+         android:layout_marginEnd="16dp"
+         android:backgroundTint="#27ae60"
+         android:padding="16dp"
+-        android:text="Login"
++        android:text="התחברות"
+         android:textColor="#F4F3F3"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.0"
+@@ -100,8 +100,8 @@
+         android:id="@+id/btnForgotPassword"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:text="Forgot Password?"
+-        android:textColor="#0099CC"
++        android:text="שכחת סיסמא?"
++        android:textColor="#1A237E"
+         android:background="@android:color/transparent"
+         app:layout_constraintStart_toStartOf="@+id/btnLogin"
+         app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+Index: app/src/main/java/com/example/mysignlanguege/screens/InterestedBusinessesActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mysignlanguege.screens;\r\n\r\nimport android.content.Intent;\r\n    import android.content.SharedPreferences;\r\n    import android.os.Bundle;\r\n    import android.view.View;\r\n    import android.widget.Toast;\r\n\r\n    import androidx.appcompat.app.AppCompatActivity;\r\n    import androidx.recyclerview.widget.LinearLayoutManager;\r\n    import androidx.recyclerview.widget.RecyclerView;\r\n\r\n    import com.example.mysignlanguege.screens.AfterLogin;\r\n    import com.example.mysignlanguege.R;\r\n    import com.example.mysignlanguege.adapters.BusinessUserAdapter;\r\n    import com.example.mysignlanguege.models.Business;\r\n\r\n    import java.util.ArrayList;\r\n    import java.util.List;\r\n\r\n    public class InterestedBusinessesActivity extends AppCompatActivity {\r\n\r\n        private RecyclerView recyclerView;\r\n        private BusinessUserAdapter businessUserAdapter;\r\n        private List<Business> interestedBusinessList;\r\n\r\n        @Override\r\n        protected void onCreate(Bundle savedInstanceState) {\r\n            super.onCreate(savedInstanceState);\r\n            setContentView(R.layout.activity_interested_businesses);\r\n\r\n            recyclerView = findViewById(R.id.recyclerViewInterested);\r\n            recyclerView.setLayoutManager(new LinearLayoutManager(this));\r\n\r\n            interestedBusinessList = new ArrayList<>();\r\n            loadInterestedBusinesses();\r\n\r\n            businessUserAdapter = new BusinessUserAdapter(interestedBusinessList, this);\r\n            recyclerView.setAdapter(businessUserAdapter);\r\n        }\r\n\r\n\r\n\r\n\r\n        private void loadInterestedBusinesses() {\r\n            SharedPreferences sharedPreferences = getSharedPreferences(\"UserPreferences\", MODE_PRIVATE);\r\n            String interestedBusinesses = sharedPreferences.getString(\"interestedBusinesses\", \"\");\r\n\r\n            String[] businessIds = interestedBusinesses.split(\",\");\r\n            for (String id : businessIds) {\r\n                if (!id.isEmpty()) {\r\n                    Business business = getBusinessById(id); // Fetch business from local DB or API\r\n                    interestedBusinessList.add(business);\r\n                }\r\n            }\r\n\r\n            if (interestedBusinessList.isEmpty()) {\r\n                Toast.makeText(this, \"No interested businesses found.\", Toast.LENGTH_SHORT).show();\r\n            }\r\n        }\r\n\r\n\r\n        private Business getBusinessById(String id) {\r\n            // In a real app, you'd fetch the business data from a database or API.\r\n\r\n            // Return a new Business instance with all parameters correctly populated\r\n            return new Business(\r\n                    id,                               // Business ID\r\n                    \"Sample Business\",                // Name\r\n                    \"Category\",                       // Category\r\n                    \"123-456-7890\",                   // Phone\r\n                    \"business@example.com\",           // Email\r\n                    \"123 Sample St\",                  // Street\r\n                    \"http://www.samplebusiness.com\",  // Website\r\n                    \"Sample City\",                    // City\r\n                    \"Sample business details\",        // Details\r\n                    \"sampleBase64ImageString\"         // Image (this should be a base64 string)\r\n            );\r\n        }\r\n\r\n    }
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/mysignlanguege/screens/InterestedBusinessesActivity.java b/app/src/main/java/com/example/mysignlanguege/screens/InterestedBusinessesActivity.java
+--- a/app/src/main/java/com/example/mysignlanguege/screens/InterestedBusinessesActivity.java	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/java/com/example/mysignlanguege/screens/InterestedBusinessesActivity.java	(date 1748266196093)
+@@ -2,9 +2,12 @@
+ 
+ import android.content.Intent;
+     import android.content.SharedPreferences;
+-    import android.os.Bundle;
++import android.graphics.Color;
++import android.os.Build;
++import android.os.Bundle;
+     import android.view.View;
+-    import android.widget.Toast;
++import android.view.Window;
++import android.widget.Toast;
+ 
+     import androidx.appcompat.app.AppCompatActivity;
+     import androidx.recyclerview.widget.LinearLayoutManager;
+@@ -29,6 +32,11 @@
+             super.onCreate(savedInstanceState);
+             setContentView(R.layout.activity_interested_businesses);
+ 
++            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
++                Window window = getWindow();
++                window.setStatusBarColor(Color.parseColor("#1A237E"));
++            }
++
+             recyclerView = findViewById(R.id.recyclerViewInterested);
+             recyclerView.setLayoutManager(new LinearLayoutManager(this));
+ 
+Index: app/src/main/res/layout/activity_add_business.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<ScrollView xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#f4f6f9\">\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/main\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:padding=\"16dp\"\r\n        tools:context=\".AddBusiness\">\r\n\r\n        <androidx.appcompat.widget.Toolbar\r\n            android:id=\"@+id/toolbar\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"?attr/actionBarSize\"\r\n            android:background=\"#1A237E\"\r\n            android:elevation=\"4dp\"\r\n            tools:ignore=\"MissingConstraints\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView4\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"72dp\"\r\n            android:layout_marginStart=\"16dp\"\r\n            android:text=\"Add Business\"\r\n            android:textColor=\"#000000\"\r\n            android:textSize=\"25sp\"\r\n            android:textStyle=\"bold\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/etBusinessName\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:hint=\"Business Name\"\r\n            android:inputType=\"text\"\r\n            android:gravity=\"start\"\r\n            android:padding=\"12dp\"\r\n            android:background=\"@drawable/edittext_background\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/textView4\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toStartOf=\"@id/textView5\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView5\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Business Name\"\r\n            app:layout_constraintBaseline_toBaselineOf=\"@id/etBusinessName\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <Spinner\r\n            android:id=\"@+id/spBusinessType\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:entries=\"@array/CityArr\"\r\n            android:background=\"@drawable/edittext_background\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/etBusinessName\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toStartOf=\"@id/textView6\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView6\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"City\"\r\n            app:layout_constraintBaseline_toBaselineOf=\"@id/spBusinessType\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/etBusinessPhone\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:hint=\"Phone Number\"\r\n            android:inputType=\"phone\"\r\n            android:gravity=\"start\"\r\n            android:padding=\"12dp\"\r\n            android:background=\"@drawable/edittext_background\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/spBusinessType\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toStartOf=\"@id/textView7\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView7\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Phone\"\r\n            app:layout_constraintBaseline_toBaselineOf=\"@id/etBusinessPhone\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/etBusinessEmail\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:hint=\"Email\"\r\n            android:inputType=\"textEmailAddress\"\r\n            android:gravity=\"start\"\r\n            android:padding=\"12dp\"\r\n            android:background=\"@drawable/edittext_background\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/etBusinessPhone\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toStartOf=\"@id/textView8\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView8\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Email\"\r\n            app:layout_constraintBaseline_toBaselineOf=\"@id/etBusinessEmail\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/etBusinessAddress\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:hint=\"Address\"\r\n            android:inputType=\"text\"\r\n            android:gravity=\"start\"\r\n            android:padding=\"12dp\"\r\n            android:background=\"@drawable/edittext_background\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/etBusinessEmail\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toStartOf=\"@id/textView9\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView9\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Address\"\r\n            app:layout_constraintBaseline_toBaselineOf=\"@id/etBusinessAddress\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <Spinner\r\n            android:id=\"@+id/spBusinessCity\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:entries=\"@array/CategoryArr\"\r\n            android:background=\"@drawable/edittext_background\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/etBusinessAddress\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toStartOf=\"@id/textView12\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView12\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Category\"\r\n            app:layout_constraintBaseline_toBaselineOf=\"@id/spBusinessCity\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/etBusinessWebsite\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:hint=\"Website\"\r\n            android:inputType=\"textUri\"\r\n            android:gravity=\"start\"\r\n            android:padding=\"12dp\"\r\n            android:background=\"@drawable/edittext_background\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/spBusinessCity\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toStartOf=\"@id/textView10\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView10\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Website\"\r\n            app:layout_constraintBaseline_toBaselineOf=\"@id/etBusinessWebsite\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/etBusinessDetails\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:hint=\"Business Details\"\r\n            android:inputType=\"textMultiLine\"\r\n            android:gravity=\"start\"\r\n            android:padding=\"12dp\"\r\n            android:background=\"@drawable/edittext_background\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/etBusinessWebsite\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toStartOf=\"@id/textView11\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView11\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Details\"\r\n            app:layout_constraintBaseline_toBaselineOf=\"@id/etBusinessDetails\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageRef\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"120dp\"\r\n            android:layout_marginTop=\"16dp\"\r\n            android:scaleType=\"centerCrop\"\r\n            android:background=\"#e0e0e0\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/etBusinessDetails\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            tools:srcCompat=\"@tools:sample/avatars\" />\r\n\r\n        <Button\r\n            android:id=\"@+id/btnGallery\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:text=\"Gallery\"\r\n            android:backgroundTint=\"#1A237E\"\r\n            android:textColor=\"#FFFFFF\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/imageRef\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toStartOf=\"@id/btnCamera\"\r\n            app:layout_constraintHorizontal_chainStyle=\"spread\" />\r\n\r\n        <Button\r\n            android:id=\"@+id/btnCamera\"\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:text=\"Camera\"\r\n            android:backgroundTint=\"#1A237E\"\r\n            android:textColor=\"#FFFFFF\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/imageRef\"\r\n            app:layout_constraintStart_toEndOf=\"@id/btnGallery\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n\r\n        <Button\r\n            android:id=\"@+id/btnAddItem\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"20dp\"\r\n            android:layout_marginBottom=\"32dp\"\r\n            android:text=\"Add Business\"\r\n            android:backgroundTint=\"#388E3C\"\r\n            android:textColor=\"#FFFFFF\"\r\n            app:layout_constraintTop_toBottomOf=\"@id/btnCamera\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\" />\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n</ScrollView>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_add_business.xml b/app/src/main/res/layout/activity_add_business.xml
+--- a/app/src/main/res/layout/activity_add_business.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/layout/activity_add_business.xml	(date 1748265725813)
+@@ -1,258 +1,272 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
++<androidx.coordinatorlayout.widget.CoordinatorLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    android:background="#f4f6f9">
++    android:background="#FFFFFF"
++    android:layoutDirection="rtl"
++    android:textDirection="rtl">
+ 
+-    <androidx.constraintlayout.widget.ConstraintLayout
+-        android:id="@+id/main"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:padding="16dp"
+-        tools:context=".AddBusiness">
+-
+-        <androidx.appcompat.widget.Toolbar
+-            android:id="@+id/toolbar"
+-            android:layout_width="match_parent"
+-            android:layout_height="?attr/actionBarSize"
+-            android:background="#1A237E"
+-            android:elevation="4dp"
+-            tools:ignore="MissingConstraints" />
++    <!-- Toolbar -->
++    <androidx.appcompat.widget.Toolbar
++        android:id="@+id/toolbar"
++        android:layout_width="match_parent"
++        android:layout_height="?attr/actionBarSize"
++        android:background="#1A237E"
++        android:elevation="4dp"
++        android:title="הוספת עסק"
++        android:titleTextColor="@android:color/white"
++        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
++
++    <!-- Scrollable Content -->
++    <ScrollView
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:layout_marginTop="?attr/actionBarSize">
++
++        <androidx.constraintlayout.widget.ConstraintLayout
++            android:id="@+id/main"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:padding="16dp"
++            android:textDirection="rtl"
++            android:layoutDirection="rtl">
+ 
+-        <TextView
+-            android:id="@+id/textView4"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="72dp"
+-            android:layout_marginStart="16dp"
+-            android:text="Add Business"
+-            android:textColor="#000000"
+-            android:textSize="25sp"
+-            android:textStyle="bold"
+-            app:layout_constraintTop_toTopOf="parent"
+-            app:layout_constraintStart_toStartOf="parent" />
++            <TextView
++                android:id="@+id/textView4"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="16dp"
++                android:text="פרטי העסק"
++                android:textColor="#000000"
++                android:textSize="25sp"
++                android:textStyle="bold"
++                app:layout_constraintTop_toTopOf="parent"
++                app:layout_constraintStart_toStartOf="parent" />
+ 
+-        <EditText
+-            android:id="@+id/etBusinessName"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:hint="Business Name"
+-            android:inputType="text"
+-            android:gravity="start"
+-            android:padding="12dp"
+-            android:background="@drawable/edittext_background"
+-            app:layout_constraintTop_toBottomOf="@id/textView4"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toStartOf="@id/textView5" />
++            <EditText
++                android:id="@+id/etBusinessName"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="12dp"
++                android:hint="שם העסק"
++                android:inputType="text"
++                android:gravity="end"
++                android:padding="12dp"
++                android:background="@drawable/edittext_background"
++                app:layout_constraintTop_toBottomOf="@id/textView4"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toStartOf="@id/textView5" />
+ 
+-        <TextView
+-            android:id="@+id/textView5"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Business Name"
+-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessName"
+-            app:layout_constraintEnd_toEndOf="parent" />
++            <TextView
++                android:id="@+id/textView5"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="שם העסק"
++                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessName"
++                app:layout_constraintEnd_toEndOf="parent" />
+ 
+-        <Spinner
+-            android:id="@+id/spBusinessType"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:entries="@array/CityArr"
+-            android:background="@drawable/edittext_background"
+-            app:layout_constraintTop_toBottomOf="@id/etBusinessName"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toStartOf="@id/textView6" />
++            <Spinner
++                android:id="@+id/spBusinessType"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="12dp"
++                android:entries="@array/CityArr"
++                android:background="@drawable/edittext_background"
++                app:layout_constraintTop_toBottomOf="@id/etBusinessName"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toStartOf="@id/textView6" />
+ 
+-        <TextView
+-            android:id="@+id/textView6"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="City"
+-            app:layout_constraintBaseline_toBaselineOf="@id/spBusinessType"
+-            app:layout_constraintEnd_toEndOf="parent" />
++            <TextView
++                android:id="@+id/textView6"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="עיר"
++                app:layout_constraintBaseline_toBaselineOf="@id/spBusinessType"
++                app:layout_constraintEnd_toEndOf="parent" />
+ 
+-        <EditText
+-            android:id="@+id/etBusinessPhone"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:hint="Phone Number"
+-            android:inputType="phone"
+-            android:gravity="start"
+-            android:padding="12dp"
+-            android:background="@drawable/edittext_background"
+-            app:layout_constraintTop_toBottomOf="@id/spBusinessType"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toStartOf="@id/textView7" />
++            <EditText
++                android:id="@+id/etBusinessPhone"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="12dp"
++                android:hint="מספר טלפון"
++                android:inputType="phone"
++                android:gravity="end"
++                android:padding="12dp"
++                android:background="@drawable/edittext_background"
++                app:layout_constraintTop_toBottomOf="@id/spBusinessType"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toStartOf="@id/textView7" />
+ 
+-        <TextView
+-            android:id="@+id/textView7"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Phone"
+-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessPhone"
+-            app:layout_constraintEnd_toEndOf="parent" />
++            <TextView
++                android:id="@+id/textView7"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="טלפון"
++                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessPhone"
++                app:layout_constraintEnd_toEndOf="parent" />
+ 
+-        <EditText
+-            android:id="@+id/etBusinessEmail"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:hint="Email"
+-            android:inputType="textEmailAddress"
+-            android:gravity="start"
+-            android:padding="12dp"
+-            android:background="@drawable/edittext_background"
+-            app:layout_constraintTop_toBottomOf="@id/etBusinessPhone"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toStartOf="@id/textView8" />
++            <EditText
++                android:id="@+id/etBusinessEmail"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="12dp"
++                android:hint="אימייל"
++                android:inputType="textEmailAddress"
++                android:gravity="end"
++                android:padding="12dp"
++                android:background="@drawable/edittext_background"
++                app:layout_constraintTop_toBottomOf="@id/etBusinessPhone"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toStartOf="@id/textView8" />
+ 
+-        <TextView
+-            android:id="@+id/textView8"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Email"
+-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessEmail"
+-            app:layout_constraintEnd_toEndOf="parent" />
++            <TextView
++                android:id="@+id/textView8"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="אימייל"
++                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessEmail"
++                app:layout_constraintEnd_toEndOf="parent" />
+ 
+-        <EditText
+-            android:id="@+id/etBusinessAddress"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:hint="Address"
+-            android:inputType="text"
+-            android:gravity="start"
+-            android:padding="12dp"
+-            android:background="@drawable/edittext_background"
+-            app:layout_constraintTop_toBottomOf="@id/etBusinessEmail"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toStartOf="@id/textView9" />
++            <EditText
++                android:id="@+id/etBusinessAddress"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="12dp"
++                android:hint="כתובת"
++                android:inputType="text"
++                android:gravity="end"
++                android:padding="12dp"
++                android:background="@drawable/edittext_background"
++                app:layout_constraintTop_toBottomOf="@id/etBusinessEmail"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toStartOf="@id/textView9" />
+ 
+-        <TextView
+-            android:id="@+id/textView9"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Address"
+-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessAddress"
+-            app:layout_constraintEnd_toEndOf="parent" />
++            <TextView
++                android:id="@+id/textView9"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="כתובת"
++                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessAddress"
++                app:layout_constraintEnd_toEndOf="parent" />
+ 
+-        <Spinner
+-            android:id="@+id/spBusinessCity"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:entries="@array/CategoryArr"
+-            android:background="@drawable/edittext_background"
+-            app:layout_constraintTop_toBottomOf="@id/etBusinessAddress"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toStartOf="@id/textView12" />
++            <Spinner
++                android:id="@+id/spBusinessCity"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="12dp"
++                android:entries="@array/CategoryArr"
++                android:background="@drawable/edittext_background"
++                app:layout_constraintTop_toBottomOf="@id/etBusinessAddress"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toStartOf="@id/textView12" />
+ 
+-        <TextView
+-            android:id="@+id/textView12"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Category"
+-            app:layout_constraintBaseline_toBaselineOf="@id/spBusinessCity"
+-            app:layout_constraintEnd_toEndOf="parent" />
++            <TextView
++                android:id="@+id/textView12"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="קטגוריה"
++                app:layout_constraintBaseline_toBaselineOf="@id/spBusinessCity"
++                app:layout_constraintEnd_toEndOf="parent" />
+ 
+-        <EditText
+-            android:id="@+id/etBusinessWebsite"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:hint="Website"
+-            android:inputType="textUri"
+-            android:gravity="start"
+-            android:padding="12dp"
+-            android:background="@drawable/edittext_background"
+-            app:layout_constraintTop_toBottomOf="@id/spBusinessCity"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toStartOf="@id/textView10" />
++            <EditText
++                android:id="@+id/etBusinessWebsite"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="12dp"
++                android:hint="אתר אינטרנט"
++                android:inputType="textUri"
++                android:gravity="end"
++                android:padding="12dp"
++                android:background="@drawable/edittext_background"
++                app:layout_constraintTop_toBottomOf="@id/spBusinessCity"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toStartOf="@id/textView10" />
+ 
+-        <TextView
+-            android:id="@+id/textView10"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Website"
+-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessWebsite"
+-            app:layout_constraintEnd_toEndOf="parent" />
++            <TextView
++                android:id="@+id/textView10"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="אתר"
++                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessWebsite"
++                app:layout_constraintEnd_toEndOf="parent" />
+ 
+-        <EditText
+-            android:id="@+id/etBusinessDetails"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:hint="Business Details"
+-            android:inputType="textMultiLine"
+-            android:gravity="start"
+-            android:padding="12dp"
+-            android:background="@drawable/edittext_background"
+-            app:layout_constraintTop_toBottomOf="@id/etBusinessWebsite"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toStartOf="@id/textView11" />
++            <EditText
++                android:id="@+id/etBusinessDetails"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="12dp"
++                android:hint="פרטים נוספים"
++                android:inputType="textMultiLine"
++                android:gravity="end"
++                android:padding="12dp"
++                android:background="@drawable/edittext_background"
++                app:layout_constraintTop_toBottomOf="@id/etBusinessWebsite"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toStartOf="@id/textView11" />
+ 
+-        <TextView
+-            android:id="@+id/textView11"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Details"
+-            app:layout_constraintBaseline_toBaselineOf="@id/etBusinessDetails"
+-            app:layout_constraintEnd_toEndOf="parent" />
++            <TextView
++                android:id="@+id/textView11"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="פרטים"
++                app:layout_constraintBaseline_toBaselineOf="@id/etBusinessDetails"
++                app:layout_constraintEnd_toEndOf="parent" />
+ 
+-        <ImageView
+-            android:id="@+id/imageRef"
+-            android:layout_width="0dp"
+-            android:layout_height="120dp"
+-            android:layout_marginTop="16dp"
+-            android:scaleType="centerCrop"
+-            android:background="#e0e0e0"
+-            app:layout_constraintTop_toBottomOf="@id/etBusinessDetails"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            tools:srcCompat="@tools:sample/avatars" />
++            <ImageView
++                android:id="@+id/imageRef"
++                android:layout_width="0dp"
++                android:layout_height="120dp"
++                android:layout_marginTop="16dp"
++                android:scaleType="centerCrop"
++                android:background="#e0e0e0"
++                app:layout_constraintTop_toBottomOf="@id/etBusinessDetails"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toEndOf="parent"
++                tools:srcCompat="@tools:sample/avatars" />
+ 
+-        <Button
+-            android:id="@+id/btnGallery"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:text="Gallery"
+-            android:backgroundTint="#1A237E"
+-            android:textColor="#FFFFFF"
+-            app:layout_constraintTop_toBottomOf="@id/imageRef"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toStartOf="@id/btnCamera"
+-            app:layout_constraintHorizontal_chainStyle="spread" />
++            <Button
++                android:id="@+id/btnGallery"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="12dp"
++                android:text="גלריה"
++                android:backgroundTint="#1A237E"
++                android:textColor="#FFFFFF"
++                app:layout_constraintTop_toBottomOf="@id/imageRef"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toStartOf="@id/btnCamera"
++                app:layout_constraintHorizontal_chainStyle="spread" />
+ 
+-        <Button
+-            android:id="@+id/btnCamera"
+-            android:layout_width="0dp"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="12dp"
+-            android:text="Camera"
+-            android:backgroundTint="#1A237E"
+-            android:textColor="#FFFFFF"
+-            app:layout_constraintTop_toBottomOf="@id/imageRef"
+-            app:layout_constraintStart_toEndOf="@id/btnGallery"
+-            app:layout_constraintEnd_toEndOf="parent" />
++            <Button
++                android:id="@+id/btnCamera"
++                android:layout_width="0dp"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="12dp"
++                android:text="מצלמה"
++                android:backgroundTint="#1A237E"
++                android:textColor="#FFFFFF"
++                app:layout_constraintTop_toBottomOf="@id/imageRef"
++                app:layout_constraintStart_toEndOf="@id/btnGallery"
++                app:layout_constraintEnd_toEndOf="parent" />
+ 
+-        <Button
+-            android:id="@+id/btnAddItem"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="20dp"
+-            android:layout_marginBottom="32dp"
+-            android:text="Add Business"
+-            android:backgroundTint="#388E3C"
+-            android:textColor="#FFFFFF"
+-            app:layout_constraintTop_toBottomOf="@id/btnCamera"
+-            app:layout_constraintBottom_toBottomOf="parent"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintEnd_toEndOf="parent" />
+-    </androidx.constraintlayout.widget.ConstraintLayout>
+-</ScrollView>
++            <Button
++                android:id="@+id/btnAddItem"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_marginTop="20dp"
++                android:layout_marginBottom="32dp"
++                android:text="הוסף עסק"
++                android:backgroundTint="#388E3C"
++                android:textColor="#FFFFFF"
++                app:layout_constraintTop_toBottomOf="@id/btnCamera"
++                app:layout_constraintBottom_toBottomOf="parent"
++                app:layout_constraintStart_toStartOf="parent"
++                app:layout_constraintEnd_toEndOf="parent" />
++
++        </androidx.constraintlayout.widget.ConstraintLayout>
++    </ScrollView>
++</androidx.coordinatorlayout.widget.CoordinatorLayout>
+Index: app/src/main/java/com/example/mysignlanguege/screens/Register.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mysignlanguege.screens;\r\n\r\nimport android.content.Intent;\r\nimport android.graphics.Color;\r\nimport android.os.Build;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.view.Window;\r\nimport android.widget.AdapterView;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.Spinner;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.activity.EdgeToEdge;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.graphics.Insets;\r\nimport androidx.core.view.ViewCompat;\r\nimport androidx.core.view.WindowInsetsCompat;\r\n\r\nimport com.example.mysignlanguege.BaseActivity;\r\nimport com.example.mysignlanguege.R;\r\nimport com.example.mysignlanguege.models.User;\r\nimport com.example.mysignlanguege.services.AuthenticationService;\r\nimport com.example.mysignlanguege.services.DatabaseService;\r\nimport com.example.mysignlanguege.utils.SharedPreferencesUtil;\r\n\r\npublic class Register extends BaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {\r\n    EditText etfName,etlName, etPhone, etEmail, etPassword;\r\n    String fName,lName, phone, email, password,city;\r\n    Button btnReg;\r\n    Spinner SpCity;\r\n\r\n\r\n\r\n\r\n    private AuthenticationService authenticationService;\r\n    private DatabaseService databaseService;\r\n    private static final String TAG = \"RegisterActivity\";\r\n\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {\r\n            Window window = getWindow();\r\n            window.setStatusBarColor(Color.parseColor(\"#1A237E\"));\r\n        }\r\n        super.onCreate(savedInstanceState);\r\n        EdgeToEdge.enable(this);\r\n        setContentView(R.layout.activity_register);\r\n        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {\r\n            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());\r\n            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);\r\n            return insets;\r\n\r\n\r\n\r\n        });\r\n        initViews();\r\n\r\n        /// get the instance of the authentication service\r\n        authenticationService = AuthenticationService.getInstance();\r\n        /// get the instance of the database service\r\n        databaseService = DatabaseService.getInstance();\r\n\r\n\r\n\r\n\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n    private void initViews() {\r\n        etfName=findViewById(R.id.etfName);\r\n        etlName=findViewById(R.id.etlName);\r\n        etPhone=findViewById(R.id.etPhone);\r\n        SpCity=findViewById(R.id.SpCity);\r\n        etEmail=findViewById(R.id.etEmail);\r\n        etPassword=findViewById(R.id.etPassword);\r\n        btnReg=findViewById(R.id.btnReg);\r\n        btnReg.setOnClickListener(this);\r\n        SpCity.setOnItemSelectedListener(this);\r\n\r\n    }\r\n\r\n\r\n    @Override\r\n    public void onClick(View v) {\r\n\r\n        fName = etfName.getText().toString();\r\n        lName = etlName.getText().toString();\r\n        phone = etPhone.getText().toString();\r\n        email = etEmail.getText().toString();\r\n        password = etPassword.getText().toString();\r\n\r\n//check if registration is valid\r\n        Boolean isValid = true;\r\n        if (fName.length() < 2) {\r\n\r\n            etfName.setError(\"שם פרטי קצר מדי\");\r\n            isValid = false;\r\n        }\r\n        if (lName.length() < 2) {\r\n            Toast.makeText(Register.this, \"שם משפחה קצר מדי\", Toast.LENGTH_LONG).show();\r\n            isValid = false;\r\n        }\r\n        if (phone.length() < 9 || phone.length() > 10) {\r\n            Toast.makeText(Register.this, \"מספר הטלפון לא תקין\", Toast.LENGTH_LONG).show();\r\n            isValid = false;\r\n        }\r\n\r\n        if (!email.contains(\"@\")) {\r\n            Toast.makeText(Register.this, \"כתובת האימייל לא תקינה\", Toast.LENGTH_LONG).show();\r\n            isValid = false;\r\n        }\r\n        if (password.length() < 6) {\r\n            Toast.makeText(Register.this, \"הסיסמה קצרה מדי\", Toast.LENGTH_LONG).show();\r\n            isValid = false;\r\n        }\r\n        if (password.length() > 20) {\r\n            Toast.makeText(Register.this, \"הסיסמה ארוכה מדי\", Toast.LENGTH_LONG).show();\r\n            isValid = false;\r\n        }\r\n\r\n        if (isValid == true) {\r\n            registerUser(email, password, fName,lName,phone);\r\n\r\n\r\n        }\r\n    }\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    @Override\r\n    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {\r\n        city= (String) adapterView.getItemAtPosition(i);\r\n\r\n    }\r\n\r\n    @Override\r\n    public void onNothingSelected(AdapterView<?> adapterView) {\r\n\r\n    }\r\n\r\n    /// Register the user\r\n    private void registerUser(String email, String password, String fName, String lName, String phone) {\r\n        Log.d(TAG, \"registerUser: Registering user...\");\r\n\r\n        /// call the sign up method of the authentication service\r\n        authenticationService.signUp(email, password, new AuthenticationService.AuthCallback<String>() {\r\n\r\n            @Override\r\n            public void onCompleted(String uid) {\r\n                Log.d(TAG, \"onCompleted: User registered successfully\");\r\n                /// create a new user object\r\n                User user = new User();\r\n                user.setId(uid);\r\n                user.setEmail(email);\r\n                user.setPassword(password);\r\n                user.setfName(fName);\r\n                user.setlName(lName);\r\n                user.setPhone(phone);\r\n\r\n                /// call the createNewUser method of the database service\r\n                databaseService.createNewUser(user, new DatabaseService.DatabaseCallback<Void>() {\r\n\r\n                    @Override\r\n                    public void onCompleted(Void object) {\r\n                        Log.d(TAG, \"onCompleted: User registered successfully\");\r\n                        /// save the user to shared preferences\r\n                        SharedPreferencesUtil.saveUser(Register.this, user);\r\n                        Log.d(TAG, \"onCompleted: Redirecting to MainActivity\");\r\n                        /// Redirect to MainActivity and clear back stack to prevent user from going back to register screen\r\n                        Intent mainIntent = new Intent(Register.this, MainActivity.class);\r\n                        /// clear the back stack (clear history) and start the MainActivity\r\n                        mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);\r\n                        startActivity(mainIntent);\r\n                    }\r\n\r\n                    @Override\r\n                    public void onFailed(Exception e) {\r\n                        Log.e(TAG, \"onFailed: Failed to register user\", e);\r\n                        /// show error message to user\r\n                        Toast.makeText(Register.this, \"Failed to register user\", Toast.LENGTH_SHORT).show();\r\n                        /// sign out the user if failed to register\r\n                        /// this is to prevent the user from being logged in again\r\n                        authenticationService.signOut();\r\n                    }\r\n                });\r\n            }\r\n\r\n            @Override\r\n            public void onFailed(Exception e) {\r\n                Log.e(TAG, \"onFailed: Failed to sign up user\", e);\r\n                /// show error message to user\r\n                Toast.makeText(Register.this, \"Failed to register user\", Toast.LENGTH_SHORT).show();\r\n            }\r\n        });\r\n\r\n\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/mysignlanguege/screens/Register.java b/app/src/main/java/com/example/mysignlanguege/screens/Register.java
+--- a/app/src/main/java/com/example/mysignlanguege/screens/Register.java	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/java/com/example/mysignlanguege/screens/Register.java	(date 1748279084092)
+@@ -43,20 +43,16 @@
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+-            Window window = getWindow();
+-            window.setStatusBarColor(Color.parseColor("#1A237E"));
+-        }
++
+         super.onCreate(savedInstanceState);
+         EdgeToEdge.enable(this);
+         setContentView(R.layout.activity_register);
++
+         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+             return insets;
+ 
+-
+-
+         });
+         initViews();
+ 
+@@ -65,11 +61,10 @@
+         /// get the instance of the database service
+         databaseService = DatabaseService.getInstance();
+ 
+-
+-
+-
+-
+-
++        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
++            Window window = getWindow();
++            window.setStatusBarColor(Color.parseColor("#1A237E"));
++        }
+     }
+ 
+ 
+Index: app/src/main/java/com/example/mysignlanguege/BusinessDetailsActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mysignlanguege;\r\n\r\nimport android.graphics.Color;\r\nimport android.os.Build;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.view.Window;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport com.example.mysignlanguege.models.Business;\r\nimport com.example.mysignlanguege.utils.ImageUtil;\r\n\r\npublic class BusinessDetailsActivity extends BaseActivity {\r\n\r\n    private TextView tvName, tvCategory, tvCity, tvPhone, tvEmail, tvStreet, tvWebsite, tvDetails;\r\n    private ImageView ivBusinessImage;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_business_details);\r\n\r\n        tvName = findViewById(R.id.tvName);\r\n        tvCategory = findViewById(R.id.tvCategory);\r\n        tvCity = findViewById(R.id.tvCity);\r\n        tvPhone = findViewById(R.id.tvPhone);\r\n        tvEmail = findViewById(R.id.tvEmail);\r\n        tvStreet = findViewById(R.id.tvStreet);\r\n        tvWebsite = findViewById(R.id.tvWebsite);\r\n        tvDetails = findViewById(R.id.tvDetails);\r\n        ivBusinessImage = findViewById(R.id.ivBusinessImage);\r\n\r\n        Business business = getBusinessFromIntent();\r\n\r\n        if (business != null) {\r\n            populateViews(business);\r\n        }\r\n\r\n        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {\r\n            Window window = getWindow();\r\n            window.setStatusBarColor(Color.parseColor(\"#1A237E\"));\r\n        }\r\n    }\r\n\r\n    private Business getBusinessFromIntent() {\r\n        return (Business) getIntent().getSerializableExtra(\"business\");\r\n    }\r\n\r\n    private void populateViews(Business business) {\r\n        tvName.setText(business.getName());\r\n        tvCategory.setText(business.getCategory());\r\n        tvCity.setText(business.getCity());\r\n        tvPhone.setText(business.getPhone());\r\n        tvEmail.setText(business.getEmail());\r\n        tvStreet.setText(business.getStreet());\r\n        tvWebsite.setText(business.getWebsite());\r\n        tvDetails.setText(business.getDetails());\r\n\r\n        String imageBase64 = business.getImage();\r\n        if (imageBase64 != null && !imageBase64.isEmpty()) {\r\n            ivBusinessImage.setImageBitmap(ImageUtil.convertFrom64base(imageBase64));\r\n            ivBusinessImage.setVisibility(View.VISIBLE);\r\n        } else {\r\n            ivBusinessImage.setVisibility(View.GONE);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/mysignlanguege/BusinessDetailsActivity.java b/app/src/main/java/com/example/mysignlanguege/BusinessDetailsActivity.java
+--- a/app/src/main/java/com/example/mysignlanguege/BusinessDetailsActivity.java	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/java/com/example/mysignlanguege/BusinessDetailsActivity.java	(date 1748263213466)
+@@ -59,7 +59,7 @@
+         tvWebsite.setText(business.getWebsite());
+         tvDetails.setText(business.getDetails());
+ 
+-        String imageBase64 = business.getImage();
++        String imageBase64 = business.getImageUrl(); // ← השינוי כאן
+         if (imageBase64 != null && !imageBase64.isEmpty()) {
+             ivBusinessImage.setImageBitmap(ImageUtil.convertFrom64base(imageBase64));
+             ivBusinessImage.setVisibility(View.VISIBLE);
+@@ -67,4 +67,5 @@
+             ivBusinessImage.setVisibility(View.GONE);
+         }
+     }
++
+ }
+Index: app/src/main/res/layout/activity_business_details.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"250dp\"\r\n    android:orientation=\"horizontal\"\r\n    android:background=\"#f4f6f9\"\r\n    android:padding=\"16dp\">\r\n\r\n\r\n\r\n\r\n    <!-- Vertical container for text information (on the left side) -->\r\n    <LinearLayout\r\n        android:layout_width=\"161dp\"\r\n        android:layout_height=\"191dp\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <!-- Business Name -->\r\n        <TextView\r\n            android:id=\"@+id/tvName\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Business Name\"\r\n            android:textSize=\"18sp\"\r\n            android:textStyle=\"bold\" />\r\n\r\n        <!-- Business Category -->\r\n        <TextView\r\n            android:id=\"@+id/tvCategory\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Category\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business City -->\r\n        <TextView\r\n            android:id=\"@+id/tvCity\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"City\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business Phone -->\r\n        <TextView\r\n            android:id=\"@+id/tvPhone\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Phone\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business Email -->\r\n        <TextView\r\n            android:id=\"@+id/tvEmail\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:autoLink=\"email\"\r\n            android:text=\"Email\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business Street -->\r\n        <TextView\r\n            android:id=\"@+id/tvStreet\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Street\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business Website -->\r\n        <TextView\r\n            android:id=\"@+id/tvWebsite\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:autoLink=\"web\"\r\n            android:text=\"Website\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business Details -->\r\n        <TextView\r\n            android:id=\"@+id/tvDetails\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Details\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Add to Interested Button -->\r\n\r\n        <!-- Delete Business Button -->\r\n\r\n    </LinearLayout>\r\n\r\n    <!-- Business Image -->\r\n    <ImageView\r\n        android:id=\"@+id/ivBusinessImage\"\r\n        android:layout_width=\"175dp\"\r\n        android:layout_height=\"157dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:contentDescription=\"Business Image\" />\r\n</LinearLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_business_details.xml b/app/src/main/res/layout/activity_business_details.xml
+--- a/app/src/main/res/layout/activity_business_details.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/layout/activity_business_details.xml	(date 1748264970956)
+@@ -1,105 +1,65 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:layout_width="match_parent"
+-    android:layout_height="250dp"
+-    android:orientation="horizontal"
+-    android:background="#f4f6f9"
+-    android:padding="16dp">
++    android:layout_height="match_parent"
++    android:orientation="vertical"
++    android:background="#f4f6f9">
++
++    <!-- Toolbar -->
++    <androidx.appcompat.widget.Toolbar
++        android:id="@+id/toolbar"
++        android:layout_width="match_parent"
++        android:layout_height="73dp"
++        android:background="#1A237E"
++        android:elevation="4dp"
++        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
++        app:titleTextColor="@android:color/white" />
++
++
++
++    <!-- Scrollable content -->
++    <ScrollView
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:padding="16dp">
+ 
+-
+-
+-
+-    <!-- Vertical container for text information (on the left side) -->
+-    <LinearLayout
+-        android:layout_width="161dp"
+-        android:layout_height="191dp"
+-        android:orientation="vertical">
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:orientation="vertical"
++            android:gravity="center_horizontal">
++
++            <!-- Business Image -->
++
+ 
+-        <!-- Business Name -->
+-        <TextView
+-            android:id="@+id/tvName"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Business Name"
+-            android:textSize="18sp"
+-            android:textStyle="bold" />
+-
+-        <!-- Business Category -->
+-        <TextView
+-            android:id="@+id/tvCategory"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Category"
+-            android:textColor="@android:color/darker_gray"
+-            android:textSize="14sp" />
+-
+-        <!-- Business City -->
+-        <TextView
+-            android:id="@+id/tvCity"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="City"
+-            android:textColor="@android:color/darker_gray"
+-            android:textSize="14sp" />
+-
+-        <!-- Business Phone -->
+-        <TextView
+-            android:id="@+id/tvPhone"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Phone"
+-            android:textColor="@android:color/darker_gray"
+-            android:textSize="14sp" />
+-
+-        <!-- Business Email -->
+-        <TextView
+-            android:id="@+id/tvEmail"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:autoLink="email"
+-            android:text="Email"
+-            android:textColor="@android:color/darker_gray"
+-            android:textSize="14sp" />
+-
+-        <!-- Business Street -->
+-        <TextView
+-            android:id="@+id/tvStreet"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Street"
+-            android:textColor="@android:color/darker_gray"
+-            android:textSize="14sp" />
+-
+-        <!-- Business Website -->
+-        <TextView
+-            android:id="@+id/tvWebsite"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:autoLink="web"
+-            android:text="Website"
+-            android:textColor="@android:color/darker_gray"
+-            android:textSize="14sp" />
++            <!-- Business Name -->
++            <TextView
++                android:id="@+id/tvName"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:text="Business Name"
++                android:textSize="22sp"
++                android:textStyle="bold"
++                android:textColor="#1A237E"
++                android:layout_marginBottom="12dp" />
+ 
+-        <!-- Business Details -->
+-        <TextView
+-            android:id="@+id/tvDetails"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:text="Details"
+-            android:textColor="@android:color/darker_gray"
+-            android:textSize="14sp" />
+-
+-        <!-- Add to Interested Button -->
+-
+-        <!-- Delete Business Button -->
+-
+-    </LinearLayout>
+-
+-    <!-- Business Image -->
+-    <ImageView
+-        android:id="@+id/ivBusinessImage"
+-        android:layout_width="175dp"
+-        android:layout_height="157dp"
+-        android:layout_marginStart="16dp"
+-        android:contentDescription="Business Image" />
++            <!-- Info block -->
++            <TextView android:id="@+id/tvCategory" style="@style/DetailTextStyle" android:text="Category" />
++            <TextView android:id="@+id/tvCity" style="@style/DetailTextStyle" android:text="City" />
++            <TextView android:id="@+id/tvPhone" style="@style/DetailTextStyle" android:text="Phone" />
++            <TextView android:id="@+id/tvEmail" style="@style/DetailTextStyle" android:text="Email" android:autoLink="email" />
++            <TextView android:id="@+id/tvStreet" style="@style/DetailTextStyle" android:text="Street" />
++            <TextView android:id="@+id/tvWebsite" style="@style/DetailTextStyle" android:text="Website" android:autoLink="web" />
++            <TextView android:id="@+id/tvDetails" style="@style/DetailTextStyle" android:text="Details" />
++            <ImageView
++                android:id="@+id/ivBusinessImage"
++                android:layout_width="250dp"
++                android:layout_height="250dp"
++                android:scaleType="centerCrop"
++                android:layout_marginBottom="24dp"
++                android:background="@drawable/button_rounded"
++                android:contentDescription="Business Image" />
++        </LinearLayout>
++    </ScrollView>
+ </LinearLayout>
+Index: app/src/main/java/com/example/mysignlanguege/About.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mysignlanguege;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Toolbar;\r\n\r\nimport androidx.activity.EdgeToEdge;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.graphics.Insets;\r\nimport androidx.core.view.ViewCompat;\r\nimport androidx.core.view.WindowInsetsCompat;\r\n\r\nimport com.example.mysignlanguege.screens.AdminPage;\r\n\r\npublic class About extends AppCompatActivity {\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_about);\r\n\r\n    }\r\n\r\n    public void goBack(View view) {\r\n        finish();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/mysignlanguege/About.java b/app/src/main/java/com/example/mysignlanguege/About.java
+--- a/app/src/main/java/com/example/mysignlanguege/About.java	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/java/com/example/mysignlanguege/About.java	(date 1748267386729)
+@@ -1,8 +1,11 @@
+ package com.example.mysignlanguege;
+ 
+ import android.content.Intent;
++import android.graphics.Color;
++import android.os.Build;
+ import android.os.Bundle;
+ import android.view.View;
++import android.view.Window;
+ import android.widget.Toolbar;
+ 
+ import androidx.activity.EdgeToEdge;
+@@ -19,6 +22,11 @@
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_about);
+ 
++        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
++            Window window = getWindow();
++            window.setStatusBarColor(Color.parseColor("#1A237E"));
++        }
++
+     }
+ 
+     public void goBack(View view) {
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\"></string>\r\n\r\n    <!-- Add these to your strings.xml file -->\r\n    <string name=\"navigation_drawer_open\">Open navigation drawer</string>\r\n    <string name=\"navigation_drawer_close\">Close navigation drawer</string>\r\n\r\n    <!-- Make sure these are added to your existing strings.xml file in the res/values folder -->\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/values/strings.xml	(date 1748266106236)
+@@ -5,5 +5,7 @@
+     <string name="navigation_drawer_open">Open navigation drawer</string>
+     <string name="navigation_drawer_close">Close navigation drawer</string>
+ 
++
++
+     <!-- Make sure these are added to your existing strings.xml file in the res/values folder -->
+ </resources>
+\ No newline at end of file
+Index: app/src/main/java/com/example/mysignlanguege/screens/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mysignlanguege.screens;\r\n\r\nimport android.content.Intent;\r\nimport android.graphics.Color;\r\nimport android.os.Build;\r\nimport android.os.Bundle;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.view.Window;\r\nimport android.widget.Button;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.ActionBarDrawerToggle;\r\nimport androidx.appcompat.widget.Toolbar;\r\nimport androidx.core.view.GravityCompat;\r\nimport androidx.drawerlayout.widget.DrawerLayout;\r\n\r\nimport com.example.mysignlanguege.About;\r\nimport com.example.mysignlanguege.screens.AdminPage;\r\nimport com.example.mysignlanguege.BaseActivity;\r\nimport com.example.mysignlanguege.screens.Login;\r\nimport com.example.mysignlanguege.R;\r\nimport com.example.mysignlanguege.screens.UpdateUserDetails;\r\nimport com.example.mysignlanguege.screens.Register;\r\nimport com.google.android.material.navigation.NavigationView;\r\n\r\npublic class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {\r\n\r\n    private DrawerLayout drawerLayout;\r\n    private ActionBarDrawerToggle toggle;\r\n    private NavigationView navigationView;\r\n    private Toolbar toolbar;\r\n    private Button loginButton, registerButton, adminButton;\r\n    private Button aboutButton;\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {\r\n            Window window = getWindow();\r\n            window.setStatusBarColor(Color.parseColor(\"#1A237E\"));\r\n        }\r\n        setUserLoggedIn(false);\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_main);\r\n\r\n        // Initialize views\r\n        drawerLayout = findViewById(R.id.drawer_layout);\r\n        navigationView = findViewById(R.id.navigation_view);\r\n        toolbar = findViewById(R.id.toolbar);\r\n        loginButton = findViewById(R.id.button);\r\n        registerButton = findViewById(R.id.button2);\r\n        aboutButton = findViewById(R.id.buttonAbout);\r\n        adminButton = findViewById(R.id.button3);\r\n\r\n        // Setup toolbar and drawer\r\n        setSupportActionBar(toolbar);\r\n        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,\r\n                R.string.navigation_drawer_open, R.string.navigation_drawer_close);\r\n        drawerLayout.addDrawerListener(toggle);\r\n        toggle.syncState();\r\n\r\n        navigationView.setNavigationItemSelectedListener(this);\r\n\r\n        // ✅ Hide login button if already logged in\r\n        if (checkUserLoginStatus()) {\r\n            loginButton.setVisibility(View.GONE);\r\n            // Optional: hide register button too\r\n            // registerButton.setVisibility(View.GONE);\r\n        }\r\n\r\n        // Set click listeners\r\n        loginButton.setOnClickListener(v -> {\r\n            startActivity(new Intent(MainActivity.this, Login.class));\r\n        });\r\n\r\n        registerButton.setOnClickListener(v -> {\r\n            startActivity(new Intent(MainActivity.this, Register.class));\r\n        });\r\n\r\n        aboutButton.setOnClickListener(v -> {\r\n            startActivity(new Intent(MainActivity.this, About.class));\r\n        });\r\n\r\n        adminButton.setOnClickListener(v -> {\r\n            startActivity(new Intent(MainActivity.this, AdminPage.class));\r\n        });\r\n    }\r\n\r\n    @Override\r\n    protected void onResume() {\r\n        super.onResume();\r\n        invalidateOptionsMenu();  // Refresh toolbar menu\r\n    }\r\n\r\n    @Override\r\n    public boolean onNavigationItemSelected(@NonNull MenuItem item) {\r\n        int id = item.getItemId();\r\n\r\n        if (id == R.id.menu_login) {\r\n            startActivity(new Intent(this, Login.class));\r\n        } else if (id == R.id.menu_logout) {\r\n            setUserLoggedIn(false);\r\n            Toast.makeText(this, \"Logged out\", Toast.LENGTH_SHORT).show();\r\n            recreate();\r\n        } else if (id == R.id.menu_user_details) {\r\n            startActivity(new Intent(this, UpdateUserDetails.class));\r\n        } else if (id == R.id.menu_about) {\r\n            startActivity(new Intent(this, About.class));\r\n        }\r\n\r\n        drawerLayout.closeDrawer(GravityCompat.START);\r\n        return true;\r\n    }\r\n\r\n\r\n    @Override\r\n    public void onBackPressed() {\r\n        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {\r\n            drawerLayout.closeDrawer(GravityCompat.START);\r\n        } else {\r\n            super.onBackPressed();\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/mysignlanguege/screens/MainActivity.java b/app/src/main/java/com/example/mysignlanguege/screens/MainActivity.java
+--- a/app/src/main/java/com/example/mysignlanguege/screens/MainActivity.java	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/java/com/example/mysignlanguege/screens/MainActivity.java	(date 1748267287792)
+@@ -17,6 +17,7 @@
+ import androidx.drawerlayout.widget.DrawerLayout;
+ 
+ import com.example.mysignlanguege.About;
++import com.example.mysignlanguege.InterestedBusinessesActivity;
+ import com.example.mysignlanguege.screens.AdminPage;
+ import com.example.mysignlanguege.BaseActivity;
+ import com.example.mysignlanguege.screens.Login;
+@@ -32,27 +33,26 @@
+     private NavigationView navigationView;
+     private Toolbar toolbar;
+     private Button loginButton, registerButton, adminButton;
+-    private Button aboutButton;
++
+ 
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+-            Window window = getWindow();
+-            window.setStatusBarColor(Color.parseColor("#1A237E"));
+-        }
++
+         setUserLoggedIn(false);
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
+-
++        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
++            Window window = getWindow();
++            window.setStatusBarColor(Color.parseColor("#1A237E"));
++        }
+         // Initialize views
+         drawerLayout = findViewById(R.id.drawer_layout);
+         navigationView = findViewById(R.id.navigation_view);
+         toolbar = findViewById(R.id.toolbar);
+         loginButton = findViewById(R.id.button);
+         registerButton = findViewById(R.id.button2);
+-        aboutButton = findViewById(R.id.buttonAbout);
+-        adminButton = findViewById(R.id.button3);
++
+ 
+         // Setup toolbar and drawer
+         setSupportActionBar(toolbar);
+@@ -79,13 +79,8 @@
+             startActivity(new Intent(MainActivity.this, Register.class));
+         });
+ 
+-        aboutButton.setOnClickListener(v -> {
+-            startActivity(new Intent(MainActivity.this, About.class));
+-        });
+ 
+-        adminButton.setOnClickListener(v -> {
+-            startActivity(new Intent(MainActivity.this, AdminPage.class));
+-        });
++
+     }
+ 
+     @Override
+@@ -106,14 +101,16 @@
+             recreate();
+         } else if (id == R.id.menu_user_details) {
+             startActivity(new Intent(this, UpdateUserDetails.class));
+-        } else if (id == R.id.menu_about) {
+-            startActivity(new Intent(this, About.class));
+         }
+ 
+         drawerLayout.closeDrawer(GravityCompat.START);
+         return true;
+     }
+ 
++    public void GoAbout(View view) {
++        Intent go = new Intent(getApplicationContext(), About.class);
++        startActivity(go);
++    }
+ 
+     @Override
+     public void onBackPressed() {
+Index: app/src/main/java/com/example/mysignlanguege/SplashActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/mysignlanguege/SplashActivity.java b/app/src/main/java/com/example/mysignlanguege/SplashActivity.java
+new file mode 100644
+--- /dev/null	(date 1748258755371)
++++ b/app/src/main/java/com/example/mysignlanguege/SplashActivity.java	(date 1748258755371)
+@@ -0,0 +1,32 @@
++package com.example.mysignlanguege;
++
++import android.content.Intent;
++import android.graphics.Color;
++import android.os.Build;
++import android.os.Bundle;
++import android.os.Handler;
++import android.view.Window;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import com.example.mysignlanguege.screens.MainActivity;
++
++public class SplashActivity extends AppCompatActivity {
++
++    private static final int SPLASH_DELAY = 2000; // 2 seconds
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_splash);
++        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
++            Window window = getWindow();
++            window.setStatusBarColor(Color.parseColor("#1A237E"));
++        }
++        new Handler().postDelayed(() -> {
++            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
++            startActivity(intent);
++            finish();
++        }, SPLASH_DELAY);
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_splash.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_splash.xml b/app/src/main/res/layout/activity_splash.xml
+new file mode 100644
+--- /dev/null	(date 1748256590466)
++++ b/app/src/main/res/layout/activity_splash.xml	(date 1748256590466)
+@@ -0,0 +1,58 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="#FFFFFF">
++
++    <!-- Title -->
++    <TextView
++        android:id="@+id/splashTitle"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="עסקים למילואימניקים"
++        android:textColor="#1A237E"
++        android:textSize="24sp"
++        android:textStyle="bold"
++        android:layout_marginTop="160dp"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent" />
++
++    <!-- Blue underline -->
++    <View
++        android:id="@+id/view2"
++        android:layout_width="140dp"
++        android:layout_height="5dp"
++        android:layout_marginTop="8dp"
++        android:background="#0724FF"
++        app:layout_constraintTop_toBottomOf="@id/splashTitle"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent" />
++
++    <!-- Logo -->
++    <ImageView
++        android:id="@+id/splashLogo"
++        android:layout_width="215dp"
++        android:layout_height="264dp"
++        android:layout_marginTop="24dp"
++        android:contentDescription="Logo"
++        android:src="@drawable/logo"
++        app:layout_constraintTop_toBottomOf="@id/view2"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent" />
++
++    <!-- Loading Spinner -->
++    <ProgressBar
++        android:id="@+id/loadingSpinner"
++        style="?android:attr/progressBarStyleLarge"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="32dp"
++        android:indeterminate="true"
++        app:layout_constraintTop_toBottomOf="@id/splashLogo"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintEnd_toEndOf="parent" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/java/com/example/mysignlanguege/screens/AddBusiness.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mysignlanguege.screens;\r\n\r\nimport android.content.Intent;\r\nimport android.graphics.Bitmap;\r\nimport android.graphics.Color;\r\nimport android.net.Uri;\r\nimport android.os.Build;\r\nimport android.os.Bundle;\r\nimport android.provider.MediaStore;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.view.Window;\r\nimport android.widget.Button;\r\nimport android.widget.EditText;\r\nimport android.widget.ImageView;\r\nimport android.widget.Spinner;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.activity.result.ActivityResultLauncher;\r\nimport androidx.activity.result.contract.ActivityResultContracts;\r\nimport androidx.core.graphics.Insets;\r\nimport androidx.core.view.ViewCompat;\r\nimport androidx.core.view.WindowInsetsCompat;\r\n\r\nimport com.example.mysignlanguege.BaseActivity;\r\nimport com.example.mysignlanguege.R;\r\nimport com.example.mysignlanguege.models.Business;\r\nimport com.example.mysignlanguege.models.User;\r\nimport com.example.mysignlanguege.services.AuthenticationService;\r\nimport com.example.mysignlanguege.services.DatabaseService;\r\nimport com.example.mysignlanguege.utils.ImageUtil;\r\nimport com.google.firebase.storage.FirebaseStorage;\r\nimport com.google.firebase.storage.StorageReference;\r\n\r\npublic class AddBusiness extends BaseActivity implements View.OnClickListener {\r\n\r\n    private static final String TAG = \"AddBusinessActivity\";\r\n\r\n    Spinner spBusinessType, spBusinessCity;\r\n    EditText etBusinessName, etBusinessPhone, etBusinessEmail, etBusinessAddress, etBusinessWebsite, etBusinessDetails;\r\n    Button btnGallery, btnCamera, btnAddItem;\r\n    ImageView imageBusiness;\r\n\r\n    private ActivityResultLauncher<Intent> selectImageLauncher;\r\n    private ActivityResultLauncher<Intent> captureImageLauncher;\r\n\r\n    private AuthenticationService authenticationService;\r\n    private DatabaseService databaseService;\r\n\r\n    private User user = new User();\r\n    private String uid;\r\n    private Uri selectedImageUri = null;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_add_business);\r\n\r\n        initViews();\r\n\r\n        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {\r\n            Window window = getWindow();\r\n            window.setStatusBarColor(Color.parseColor(\"#1A237E\"));\r\n        }\r\n\r\n        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {\r\n            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());\r\n            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);\r\n            return insets;\r\n        });\r\n\r\n        ImageUtil.requestPermission(this);\r\n\r\n        databaseService = DatabaseService.getInstance();\r\n        authenticationService = AuthenticationService.getInstance();\r\n        uid = authenticationService.getCurrentUserId();\r\n\r\n        selectImageLauncher = registerForActivityResult(\r\n                new ActivityResultContracts.StartActivityForResult(),\r\n                result -> {\r\n                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {\r\n                        selectedImageUri = result.getData().getData();\r\n                        imageBusiness.setImageURI(selectedImageUri);\r\n                    }\r\n                });\r\n\r\n        captureImageLauncher = registerForActivityResult(\r\n                new ActivityResultContracts.StartActivityForResult(),\r\n                result -> {\r\n                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {\r\n                        Bitmap bitmap = (Bitmap) result.getData().getExtras().get(\"data\");\r\n                        imageBusiness.setImageBitmap(bitmap);\r\n                        selectedImageUri = null; // אין Uri במקרה של צילום\r\n                    }\r\n                });\r\n\r\n        databaseService.getUser(uid, new DatabaseService.DatabaseCallback<User>() {\r\n            @Override\r\n            public void onCompleted(User u) {\r\n                user = u;\r\n            }\r\n\r\n            @Override\r\n            public void onFailed(Exception e) {\r\n                Log.e(TAG, \"Failed to get user\", e);\r\n            }\r\n        });\r\n    }\r\n\r\n    private void initViews() {\r\n        btnAddItem = findViewById(R.id.btnAddItem);\r\n        btnGallery = findViewById(R.id.btnGallery);\r\n        btnCamera = findViewById(R.id.btnCamera);\r\n\r\n        spBusinessType = findViewById(R.id.spBusinessType);\r\n        spBusinessCity = findViewById(R.id.spBusinessCity);\r\n\r\n        etBusinessName = findViewById(R.id.etBusinessName);\r\n        etBusinessPhone = findViewById(R.id.etBusinessPhone);\r\n        etBusinessEmail = findViewById(R.id.etBusinessEmail);\r\n        etBusinessAddress = findViewById(R.id.etBusinessAddress);\r\n        etBusinessWebsite = findViewById(R.id.etBusinessWebsite);\r\n        etBusinessDetails = findViewById(R.id.etBusinessDetails);\r\n        imageBusiness = findViewById(R.id.imageRef);\r\n\r\n        btnCamera.setOnClickListener(this);\r\n        btnGallery.setOnClickListener(this);\r\n        btnAddItem.setOnClickListener(this);\r\n    }\r\n\r\n    @Override\r\n    public void onClick(View v) {\r\n        if (v.getId() == btnAddItem.getId()) {\r\n            addBusinessToDatabase();\r\n            return;\r\n        }\r\n        if (v.getId() == btnGallery.getId()) {\r\n            selectImageFromGallery();\r\n            return;\r\n        }\r\n        if (v.getId() == btnCamera.getId()) {\r\n            captureImageFromCamera();\r\n        }\r\n    }\r\n\r\n    private void selectImageFromGallery() {\r\n        Intent intent = new Intent();\r\n        intent.setType(\"image/*\");\r\n        intent.setAction(Intent.ACTION_GET_CONTENT);\r\n        selectImageLauncher.launch(Intent.createChooser(intent, \"Select Picture\"));\r\n    }\r\n\r\n    private void captureImageFromCamera() {\r\n        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);\r\n        captureImageLauncher.launch(takePictureIntent);\r\n    }\r\n\r\n    private void addBusinessToDatabase() {\r\n        String businessType = spBusinessType.getSelectedItem().toString();\r\n        String businessCity = spBusinessCity.getSelectedItem().toString();\r\n\r\n        String businessName = etBusinessName.getText().toString();\r\n        String businessDetails = etBusinessDetails.getText().toString();\r\n        String businessAddress = etBusinessAddress.getText().toString();\r\n        String businessEmail = etBusinessEmail.getText().toString();\r\n        String businessPhone = etBusinessPhone.getText().toString();\r\n        String businessWebsite = etBusinessWebsite.getText().toString();\r\n\r\n        if (businessName.isEmpty() || businessPhone.isEmpty()) {\r\n            Toast.makeText(this, \"יש למלא שם וטלפון של העסק\", Toast.LENGTH_SHORT).show();\r\n            return;\r\n        }\r\n\r\n        String id = databaseService.generateBusinessId();\r\n\r\n        if (selectedImageUri != null) {\r\n            uploadImageToFirebase(selectedImageUri, id, new OnImageUploadCallback() {\r\n                @Override\r\n                public void onUploadSuccess(String imageUrl) {\r\n                    Business business = new Business();\r\n                    business.setId(id);\r\n                    business.setName(businessName);\r\n                    business.setCategory(businessType);\r\n                    business.setPhone(businessPhone);\r\n                    business.setEmail(businessEmail);\r\n                    business.setStreet(businessAddress);\r\n                    business.setWebsite(businessWebsite);\r\n                    business.setCity(businessCity);\r\n                    business.setDetails(businessDetails);\r\n                    business.setImageUrl(imageUrl);\r\n\r\n                    saveBusinessToDatabase(business);\r\n                }\r\n\r\n                @Override\r\n                public void onUploadFailed(Exception e) {\r\n                    Toast.makeText(AddBusiness.this, \"Failed to upload image\", Toast.LENGTH_SHORT).show();\r\n                }\r\n            });\r\n        } else {\r\n            Business business = new Business();\r\n            business.setId(id);\r\n            business.setName(businessName);\r\n            business.setCategory(businessType);\r\n            business.setPhone(businessPhone);\r\n            business.setEmail(businessEmail);\r\n            business.setStreet(businessAddress);\r\n            business.setWebsite(businessWebsite);\r\n            business.setCity(businessCity);\r\n            business.setDetails(businessDetails);\r\n            business.setImageUrl(null);\r\n\r\n            saveBusinessToDatabase(business);\r\n        }\r\n    }\r\n\r\n    private void saveBusinessToDatabase(Business business) {\r\n        databaseService.createNewBusiness(business, new DatabaseService.DatabaseCallback<Void>() {\r\n            @Override\r\n            public void onCompleted(Void object) {\r\n                Toast.makeText(AddBusiness.this, \"Business added successfully\", Toast.LENGTH_SHORT).show();\r\n                startActivity(new Intent(AddBusiness.this, AfterLogin.class));\r\n                finish();\r\n            }\r\n\r\n            @Override\r\n            public void onFailed(Exception e) {\r\n                Toast.makeText(AddBusiness.this, \"Failed to add business\", Toast.LENGTH_SHORT).show();\r\n                Log.e(TAG, \"Failed to add business\", e);\r\n            }\r\n        });\r\n    }\r\n\r\n    private interface OnImageUploadCallback {\r\n        void onUploadSuccess(String imageUrl);\r\n        void onUploadFailed(Exception e);\r\n    }\r\n\r\n    private void uploadImageToFirebase(Uri imageUri, String businessId, OnImageUploadCallback callback) {\r\n        StorageReference storageRef = FirebaseStorage.getInstance().getReference();\r\n        StorageReference imageRef = storageRef.child(\"business_images/\" + businessId + \".jpg\");\r\n\r\n        imageRef.putFile(imageUri)\r\n                .addOnSuccessListener(taskSnapshot -> imageRef.getDownloadUrl()\r\n                        .addOnSuccessListener(uri -> callback.onUploadSuccess(uri.toString()))\r\n                        .addOnFailureListener(callback::onUploadFailed))\r\n                .addOnFailureListener(callback::onUploadFailed);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/mysignlanguege/screens/AddBusiness.java b/app/src/main/java/com/example/mysignlanguege/screens/AddBusiness.java
+--- a/app/src/main/java/com/example/mysignlanguege/screens/AddBusiness.java	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/java/com/example/mysignlanguege/screens/AddBusiness.java	(date 1748262415781)
+@@ -2,11 +2,14 @@
+ 
+ import android.content.Intent;
+ import android.graphics.Bitmap;
++import android.graphics.BitmapFactory;
+ import android.graphics.Color;
++import android.graphics.drawable.BitmapDrawable;
+ import android.net.Uri;
+ import android.os.Build;
+ import android.os.Bundle;
+ import android.provider.MediaStore;
++import android.util.Base64;
+ import android.util.Log;
+ import android.view.View;
+ import android.view.Window;
+@@ -29,13 +32,12 @@
+ import com.example.mysignlanguege.services.AuthenticationService;
+ import com.example.mysignlanguege.services.DatabaseService;
+ import com.example.mysignlanguege.utils.ImageUtil;
+-import com.google.firebase.storage.FirebaseStorage;
+-import com.google.firebase.storage.StorageReference;
++
++import java.io.ByteArrayOutputStream;
++import java.io.InputStream;
+ 
+ public class AddBusiness extends BaseActivity implements View.OnClickListener {
+ 
+-    private static final String TAG = "AddBusinessActivity";
+-
+     Spinner spBusinessType, spBusinessCity;
+     EditText etBusinessName, etBusinessPhone, etBusinessEmail, etBusinessAddress, etBusinessWebsite, etBusinessDetails;
+     Button btnGallery, btnCamera, btnAddItem;
+@@ -90,7 +92,7 @@
+                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                         Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
+                         imageBusiness.setImageBitmap(bitmap);
+-                        selectedImageUri = null; // אין Uri במקרה של צילום
++                        selectedImageUri = null;
+                     }
+                 });
+ 
+@@ -102,7 +104,7 @@
+ 
+             @Override
+             public void onFailed(Exception e) {
+-                Log.e(TAG, "Failed to get user", e);
++                Log.e("AddBusiness", "Failed to get user", e);
+             }
+         });
+     }
+@@ -132,13 +134,9 @@
+     public void onClick(View v) {
+         if (v.getId() == btnAddItem.getId()) {
+             addBusinessToDatabase();
+-            return;
+-        }
+-        if (v.getId() == btnGallery.getId()) {
++        } else if (v.getId() == btnGallery.getId()) {
+             selectImageFromGallery();
+-            return;
+-        }
+-        if (v.getId() == btnCamera.getId()) {
++        } else if (v.getId() == btnCamera.getId()) {
+             captureImageFromCamera();
+         }
+     }
+@@ -147,7 +145,7 @@
+         Intent intent = new Intent();
+         intent.setType("image/*");
+         intent.setAction(Intent.ACTION_GET_CONTENT);
+-        selectImageLauncher.launch(Intent.createChooser(intent, "Select Picture"));
++        selectImageLauncher.launch(Intent.createChooser(intent, "בחר תמונה"));
+     }
+ 
+     private void captureImageFromCamera() {
+@@ -172,78 +170,73 @@
+         }
+ 
+         String id = databaseService.generateBusinessId();
+-
+-        if (selectedImageUri != null) {
+-            uploadImageToFirebase(selectedImageUri, id, new OnImageUploadCallback() {
+-                @Override
+-                public void onUploadSuccess(String imageUrl) {
+-                    Business business = new Business();
+-                    business.setId(id);
+-                    business.setName(businessName);
+-                    business.setCategory(businessType);
+-                    business.setPhone(businessPhone);
+-                    business.setEmail(businessEmail);
+-                    business.setStreet(businessAddress);
+-                    business.setWebsite(businessWebsite);
+-                    business.setCity(businessCity);
+-                    business.setDetails(businessDetails);
+-                    business.setImageUrl(imageUrl);
++        Business business = new Business();
++        business.setId(id);
++        business.setName(businessName);
++        business.setCategory(businessType);
++        business.setPhone(businessPhone);
++        business.setEmail(businessEmail);
++        business.setStreet(businessAddress);
++        business.setWebsite(businessWebsite);
++        business.setCity(businessCity);
++        business.setDetails(businessDetails);
++
++        String imageBase64 = null;
++
++        if (selectedImageUri != null) {
++            imageBase64 = encodeImageToBase64(selectedImageUri);
++        } else if (imageBusiness.getDrawable() != null) {
++            imageBusiness.setDrawingCacheEnabled(true);
++            imageBusiness.buildDrawingCache();
++            Bitmap bitmap = ((BitmapDrawable) imageBusiness.getDrawable()).getBitmap();
++            imageBase64 = encodeBitmapToBase64(bitmap);
++        }
++
++        business.setImageUrl(imageBase64); // שמור את base64 בתוך imageUrl
+ 
+-                    saveBusinessToDatabase(business);
+-                }
++        saveBusinessToDatabase(business);
++    }
+ 
+-                @Override
+-                public void onUploadFailed(Exception e) {
+-                    Toast.makeText(AddBusiness.this, "Failed to upload image", Toast.LENGTH_SHORT).show();
+-                }
+-            });
+-        } else {
+-            Business business = new Business();
+-            business.setId(id);
+-            business.setName(businessName);
+-            business.setCategory(businessType);
+-            business.setPhone(businessPhone);
+-            business.setEmail(businessEmail);
+-            business.setStreet(businessAddress);
+-            business.setWebsite(businessWebsite);
+-            business.setCity(businessCity);
+-            business.setDetails(businessDetails);
+-            business.setImageUrl(null);
+-
+-            saveBusinessToDatabase(business);
+-        }
+-    }
+-
+     private void saveBusinessToDatabase(Business business) {
+         databaseService.createNewBusiness(business, new DatabaseService.DatabaseCallback<Void>() {
+             @Override
+             public void onCompleted(Void object) {
+-                Toast.makeText(AddBusiness.this, "Business added successfully", Toast.LENGTH_SHORT).show();
++                Toast.makeText(AddBusiness.this, "העסק נוסף בהצלחה!", Toast.LENGTH_SHORT).show();
+                 startActivity(new Intent(AddBusiness.this, AfterLogin.class));
+                 finish();
+             }
+ 
+             @Override
+             public void onFailed(Exception e) {
+-                Toast.makeText(AddBusiness.this, "Failed to add business", Toast.LENGTH_SHORT).show();
+-                Log.e(TAG, "Failed to add business", e);
++                Toast.makeText(AddBusiness.this, "נכשלה הוספת העסק", Toast.LENGTH_SHORT).show();
++                Log.e("AddBusiness", "Failed to add business", e);
+             }
+         });
+     }
+ 
+-    private interface OnImageUploadCallback {
+-        void onUploadSuccess(String imageUrl);
+-        void onUploadFailed(Exception e);
++    private String encodeImageToBase64(Uri imageUri) {
++        try {
++            InputStream inputStream = getContentResolver().openInputStream(imageUri);
++            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
++            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
++            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream);
++            byte[] imageBytes = outputStream.toByteArray();
++            return Base64.encodeToString(imageBytes, Base64.DEFAULT);
++        } catch (Exception e) {
++            e.printStackTrace();
++            return null;
++        }
+     }
+ 
+-    private void uploadImageToFirebase(Uri imageUri, String businessId, OnImageUploadCallback callback) {
+-        StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+-        StorageReference imageRef = storageRef.child("business_images/" + businessId + ".jpg");
+-
+-        imageRef.putFile(imageUri)
+-                .addOnSuccessListener(taskSnapshot -> imageRef.getDownloadUrl()
+-                        .addOnSuccessListener(uri -> callback.onUploadSuccess(uri.toString()))
+-                        .addOnFailureListener(callback::onUploadFailed))
+-                .addOnFailureListener(callback::onUploadFailed);
++    private String encodeBitmapToBase64(Bitmap bitmap) {
++        try {
++            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
++            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream);
++            byte[] imageBytes = outputStream.toByteArray();
++            return Base64.encodeToString(imageBytes, Base64.DEFAULT);
++        } catch (Exception e) {
++            e.printStackTrace();
++            return null;
++        }
+     }
+ }
+Index: app/src/main/java/com/example/mysignlanguege/adapters/BusinessAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mysignlanguege.adapters;\r\n\r\nimport android.content.Context;\r\nimport android.content.Intent;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport java.io.Serializable;\r\nimport android.widget.Button;\r\nimport android.widget.TextView;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.example.mysignlanguege.BusinessDetailsActivity;\r\nimport com.example.mysignlanguege.R;\r\nimport com.example.mysignlanguege.models.Business;\r\n\r\nimport java.util.List;\r\n\r\npublic class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.BusinessViewHolder> {\r\n\r\n    private List<Business> businesses;\r\n    private OnBusinessInteractionListener listener;\r\n    private Context context;\r\n\r\n    public interface OnBusinessInteractionListener {\r\n        void onDeleteBusinessClicked(Business business);\r\n    }\r\n\r\n    public BusinessAdapter(Context context, List<Business> businesses, OnBusinessInteractionListener listener) {\r\n        this.context = context;\r\n        this.businesses = businesses;\r\n        this.listener = listener;\r\n    }\r\n\r\n    @NonNull\r\n    @Override\r\n    public BusinessViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\r\n        View view = LayoutInflater.from(parent.getContext())\r\n                .inflate(R.layout.item_business, parent, false);\r\n        return new BusinessViewHolder(view);\r\n    }\r\n\r\n    @Override\r\n    public void onBindViewHolder(@NonNull BusinessViewHolder holder, int position) {\r\n        Business business = businesses.get(position);\r\n        holder.bind(business);\r\n    }\r\n\r\n    @Override\r\n    public int getItemCount() {\r\n        return businesses.size();\r\n    }\r\n\r\n    public void updateData(List<Business> newBusinesses) {\r\n        this.businesses = newBusinesses;\r\n        notifyDataSetChanged();\r\n    }\r\n\r\n    class BusinessViewHolder extends RecyclerView.ViewHolder {\r\n        private TextView nameTextView;\r\n        private Button deleteBusinessButton;\r\n\r\n        BusinessViewHolder(@NonNull View itemView) {\r\n            super(itemView);\r\n            nameTextView = itemView.findViewById(R.id.tvName);\r\n            deleteBusinessButton = itemView.findViewById(R.id.btnDeleteBusiness);\r\n        }\r\n\r\n        void bind(final Business business) {\r\n            nameTextView.setText(business.getName());\r\n\r\n            // On business name click, pass the whole business object:\r\n            itemView.setOnClickListener(v -> {\r\n                Intent intent = new Intent(context, BusinessDetailsActivity.class);\r\n                intent.putExtra(\"business\", business);\r\n                context.startActivity(intent);\r\n            });\r\n\r\n            deleteBusinessButton.setOnClickListener(v -> {\r\n                if (listener != null) {\r\n                    listener.onDeleteBusinessClicked(business);\r\n                }\r\n            });\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/mysignlanguege/adapters/BusinessAdapter.java b/app/src/main/java/com/example/mysignlanguege/adapters/BusinessAdapter.java
+--- a/app/src/main/java/com/example/mysignlanguege/adapters/BusinessAdapter.java	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/java/com/example/mysignlanguege/adapters/BusinessAdapter.java	(date 1748264592141)
+@@ -2,10 +2,10 @@
+ 
+ import android.content.Context;
+ import android.content.Intent;
++import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+-import java.io.Serializable;
+ import android.widget.Button;
+ import android.widget.TextView;
+ 
+@@ -71,7 +71,8 @@
+         void bind(final Business business) {
+             nameTextView.setText(business.getName());
+ 
+-            // On business name click, pass the whole business object:
++            Log.d("DEBUG_ADAPTER", "ImageUrl length: " + (business.getImageUrl() != null ? business.getImageUrl().length() : "null"));
++
+             itemView.setOnClickListener(v -> {
+                 Intent intent = new Intent(context, BusinessDetailsActivity.class);
+                 intent.putExtra("business", business);
+Index: app/src/main/res/layout/activity_show_business_for_user.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:orientation=\"vertical\"\r\n    android:background=\"#f4f6f9\"\r\n    android:fitsSystemWindows=\"true\">\r\n\r\n    <androidx.appcompat.widget.Toolbar\r\n        android:id=\"@+id/toolbar\"\r\n\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"?attr/actionBarSize\"\r\n        android:background=\"#1A237E\"\r\n        android:elevation=\"4dp\" />\r\n\r\n    <androidx.recyclerview.widget.RecyclerView\r\n        android:id=\"@+id/recyclerView\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"0dp\"\r\n        android:layout_weight=\"1\"/>\r\n\r\n    <Button\r\n        android:id=\"@+id/viewInterestedBtn\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:onClick=\"Intrested\"\r\n        android:backgroundTint=\"#1A237E\"\r\n        android:text=\"View Interested Businesses\"\r\n        android:layout_gravity=\"center\"/>\r\n</LinearLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_show_business_for_user.xml b/app/src/main/res/layout/activity_show_business_for_user.xml
+--- a/app/src/main/res/layout/activity_show_business_for_user.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/layout/activity_show_business_for_user.xml	(date 1748265875201)
+@@ -25,8 +25,8 @@
+         android:id="@+id/viewInterestedBtn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:onClick="Intrested"
++        android:layout_gravity="center"
+         android:backgroundTint="#1A237E"
+-        android:text="View Interested Businesses"
+-        android:layout_gravity="center"/>
++        android:onClick="Intrested"
++        android:text="צפה ברשימת עסקים אהובים" />
+ </LinearLayout>
+Index: app/src/main/java/com/example/mysignlanguege/screens/ShowUsers.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mysignlanguege.screens;\r\n\r\nimport android.graphics.Color;\r\nimport android.os.Build;\r\nimport android.os.Bundle;\r\nimport android.view.Window;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.appcompat.widget.SearchView;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport com.example.mysignlanguege.BaseActivity;\r\nimport com.example.mysignlanguege.R;\r\nimport com.example.mysignlanguege.adapters.UserAdapter;\r\nimport com.example.mysignlanguege.models.User;\r\nimport com.google.firebase.database.DataSnapshot;\r\nimport com.google.firebase.database.DatabaseError;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.google.firebase.database.ValueEventListener;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class ShowUsers extends BaseActivity {\r\n\r\n    private RecyclerView recyclerView;\r\n    private UserAdapter userAdapter;\r\n    private List<User> userList;\r\n    private List<User> filteredList;\r\n    private DatabaseReference databaseReference;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {\r\n            Window window = getWindow();\r\n            window.setStatusBarColor(Color.parseColor(\"#1A237E\"));\r\n        }\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_show_users);\r\n\r\n        // Initialize RecyclerView and list\r\n        recyclerView = findViewById(R.id.recyclerView);\r\n        recyclerView.setLayoutManager(new LinearLayoutManager(this));\r\n\r\n        userList = new ArrayList<>();\r\n        filteredList = new ArrayList<>();\r\n\r\n        // Initialize Firebase Database reference\r\n        databaseReference = FirebaseDatabase.getInstance().getReference(\"Users\");\r\n\r\n        // Set up adapter for RecyclerView\r\n        userAdapter = new UserAdapter(filteredList, this); // Pass context to adapter\r\n        recyclerView.setAdapter(userAdapter);\r\n\r\n        // Fetch data from Firebase\r\n        fetchUsersFromFirebase();\r\n\r\n        // Set up SearchView\r\n        SearchView searchView = findViewById(R.id.searchView);\r\n        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {\r\n            @Override\r\n            public boolean onQueryTextSubmit(String query) {\r\n                return false;\r\n            }\r\n\r\n            @Override\r\n            public boolean onQueryTextChange(String newText) {\r\n                filterUsers(newText);\r\n                return false;\r\n            }\r\n        });\r\n    }\r\n\r\n    private void fetchUsersFromFirebase() {\r\n        databaseReference.addValueEventListener(new ValueEventListener() {\r\n            @Override\r\n            public void onDataChange(DataSnapshot dataSnapshot) {\r\n                userList.clear();\r\n                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {\r\n                    User user = snapshot.getValue(User.class);\r\n                    userList.add(user);\r\n                }\r\n                filteredList.clear();\r\n                filteredList.addAll(userList);\r\n                userAdapter.notifyDataSetChanged();\r\n            }\r\n\r\n            @Override\r\n            public void onCancelled(DatabaseError databaseError) {\r\n                Toast.makeText(ShowUsers.this, \"Failed to load data\", Toast.LENGTH_SHORT).show();\r\n            }\r\n        });\r\n    }\r\n\r\n    private void filterUsers(String query) {\r\n        filteredList.clear();\r\n        if (query.isEmpty()) {\r\n            filteredList.addAll(userList);\r\n        } else {\r\n            for (User user : userList) {\r\n                if (user.getfName().toLowerCase().contains(query.toLowerCase())) {\r\n                    filteredList.add(user);\r\n                }\r\n            }\r\n        }\r\n        userAdapter.notifyDataSetChanged();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/mysignlanguege/screens/ShowUsers.java b/app/src/main/java/com/example/mysignlanguege/screens/ShowUsers.java
+--- a/app/src/main/java/com/example/mysignlanguege/screens/ShowUsers.java	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/java/com/example/mysignlanguege/screens/ShowUsers.java	(date 1748257518383)
+@@ -95,17 +95,23 @@
+         });
+     }
+ 
++
++
+     private void filterUsers(String query) {
+         filteredList.clear();
+         if (query.isEmpty()) {
+             filteredList.addAll(userList);
+         } else {
+             for (User user : userList) {
+-                if (user.getfName().toLowerCase().contains(query.toLowerCase())) {
++                if (user.getfName() != null && user.getfName().toLowerCase().contains(query.toLowerCase())) {
+                     filteredList.add(user);
+                 }
+             }
+         }
+         userAdapter.notifyDataSetChanged();
++
++        if (filteredList.isEmpty()) {
++            Toast.makeText(this, "לא נמצאו תוצאות", Toast.LENGTH_SHORT).show();
++        }
+     }
+ }
+Index: app/src/main/res/layout/item_business_user.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"250dp\"\r\n    android:orientation=\"horizontal\"\r\n    android:background=\"#f4f6f9\"\r\n    android:padding=\"16dp\">\r\n\r\n    <!-- Vertical container for text information (on the left side) -->\r\n    <LinearLayout\r\n        android:layout_width=\"218dp\"\r\n        android:layout_height=\"233dp\"\r\n        android:orientation=\"vertical\">\r\n\r\n        <!-- Business Name -->\r\n        <TextView\r\n            android:id=\"@+id/tvName\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Business Name\"\r\n            android:textSize=\"18sp\"\r\n            android:textStyle=\"bold\" />\r\n\r\n        <!-- Business Category -->\r\n        <TextView\r\n            android:id=\"@+id/tvCategory\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Category\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business City -->\r\n        <TextView\r\n            android:id=\"@+id/tvCity\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"City\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business Phone -->\r\n        <TextView\r\n            android:id=\"@+id/tvPhone\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Phone\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business Email -->\r\n        <TextView\r\n            android:id=\"@+id/tvEmail\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:autoLink=\"email\"\r\n            android:text=\"Email\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business Street -->\r\n        <TextView\r\n            android:id=\"@+id/tvStreet\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Street\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business Website -->\r\n        <TextView\r\n            android:id=\"@+id/tvWebsite\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:autoLink=\"web\"\r\n            android:text=\"Website\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Business Details -->\r\n        <TextView\r\n            android:id=\"@+id/tvDetails\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Details\"\r\n            android:textColor=\"@android:color/darker_gray\"\r\n            android:textSize=\"14sp\" />\r\n\r\n        <!-- Add to Interested Button -->\r\n        <Button\r\n            android:id=\"@+id/btnAddToInterested\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"8dp\"\r\n            android:backgroundTint=\"#EADD6F\"\r\n            android:textColor=\"@android:color/black\"\r\n            android:text=\"Add to Interested\" />\r\n\r\n        <!-- Delete Business Button -->\r\n        <Button\r\n            android:id=\"@+id/btnDeleteBusiness\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"8dp\"\r\n            android:backgroundTint=\"#FF4444\"\r\n            android:textColor=\"@android:color/white\"\r\n            android:text=\"Delete Business\" />\r\n\r\n    </LinearLayout>\r\n\r\n    <!-- Business Image -->\r\n    <ImageView\r\n        android:id=\"@+id/ivBusinessImage\"\r\n        android:layout_width=\"175dp\"\r\n        android:layout_height=\"157dp\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:contentDescription=\"Business Image\" />\r\n</LinearLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_business_user.xml b/app/src/main/res/layout/item_business_user.xml
+--- a/app/src/main/res/layout/item_business_user.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/layout/item_business_user.xml	(date 1748265875194)
+@@ -94,7 +94,7 @@
+             android:layout_marginTop="8dp"
+             android:backgroundTint="#EADD6F"
+             android:textColor="@android:color/black"
+-            android:text="Add to Interested" />
++            android:text="הוספת עסק אהוב" />
+ 
+         <!-- Delete Business Button -->
+         <Button
+Index: app/src/main/res/layout/activity_reset_password.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/main\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#f4f6f9\"\r\n    tools:context=\".ResetPassword\">\r\n\r\n    <androidx.appcompat.widget.Toolbar\r\n        android:id=\"@+id/toolbar\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"?attr/actionBarSize\"\r\n        android:layout_marginBottom=\"48dp\"\r\n        android:background=\"#1A237E\"\r\n        android:elevation=\"4dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        tools:ignore=\"MissingConstraints\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/etEmailReset\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginBottom=\"24dp\"\r\n\r\n        android:hint=\"Enter your email\"\r\n        android:inputType=\"textEmailAddress\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/btnSendCode\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/toolbar\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/btnSendCode\"\r\n        android:layout_width=\"0dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginBottom=\"493dp\"\r\n        android:text=\"Send Reset Code\"\r\n        android:backgroundTint=\"#1A237E\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/etEmailReset\" />\r\n</androidx.constraintlayout.widget.ConstraintLayout>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_reset_password.xml b/app/src/main/res/layout/activity_reset_password.xml
+--- a/app/src/main/res/layout/activity_reset_password.xml	(revision f46d798180d41e68af836b0e547ed38949b3d8e2)
++++ b/app/src/main/res/layout/activity_reset_password.xml	(date 1748279344495)
+@@ -6,42 +6,48 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:background="#f4f6f9"
+-    tools:context=".ResetPassword">
++    tools:context=".screens.ResetPassword">
+ 
+     <androidx.appcompat.widget.Toolbar
+         android:id="@+id/toolbar"
+         android:layout_width="0dp"
+         android:layout_height="?attr/actionBarSize"
+-        android:layout_marginBottom="48dp"
+         android:background="#1A237E"
+         android:elevation="4dp"
+-        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent"
+-        tools:ignore="MissingConstraints" />
++        app:layout_constraintEnd_toEndOf="parent" />
+ 
+     <EditText
+         android:id="@+id/etEmailReset"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+-        android:layout_marginBottom="24dp"
+-
+-        android:hint="Enter your email"
++        android:layout_marginStart="32dp"
++        android:layout_marginEnd="32dp"
++        android:layout_marginBottom="16dp"
++        android:hint="הכנס את האימייל שלך"
+         android:inputType="textEmailAddress"
++        android:background="@drawable/rounded_edittext"
++        android:padding="16dp"
++        android:textColor="#000000"
++        android:textColorHint="#757575"
++        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+         app:layout_constraintBottom_toTopOf="@+id/btnSendCode"
+-        app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
++        app:layout_constraintEnd_toEndOf="parent" />
+ 
+     <Button
+         android:id="@+id/btnSendCode"
+-        android:layout_width="0dp"
++        android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:layout_marginBottom="493dp"
+-        android:text="Send Reset Code"
++        android:text="שלח איפוס סיסמא"
+         android:backgroundTint="#1A237E"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
++        android:textColor="#FFFFFF"
++        android:paddingStart="32dp"
++        android:paddingEnd="32dp"
++        app:layout_constraintTop_toBottomOf="@+id/etEmailReset"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/etEmailReset" />
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintVertical_bias="0.4" />
+ </androidx.constraintlayout.widget.ConstraintLayout>
