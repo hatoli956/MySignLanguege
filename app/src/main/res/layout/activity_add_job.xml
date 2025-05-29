@@ -17,7 +17,7 @@
         android:background="#1A237E"
         android:elevation="4dp"
         android:title="הוספת משרה"
-        android:titleTextColor="@android:color/white"
+        android:titleTextColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -124,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="שמור משרה"
+                android:backgroundTint="#1A237E"
                 android:layout_marginTop="16dp" />
 
         </LinearLayout>

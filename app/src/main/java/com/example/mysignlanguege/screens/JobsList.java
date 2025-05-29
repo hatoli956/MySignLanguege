@@ -82,6 +82,8 @@ public class JobsList extends BaseActivity {
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             Job job = ds.getValue(Job.class);
                             if (job != null) {
+                                // כאן אתה מגדיר את ה-ID שנלקח מהמפתח ב-Firebase
+                                job.setId(ds.getKey());
                                 jobList.add(job);
                             }
                         }
@@ -94,4 +96,5 @@ public class JobsList extends BaseActivity {
                     }
                 });
     }
+
 }

@@ -93,7 +93,6 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
             holder.businessImageView.setVisibility(View.GONE);
         }
 
-        // כפתור הוספה או הסרה (אם קיים בפריסה)
         if (holder.addToInterestedButton != null) {
             if (isInterestedView) {
                 holder.addToInterestedButton.setText("Remove");
@@ -114,8 +113,11 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
             }
         }
 
-        // לחיצה על פריט
-        holder.itemView.setOnClickListener(v -> {
+        // ביטול לחיצה על כל הפריט כדי שהלחיצה תהיה רק על הכפתור
+        holder.itemView.setOnClickListener(null);
+
+        // מאזין ללחיצה על כפתור "התבונן במשרות"
+        holder.btnViewJobs.setOnClickListener(v -> {
             if (clickListener != null) {
                 clickListener.onBusinessClicked(finalBusiness);
             }
@@ -158,6 +160,7 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
         TextView nameTextView, categoryTextView, cityTextView, phoneTextView, emailTextView;
         TextView streetTextView, websiteTextView, detailsTextView;
         Button addToInterestedButton;
+        Button btnViewJobs;
         ImageView businessImageView;
 
         public BusinessViewHolder(View itemView) {
@@ -172,7 +175,8 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
             websiteTextView = itemView.findViewById(R.id.tvWebsite);
             detailsTextView = itemView.findViewById(R.id.tvDetails);
             businessImageView = itemView.findViewById(R.id.ivBusinessImage);
-            addToInterestedButton = itemView.findViewById(R.id.btnAddToInterested); // אם אין אותו בפריסה, אפשר להתעלם
+            addToInterestedButton = itemView.findViewById(R.id.btnAddToInterested); // אם הכפתור קיים בפריסה
+            btnViewJobs = itemView.findViewById(R.id.btnViewJobs);
         }
     }
 }

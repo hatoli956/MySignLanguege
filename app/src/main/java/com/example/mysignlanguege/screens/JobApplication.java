@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mysignlanguege.BaseActivity;
 import com.example.mysignlanguege.R;
 import com.example.mysignlanguege.adapters.JobAdapter;
+import com.example.mysignlanguege.adapters.JobApplicationAdapter;
 import com.example.mysignlanguege.models.Business;
 import com.example.mysignlanguege.models.Job;
 import com.example.mysignlanguege.services.DatabaseService;
@@ -23,7 +24,7 @@ import java.util.List;
 public class JobApplication extends BaseActivity {
 
     private RecyclerView recyclerView;
-    private JobAdapter adapter;
+    private JobApplicationAdapter adapter;
     private List<Job> jobList = new ArrayList<>();
     private DatabaseService databaseService = DatabaseService.getInstance();
     private Business selectedBusiness;
@@ -39,7 +40,7 @@ public class JobApplication extends BaseActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new JobAdapter(this, jobList, null); // null כי אין צורך במחיקה כאן
+        adapter = new JobApplicationAdapter(this, jobList, null); // null כי אין צורך במחיקה כאן
         recyclerView.setAdapter(adapter);
 
         selectedBusiness = (Business) getIntent().getSerializableExtra("business");
