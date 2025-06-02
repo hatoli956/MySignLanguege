@@ -206,7 +206,7 @@ public class AddBusiness extends BaseActivity implements View.OnClickListener {
             @Override
             public void onCompleted(Void object) {
                 Toast.makeText(AddBusiness.this, "העסק נוסף בהצלחה!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(AddBusiness.this, AfterLogin.class));
+                startActivity(new Intent(AddBusiness.this, EmployerPage.class));
                 finish();
             }
 

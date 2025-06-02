@@ -7,7 +7,6 @@ import android.view.Window;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,6 +45,7 @@ public class JobsList extends BaseActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // ⬅ קבלת האובייקט המלא של העסק
         selectedBusiness = (Business) getIntent().getSerializableExtra("business");
         if (selectedBusiness == null) {
             Toast.makeText(this, "שגיאה בטעינת העסק", Toast.LENGTH_SHORT).show();
@@ -53,7 +53,6 @@ public class JobsList extends BaseActivity {
             return;
         }
 
-        // יצירת המתאם עם אפשרות מחיקה
         jobAdapter = new JobAdapter(this, jobList, job -> {
             FirebaseDatabase.getInstance().getReference("Jobs")
                     .child(job.getId())
@@ -82,7 +81,6 @@ public class JobsList extends BaseActivity {
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             Job job = ds.getValue(Job.class);
                             if (job != null) {
-                                // כאן אתה מגדיר את ה-ID שנלקח מהמפתח ב-Firebase
                                 job.setId(ds.getKey());
                                 jobList.add(job);
                             }
@@ -96,5 +94,4 @@ public class JobsList extends BaseActivity {
                     }
                 });
     }
-
 }

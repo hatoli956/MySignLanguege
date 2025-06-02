@@ -14,7 +14,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mysignlanguege.BaseActivity;
 import com.example.mysignlanguege.R;
@@ -44,6 +43,7 @@ public class AddJob extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_job);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(Color.parseColor("#1A237E"));
@@ -56,15 +56,40 @@ public class AddJob extends BaseActivity {
         inputEmployerName = findViewById(R.id.input_employer_name);
         btnSaveJob = findViewById(R.id.btn_save_job);
 
+        loadEmployerName();
         loadUserBusinesses();
 
         btnSaveJob.setOnClickListener(v -> saveJob());
     }
 
+    private void loadEmployerName() {
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String fName = snapshot.child("fName").getValue(String.class);
+                    String lName = snapshot.child("lName").getValue(String.class);
+                    String fullName = (fName != null ? fName : "") + " " + (lName != null ? lName : "");
+
+                    inputEmployerName.setText(fullName.trim());
+                    inputEmployerName.setEnabled(false);
+                    inputEmployerName.setFocusable(false);
+                    inputEmployerName.setClickable(false);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AddJob.this, "שגיאה בטעינת שם המשתמש", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void loadUserBusinesses() {
         String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Toast.makeText(this, "UID מחובר: " + currentUserId, Toast.LENGTH_LONG).show();
-
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("businesss");
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -75,7 +100,6 @@ public class AddJob extends BaseActivity {
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     String ownerId = ds.child("ownerId").getValue(String.class);
-                    Toast.makeText(AddJob.this, "ownerId שנמצא: " + ownerId, Toast.LENGTH_SHORT).show();
 
                     if (ownerId != null && ownerId.trim().equals(currentUserId.trim())) {
                         Business business = ds.getValue(Business.class);
@@ -85,8 +109,6 @@ public class AddJob extends BaseActivity {
                         }
                     }
                 }
-
-                Toast.makeText(AddJob.this, "מספר עסקים: " + businessList.size(), Toast.LENGTH_LONG).show();
 
                 if (businessList.isEmpty()) return;
 

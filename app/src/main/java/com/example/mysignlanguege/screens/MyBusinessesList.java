@@ -50,7 +50,7 @@ public  class MyBusinessesList extends BaseActivity implements BusinessAdapter.O
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         businessList = new ArrayList<>();
-        businessAdapter = new BusinessAdapter(this, businessList, this);
+        businessAdapter = new BusinessAdapter(this, businessList, this, R.layout.item_business);
         recyclerView.setAdapter(businessAdapter);
     }
 

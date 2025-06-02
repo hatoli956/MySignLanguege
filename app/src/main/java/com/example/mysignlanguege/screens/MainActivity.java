@@ -77,6 +77,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     }
 
+
+    public void goShowJobsForEmployer(View view) {
+        Intent intent = new Intent(this, JobsList.class);
+        startActivity(intent);
+    }
+
+
     @Override
     protected void onResume() {
         super.onResume();

@@ -1,37 +1,116 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="12dp"
-    android:background="@android:color/white"
-    android:layout_marginBottom="8dp"
-    android:elevation="2dp"
+    android:background="#f4f6f9"
+    android:padding="16dp"
     android:gravity="center_vertical">
 
+    <!-- טקסטים -->
+    <LinearLayout
+        android:layout_width="224dp"
+        android:layout_height="229dp"
+        android:layout_marginEnd="12dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="שם העסק"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <!-- שם העסק -->
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:text="Business Name"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#000000" />
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="קטגוריה"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
 
-    <!-- כפתור מחיקה -->
-    <Button
-        android:id="@+id/btnDeleteBusiness"
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="עיר"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="טלפון"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="email"
+            android:text="אימייל"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvStreet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="רחוב"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvWebsite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:text="אתר"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="פרטים נוספים"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- צד ימין: תמונה וכפתורים -->
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="מחק"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#D32F2F"
-        android:textSize="12sp" />
+        android:layout_height="234dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <!-- תמונת העסק -->
+        <ImageView
+            android:id="@+id/ivBusinessImage"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="תמונת עסק"
+            android:scaleType="centerCrop" />
 
+        <Button
+            android:id="@+id/btnViewJobs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:backgroundTint="#1A237E"
+            android:text="התבונן במשרות"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnDeleteBusiness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#B71C1C"
+            android:text="מחק"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 </LinearLayout>

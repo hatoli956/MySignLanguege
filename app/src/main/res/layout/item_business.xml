@@ -20,7 +20,9 @@
         android:text="Business Name"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <!-- כפתור מחיקה -->
     <Button
