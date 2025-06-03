@@ -107,7 +107,26 @@
         android:textColor="#FFFFFF"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/btnGoBusinessList"
+        app:layout_constraintTop_toBottomOf="@id/btnGoBusinessList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- New Button: לצפייה במשרות שהגשתי -->
+    <Button
+        android:id="@+id/btnGoUserAppliedJobs"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#1A237E"
+        android:elevation="6dp"
+        android:onClick="goToUserAppliedJobs"
+        android:text="משרות שהגשתי"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/btnGoPersonalArea"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

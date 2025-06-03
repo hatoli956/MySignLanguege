@@ -31,7 +31,6 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
     private OnBusinessClickListener clickListener;
     private boolean isInterestedView;
 
-    // ממשקים
     public interface OnBusinessInteractionListener {
         void onAddToInterestedClicked(Business business);
     }
@@ -44,7 +43,6 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
         void onBusinessClicked(Business business);
     }
 
-    // Setters
     public void setOnBusinessInteractionListener(OnBusinessInteractionListener listener) {
         this.interactionListener = listener;
     }
@@ -57,7 +55,6 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
         this.clickListener = listener;
     }
 
-    // קונסטרקטור מעודכן עם layoutId
     public BusinessUserAdapter(List<Business> businessList, Context context, int layoutId) {
         this.businessList = businessList;
         this.context = context;
@@ -113,15 +110,16 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
             }
         }
 
-        // ביטול לחיצה על כל הפריט כדי שהלחיצה תהיה רק על הכפתור
+        // Disable item click to avoid confusion, only button clicks are handled
         holder.itemView.setOnClickListener(null);
 
-        // מאזין ללחיצה על כפתור "התבונן במשרות"
-        holder.btnViewJobs.setOnClickListener(v -> {
-            if (clickListener != null) {
-                clickListener.onBusinessClicked(finalBusiness);
-            }
-        });
+        if (holder.btnViewJobs != null) {
+            holder.btnViewJobs.setOnClickListener(v -> {
+                if (clickListener != null) {
+                    clickListener.onBusinessClicked(finalBusiness);
+                }
+            });
+        }
     }
 
     @Override
@@ -175,7 +173,7 @@ public class BusinessUserAdapter extends RecyclerView.Adapter<BusinessUserAdapte
             websiteTextView = itemView.findViewById(R.id.tvWebsite);
             detailsTextView = itemView.findViewById(R.id.tvDetails);
             businessImageView = itemView.findViewById(R.id.ivBusinessImage);
-            addToInterestedButton = itemView.findViewById(R.id.btnAddToInterested); // אם הכפתור קיים בפריסה
+            addToInterestedButton = itemView.findViewById(R.id.btnAddToInterested);
             btnViewJobs = itemView.findViewById(R.id.btnViewJobs);
         }
     }

@@ -74,6 +74,35 @@ public class DatabaseService {
             }
         });
     }
+
+    public void getAppliedJobsForUser(String userId, DatabaseCallback<List<Job>> callback) {
+        DatabaseReference appliedJobsRef = FirebaseDatabase.getInstance()
+                .getReference("Users/" + userId + "/appliedJobs");
+
+        appliedJobsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Job> jobs = new ArrayList<>();
+                for (DataSnapshot jobSnap : snapshot.getChildren()) {
+                    Job job = jobSnap.getValue(Job.class);
+                    if (job != null) {
+                        jobs.add(job);
+                    }
+                }
+                callback.onCompleted(jobs);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                callback.onFailed(error.toException());
+            }
+        });
+    }
+    public void removeAppliedJobForUser(String userId, String jobId, DatabaseCallback<Void> callback) {
+        String path = "Users/" + userId + "/appliedJobs/" + jobId;
+        deleteData(path, callback);
+    }
+
     public void getBusinessById(String businessId, DatabaseCallback<Business> callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("businesses")

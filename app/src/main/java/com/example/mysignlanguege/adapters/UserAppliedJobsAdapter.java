@@ -16,41 +16,41 @@ import com.example.mysignlanguege.models.Job;
 
 import java.util.List;
 
-public class JobApplicationAdapter extends RecyclerView.Adapter<JobApplicationAdapter.JobViewHolder> {
+public class UserAppliedJobsAdapter extends RecyclerView.Adapter<UserAppliedJobsAdapter.AppliedJobViewHolder> {
 
     private Context context;
     private List<Job> jobList;
-    private OnJobApplyListener applyListener;
+    private OnJobRemoveListener removeListener;
 
-    public JobApplicationAdapter(Context context, List<Job> jobList, OnJobApplyListener applyListener) {
+    public UserAppliedJobsAdapter(Context context, List<Job> jobList, OnJobRemoveListener removeListener) {
         this.context = context;
         this.jobList = jobList;
-        this.applyListener = applyListener;
+        this.removeListener = removeListener;
     }
 
     @NonNull
     @Override
-    public JobViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AppliedJobViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_job_application, parent, false);
-        return new JobViewHolder(view);
+        return new AppliedJobViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull JobViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AppliedJobViewHolder holder, int position) {
         Job job = jobList.get(position);
         holder.tvTitle.setText(job.getJobTitle());
         holder.tvSalary.setText("שכר: " + job.getSalary());
         holder.tvEmail.setText("אימייל: " + job.getEmail());
         holder.tvEmployerName.setText("מעסיק: " + job.getEmployerName());
 
-        // **Added: Notify listener when user clicks "apply" button**
+        // Change apply button to remove button (icon and action)
+        holder.btnApply.setImageResource(android.R.drawable.ic_menu_delete);
+        holder.btnApply.setContentDescription("הסר משרה");
         holder.btnApply.setOnClickListener(v -> {
-            if (applyListener != null) {
-                applyListener.onApplyJob(job);
+            if (removeListener != null) {
+                removeListener.onRemoveJob(job, position);
             }
         });
-
-        // --- Removed the old email intent here to handle it in activity ---
     }
 
     @Override
@@ -58,15 +58,15 @@ public class JobApplicationAdapter extends RecyclerView.Adapter<JobApplicationAd
         return jobList.size();
     }
 
-    public interface OnJobApplyListener {
-        void onApplyJob(Job job);
+    public interface OnJobRemoveListener {
+        void onRemoveJob(Job job, int position);
     }
 
-    public static class JobViewHolder extends RecyclerView.ViewHolder {
+    public static class AppliedJobViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvSalary, tvEmail, tvEmployerName;
         ImageButton btnApply;
 
-        public JobViewHolder(@NonNull View itemView) {
+        public AppliedJobViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvSalary = itemView.findViewById(R.id.tvSalary);

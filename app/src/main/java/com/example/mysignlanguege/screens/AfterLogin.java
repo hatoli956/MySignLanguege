@@ -74,6 +74,11 @@ public class AfterLogin extends BaseActivity {
         startActivity(go);
     }
 
+    public void goToUserAppliedJobs(View view) {
+        Intent intent = new Intent(this, UserAppliedJobs.class);
+        startActivity(intent);
+    }
+
     public void goIntrested(View view) {
         checkAuthenticationBeforeAction();
         Intent go = new Intent(getApplicationContext(), InterestedBusinessesActivity.class);
