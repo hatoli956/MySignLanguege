@@ -8,9 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -24,13 +25,15 @@ import com.example.mysignlanguege.models.User;
 import com.example.mysignlanguege.services.AuthenticationService;
 import com.example.mysignlanguege.services.DatabaseService;
 import com.example.mysignlanguege.utils.SharedPreferencesUtil;
+import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 
-public class Register extends BaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class Register extends BaseActivity implements View.OnClickListener {
 
     EditText etFName, etLName, etPhone, etEmail, etPassword;
     String fName, lName, phone, email, password, city;
     Button btnReg;
-    Spinner spCity;
+    MaterialAutoCompleteTextView spCity;
+    ImageButton btnGoBack;
 
     private AuthenticationService authenticationService;
     private DatabaseService databaseService;
@@ -43,11 +46,14 @@ public class Register extends BaseActivity implements View.OnClickListener, Adap
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_register);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        btnGoBack = findViewById(R.id.btnGoBack);
+        btnGoBack.setOnClickListener(v -> onBackPressed());
 
         initViews();
         authenticationService = AuthenticationService.getInstance();
@@ -63,18 +69,24 @@ public class Register extends BaseActivity implements View.OnClickListener, Adap
         etFName = findViewById(R.id.etfName);
         etLName = findViewById(R.id.etlName);
         etPhone = findViewById(R.id.etPhone);
-        spCity = findViewById(R.id.SpCity);
+        spCity = findViewById(R.id.spCity);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
 
-        btnReg = findViewById(R.id.btnReg);
+        // Set up city dropdown
+        String[] cities = {"בחר עיר", "תל אביב", "ירושלים", "חיפה", "ראשון לציון", "פתח תקווה", "אשדוד", "נתניה", "באר שבע", "חולון", "רמת גן"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, cities);
+        spCity.setAdapter(adapter);
+
+        btnReg = findViewById(R.id.btnRegister);
         btnReg.setOnClickListener(this);
-        spCity.setOnItemSelectedListener(this);
     }
+
     public void GoBack(View view) {
         finish();
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
+
     @Override
     public void onClick(View v) {
         fName = etFName.getText().toString().trim();
@@ -82,7 +94,7 @@ public class Register extends BaseActivity implements View.OnClickListener, Adap
         phone = etPhone.getText().toString().trim();
         email = etEmail.getText().toString().trim();
         password = etPassword.getText().toString();
-        city = spCity.getSelectedItem().toString();
+        city = spCity.getText().toString();
 
         boolean isValid = true;
 
@@ -112,10 +124,9 @@ public class Register extends BaseActivity implements View.OnClickListener, Adap
         } else if (password.length() > 20) {
             etPassword.setError("הסיסמה ארוכה מדי (מקסימום 20 תווים)");
             isValid = false;
-
         }
 
-        if (spCity.getSelectedItemPosition() == 0 || city.equals("בחר עיר")) {
+        if (city.isEmpty() || city.equals("בחר עיר")) {
             Toast.makeText(this, "אנא בחר עיר מהרשימה", Toast.LENGTH_SHORT).show();
             isValid = false;
         }
@@ -123,15 +134,6 @@ public class Register extends BaseActivity implements View.OnClickListener, Adap
         if (isValid) {
             registerUser(email, password, fName, lName, phone);
         }
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        city = (String) adapterView.getItemAtPosition(i);
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
     private void registerUser(String email, String password, String fName, String lName, String phone) {

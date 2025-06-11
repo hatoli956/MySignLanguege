@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -55,6 +56,10 @@ public class ShowBusinessForUser extends BaseActivity implements BusinessUserAda
             finish();
             return;
         }
+
+
+        Button btnGoBack = findViewById(R.id.btnGoBack);
+        btnGoBack.setOnClickListener(v -> onBackPressed());
 
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recyclerView);

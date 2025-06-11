@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.mysignlanguege.BaseActivity;
@@ -24,6 +25,7 @@ public class Login extends BaseActivity {
 
     private EditText etEmail, etPassword;
     private Button btnLogin, btnForgotPassword;
+    private ImageButton btnGoBack;
 
     private AuthenticationService authenticationService;
     private DatabaseService databaseService;
@@ -40,6 +42,13 @@ public class Login extends BaseActivity {
 
         initViews();
 
+        btnGoBack = findViewById(R.id.btnGoBack);
+
+        btnGoBack.setOnClickListener(v -> {
+            onBackPressed();
+        });
+
+
         authenticationService = AuthenticationService.getInstance();
         databaseService = DatabaseService.getInstance();
 
@@ -50,8 +59,8 @@ public class Login extends BaseActivity {
     }
 
     private void initViews() {
-        etEmail = findViewById(R.id.etEmailLogin);
-        etPassword = findViewById(R.id.etPasswordLogin);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnForgotPassword = findViewById(R.id.btnForgotPassword);
 
@@ -127,6 +136,8 @@ public class Login extends BaseActivity {
                 });
             }
 
+
+
             @Override
             public void onFailed(Exception e) {
                 Log.e(TAG, "התחברות נכשלה", e);
@@ -134,5 +145,7 @@ public class Login extends BaseActivity {
                 etPassword.setError("נסה שוב");
                 etPassword.requestFocus();
             }
+
+
         });
     }}

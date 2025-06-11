@@ -45,11 +45,14 @@ public class AfterLogin extends BaseActivity {
             return;
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        View mainView = findViewById(R.id.main);
+        if (mainView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                return insets;
+            });
+        }
     }
 
     private void checkAuthenticationBeforeAction() {
@@ -68,7 +71,7 @@ public class AfterLogin extends BaseActivity {
     }
 
 
-    public void goShowBuisness(View view) {
+    public void GoAllBusinessForUsers(View view) {
         checkAuthenticationBeforeAction();
         Intent go = new Intent(getApplicationContext(), ShowBusinessForUser.class);
         startActivity(go);

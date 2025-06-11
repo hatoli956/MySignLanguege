@@ -1,120 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
 
-    <!-- Main content -->
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <!-- AppBar + Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:elevation="4dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            app:titleTextColor="@color/white"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        >
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true"
+        android:overScrollMode="never">
 
-        <!-- AppBar + Toolbar -->
-        <com.google.android.material.appbar.AppBarLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="#1A237E"
-                app:titleTextColor="@color/white"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <!-- Scrollable content below the Toolbar -->
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
             android:padding="24dp">
 
+            <!-- App Title -->
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="עסקים של מילואימניקים"
+                android:textColor="@color/primary"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:elevation="2dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <!-- Decorative Line -->
+            <View
+                android:layout_width="160dp"
+                android:layout_height="4dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/divider_gradient" />
+
+            <!-- Logo Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_marginBottom="40dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"
+                app:strokeWidth="0dp">
+
+                <ImageView
+                    android:id="@+id/logoImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/logo"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="App Logo" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Buttons Container -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center">
+                android:spacing="16dp">
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="עסקים של מילואימניקים"
-                    android:textColor="#1A237E"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="sans-serif-medium" />
-
-                <View
-                    android:layout_width="140dp"
-                    android:layout_height="5dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="#0724FF" />
-
-                <ImageView
-                    android:id="@+id/logoImage"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:src="@drawable/logo"
-                    android:contentDescription="App Logo"
-                    android:layout_marginBottom="32dp" />
-
-                <!-- Buttons -->
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/button"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_marginBottom="16dp"
-                    android:backgroundTint="#1A237E"
                     android:text="כניסת משתמש"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:elevation="4dp"
+                    app:backgroundTint="@color/primary"
                     android:fontFamily="sans-serif-medium" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/button2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_marginBottom="16dp"
-                    android:backgroundTint="#1A237E"
                     android:text="הרשמה"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:elevation="4dp"
+                    app:backgroundTint="@color/primary"
                     android:fontFamily="sans-serif-medium" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonAbout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#1A237E"
+                    android:layout_height="60dp"
                     android:text="אודות"
                     android:onClick="GoAbout"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    android:fontFamily="sans-serif" />
+                    app:cornerRadius="12dp"
+                    app:elevation="4dp"
+                    app:backgroundTint="@color/primary"
+                    android:fontFamily="sans-serif-medium" />
 
             </LinearLayout>
-        </ScrollView>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <!-- Navigation Drawer -->
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#FFFFFF"
-        app:menu="@menu/menu_main" />
-
-</androidx.drawerlayout.widget.DrawerLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -140,9 +140,5 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
         }
     }
 
-    public void openBusinessDetails(Business business) {
-        Intent intent = new Intent(context, BusinessDetailsActivity.class);
-        intent.putExtra("business", business);
-        context.startActivity(intent);
-    }
+
 }

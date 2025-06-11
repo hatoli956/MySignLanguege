@@ -26,36 +26,25 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private ActionBarDrawerToggle toggle;
     private NavigationView navigationView;
     private Toolbar toolbar;
-    private Button loginButton, registerButton, adminButton;
-
-
+    private Button loginButton, registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        setUserLoggedIn(false);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(Color.parseColor("#1A237E"));
         }
+        setUserLoggedIn(false);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         // Initialize views
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.navigation_view);
         toolbar = findViewById(R.id.toolbar);
         loginButton = findViewById(R.id.button);
         registerButton = findViewById(R.id.button2);
 
-
-        // Setup toolbar and drawer
+        // Setup toolbar
         setSupportActionBar(toolbar);
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
 
         // ✅ Hide login button if already logged in
         if (checkUserLoginStatus()) {
@@ -72,18 +61,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         registerButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, Register.class));
         });
-
-
-
     }
-
-
 
     public void goShowJobsForEmployer(View view) {
         Intent intent = new Intent(this, JobsList.class);
         startActivity(intent);
     }
-
 
     @Override
     protected void onResume() {
@@ -116,10 +99,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        super.onBackPressed();
     }
 }

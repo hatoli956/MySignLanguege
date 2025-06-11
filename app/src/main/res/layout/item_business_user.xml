@@ -9,7 +9,7 @@
     <!-- Vertical container for text information (on the left side) -->
     <LinearLayout
         android:layout_width="218dp"
-        android:layout_height="233dp"
+        android:layout_height="250dp"
         android:orientation="vertical">
 
         <!-- Business Name -->
@@ -93,8 +93,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="#EADD6F"
-            android:textColor="@android:color/black"
-            android:text="הוספת עסק אהוב" />
+            android:text="הוספת עסק אהוב"
+            android:textColor="@android:color/black" />
 
         <!-- Delete Business Button -->
         <Button
@@ -103,8 +103,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="#FF4444"
-            android:textColor="@android:color/white"
-            android:text="Delete Business" />
+            android:text="Delete Business"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

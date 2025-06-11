@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/background_light">
 
     <!-- Title -->
     <TextView
@@ -12,8 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="עסקים למילואימניקים"
-        android:textColor="#1A237E"
-        android:textSize="24sp"
+        android:textColor="@color/primary"
+        android:textSize="28sp"
         android:textStyle="bold"
         android:layout_marginTop="160dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,10 +23,10 @@
     <!-- Blue underline -->
     <View
         android:id="@+id/view2"
-        android:layout_width="140dp"
-        android:layout_height="5dp"
+        android:layout_width="160dp"
+        android:layout_height="4dp"
         android:layout_marginTop="8dp"
-        android:background="#0724FF"
+        android:background="@color/primary"
         app:layout_constraintTop_toBottomOf="@id/splashTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -34,9 +34,9 @@
     <!-- Logo -->
     <ImageView
         android:id="@+id/splashLogo"
-        android:layout_width="215dp"
-        android:layout_height="264dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="200dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="32dp"
         android:contentDescription="Logo"
         android:src="@drawable/logo"
         app:layout_constraintTop_toBottomOf="@id/view2"
@@ -51,7 +51,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:indeterminate="true"
+        android:indeterminateTint="@color/primary"
         app:layout_constraintTop_toBottomOf="@id/splashLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Made by text -->
+    <TextView
+        android:id="@+id/madeByText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Made by Nadav Roknian"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
