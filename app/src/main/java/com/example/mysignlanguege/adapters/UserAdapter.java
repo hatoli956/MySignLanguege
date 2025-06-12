@@ -74,7 +74,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         public UserViewHolder(View itemView) {
             super(itemView);
             fName = itemView.findViewById(R.id.fName);
-            btnDelete = itemView.findViewById(R.id.btnDeleteJob);
+            btnDelete = itemView.findViewById(R.id.btnDelete);
         }
     }
 }
