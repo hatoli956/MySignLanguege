@@ -21,9 +21,9 @@ import com.example.mysignlanguege.utils.SharedPreferencesUtil;
 
 public class UpdateUserDetails extends BaseActivity implements View.OnClickListener {
 
-    EditText etfName, etlName, etPhone, etEmail, etPassword;
+    EditText etfName, etlName, etPhone, etEmail;
     Button btnUpdate;
-    String fName, lName, phone, email, password;
+    String fName, lName, phone, email;
 
     private AuthenticationService authenticationService;
     private DatabaseService databaseService;
@@ -53,7 +53,6 @@ public class UpdateUserDetails extends BaseActivity implements View.OnClickListe
         etlName = findViewById(R.id.etlName);
         etPhone = findViewById(R.id.etPhone);
         etEmail = findViewById(R.id.etEmail);
-        etPassword = findViewById(R.id.etPassword);
         btnUpdate = findViewById(R.id.btnUpdate);
         btnUpdate.setOnClickListener(this);
     }
@@ -68,7 +67,6 @@ public class UpdateUserDetails extends BaseActivity implements View.OnClickListe
             etlName.setText(user.getlName());
             etPhone.setText(user.getPhone());
             etEmail.setText(user.getEmail());
-            etPassword.setText(user.getPassword());
         } else {
             // Show a message if the user is not found in SharedPreferences
             Toast.makeText(this, "User data not found", Toast.LENGTH_SHORT).show();
@@ -82,13 +80,12 @@ public class UpdateUserDetails extends BaseActivity implements View.OnClickListe
         lName = etlName.getText().toString();
         phone = etPhone.getText().toString();
         email = etEmail.getText().toString();
-        password = etPassword.getText().toString();
 
         // Validate the input before proceeding
         boolean isValid = validateInput();
 
         if (isValid) {
-            updateUserDetails(fName, lName, phone, email, password);
+            updateUserDetails(fName, lName, phone, email);
         }
     }
 
@@ -112,15 +109,11 @@ public class UpdateUserDetails extends BaseActivity implements View.OnClickListe
             etEmail.setError("Email is not valid");
             isValid = false;
         }
-        if (password.length() < 6) {
-            etPassword.setError("Password is too short");
-            isValid = false;
-        }
 
         return isValid;
     }
 
-    private void updateUserDetails(String fName, String lName, String phone, String email, String password) {
+    private void updateUserDetails(String fName, String lName, String phone, String email) {
         // Get the current user's ID from Authentication service
         String userId = authenticationService.getCurrentUserId();
         if (userId != null) {
@@ -131,13 +124,11 @@ public class UpdateUserDetails extends BaseActivity implements View.OnClickListe
             updatedUser.setlName(lName);
             updatedUser.setPhone(phone);
             updatedUser.setEmail(email);
-            updatedUser.setPassword(password);
 
             // Call the updateUser method of the Database service to update the user in the database
             databaseService.updateUserDetails(updatedUser, new DatabaseService.DatabaseCallback<Void>() {
                 @Override
                 public void onCompleted(Void object) {
-                    Log.d(TAG, "onCompleted: User updated successfully");
                     // Save the updated user data to SharedPreferences
                     SharedPreferencesUtil.saveUser(UpdateUserDetails.this, updatedUser);
                     // Inform the user and navigate back or refresh the activity
@@ -147,7 +138,6 @@ public class UpdateUserDetails extends BaseActivity implements View.OnClickListe
 
                 @Override
                 public void onFailed(Exception e) {
-                    Log.e(TAG, "onFailed: Failed to update user", e);
                     Toast.makeText(UpdateUserDetails.this, "Failed to update user", Toast.LENGTH_SHORT).show();
                 }
             });

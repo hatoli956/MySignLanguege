@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserDetailsActivity extends BaseActivity {
 
-    private EditText fName, lName, email, phone, password;
+    private EditText fName, lName, email, phone;
     private DatabaseReference databaseReference;
     private String userId;
 
@@ -37,14 +37,12 @@ public class UserDetailsActivity extends BaseActivity {
         lName = findViewById(R.id.lName);
         email = findViewById(R.id.email);
         phone = findViewById(R.id.phone);
-        password = findViewById(R.id.password);
 
         // Optional: Disable editing programmatically in case XML was not updated
         disableEditText(fName);
         disableEditText(lName);
         disableEditText(email);
         disableEditText(phone);
-        disableEditText(password);
 
         userId = getIntent().getStringExtra("USER_ID");
         if (userId == null) {
@@ -67,7 +65,6 @@ public class UserDetailsActivity extends BaseActivity {
                     lName.setText(user.getlName());
                     email.setText(user.getEmail());
                     phone.setText(user.getPhone());
-                    password.setText(user.getPassword());
                 } else {
                     Toast.makeText(UserDetailsActivity.this, "המשתמש לא נמצא", Toast.LENGTH_SHORT).show();
                 }
