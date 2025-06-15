@@ -37,10 +37,7 @@ public class AdminPage extends BaseActivity {
     }
 
 
-    public void AddBusiness(View view) {
-            Intent go = new Intent(getApplicationContext(), AddBusiness.class);
-            startActivity(go);
-    }
+
     public void MainPage(View view) {
         Intent go = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(go);
@@ -53,6 +50,10 @@ public class AdminPage extends BaseActivity {
     public void SearchUser(View view) {
         Intent go = new Intent(getApplicationContext(), ShowUsers.class);
         startActivity(go);
+    }
+    public void goToRequests(View view) {
+        Intent intent = new Intent(AdminPage.this, RequestList.class);
+        startActivity(intent);
     }
 
 }

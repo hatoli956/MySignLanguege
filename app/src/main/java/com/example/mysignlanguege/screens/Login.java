@@ -24,7 +24,7 @@ public class Login extends BaseActivity {
     private static final String ADMIN_EMAIL = "nadavroki@gmail.com";
 
     private EditText etEmail, etPassword;
-    private Button btnLogin, btnForgotPassword;
+    private Button btnLogin;
     private ImageButton btnGoBack;
 
     private AuthenticationService authenticationService;
@@ -62,7 +62,6 @@ public class Login extends BaseActivity {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        btnForgotPassword = findViewById(R.id.btnForgotPassword);
 
         User savedUser = SharedPreferencesUtil.getUser(Login.this);
         if (savedUser != null) {
@@ -72,10 +71,7 @@ public class Login extends BaseActivity {
 
         btnLogin.setOnClickListener(v -> handleLogin());
 
-        btnForgotPassword.setOnClickListener(v -> {
-            Intent resetIntent = new Intent(Login.this, ResetPassword.class);
-            startActivity(resetIntent);
-        });
+
     }
 
     private void handleLogin() {

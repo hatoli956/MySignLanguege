@@ -2,67 +2,159 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f9fafc"
-    android:fitsSystemWindows="true">
+    android:background="@color/white">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <!-- AppBar + Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#1A237E"
-        android:title="דף מעסיק"
-        android:titleTextColor="@android:color/white" />
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:elevation="4dp">
 
-    <ScrollView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            android:title="דף מעסיק"
+            app:titleTextColor="@color/white"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize">
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true"
+        android:overScrollMode="never">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layoutDirection="rtl">
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
 
-            <LinearLayout
-                android:id="@+id/container"
-                android:layout_width="0dp"
+            <!-- Welcome Title -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="24dp"
-                android:gravity="center_horizontal"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                android:text="ברוך הבא"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="sans-serif-medium" />
 
-                <Button
-                    style="@style/EmployerButton"
-                    android:text="➕ הוסף עסק"
-                    android:onClick="goShowBusiness" />
+            <!-- Decorative Line -->
+            <View
+                android:layout_width="160dp"
+                android:layout_height="4dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/divider_gradient" />
 
-                <Button
-                    style="@style/EmployerButton"
-                    android:text="🛠️ הוסף עבודה"
-                    android:onClick="goAddJob" />
+            <!-- Menu Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="0dp">
 
-                <Button
-                    style="@style/EmployerButton"
-                    android:text="✏️ עדכון העסקים שלי"
-                    android:onClick="goIntrested" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <Button
-                    style="@style/EmployerButton"
-                    android:text="👤 לאיזור האישי"
-                    android:onClick="UpdateUser" />
+                    <!-- Add Business Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="הוסף עסק"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:onClick="goShowBusiness"
+                        app:icon="@drawable/ic_store"
+                        app:iconGravity="textStart"
+                        app:cornerRadius="12dp"
+                        app:elevation="4dp"
+                        app:backgroundTint="@color/primary"
+                        android:fontFamily="sans-serif-medium" />
 
-                <Button
-                    style="@style/EmployerButton"
-                    android:text="📄 רשימת העסקים שלי"
-                    android:onClick="goShowJobsForEmployer" />
+                    <!-- Add Job Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="הוסף עבודה"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:onClick="goAddJob"
+                        app:icon="@drawable/ic_work"
+                        app:iconGravity="textStart"
+                        app:cornerRadius="12dp"
+                        app:elevation="4dp"
+                        app:backgroundTint="@color/primary"
+                        android:fontFamily="sans-serif-medium" />
 
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                    <!-- Update Businesses Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="עדכון העסקים שלי"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:onClick="goIntrested"
+                        app:icon="@drawable/ic_edit"
+                        app:iconGravity="textStart"
+                        app:cornerRadius="12dp"
+                        app:elevation="4dp"
+                        app:backgroundTint="@color/primary"
+                        android:fontFamily="sans-serif-medium" />
+
+                    <!-- Personal Area Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginBottom="12dp"
+                        android:text="לאיזור האישי"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:onClick="UpdateUser"
+                        app:icon="@drawable/ic_person"
+                        app:iconGravity="textStart"
+                        app:cornerRadius="12dp"
+                        app:elevation="4dp"
+                        app:backgroundTint="@color/primary"
+                        android:fontFamily="sans-serif-medium" />
+
+                    <!-- My Businesses List Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="רשימת העסקים שלי"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:onClick="goShowJobsForEmployer"
+                        app:icon="@drawable/ic_list"
+                        app:iconGravity="textStart"
+                        app:cornerRadius="12dp"
+                        app:elevation="4dp"
+                        app:backgroundTint="@color/primary"
+                        android:fontFamily="sans-serif-medium" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

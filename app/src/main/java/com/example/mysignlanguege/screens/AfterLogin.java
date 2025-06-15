@@ -93,4 +93,11 @@ public class AfterLogin extends BaseActivity {
         Intent go = new Intent(getApplicationContext(), UpdateUserDetails.class);
         startActivity(go);
     }
+
+
+    public void GoRequest(View view) {
+        checkAuthenticationBeforeAction();
+        Intent go = new Intent(getApplicationContext(), RequestBecomeEmployer.class);
+        startActivity(go);
+    }
 }

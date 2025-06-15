@@ -155,6 +155,21 @@
                         app:backgroundTint="@color/primary"
                         android:fontFamily="sans-serif-medium" />
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGoToRequest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="בקשה להפוך למעסיק"
+                        android:textStyle="bold"
+                        android:onClick="GoRequest"
+                        android:backgroundTint="#1A237E"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="16dp"
+                        app:cornerRadius="12dp"
+                        android:textSize="16sp"
+                        />
+
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

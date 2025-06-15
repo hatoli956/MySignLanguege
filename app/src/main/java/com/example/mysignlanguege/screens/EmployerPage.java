@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.example.mysignlanguege.BaseActivity;
 import com.example.mysignlanguege.R;
@@ -20,54 +21,55 @@ import com.example.mysignlanguege.R;
 public class EmployerPage extends BaseActivity {
 
     private Toolbar toolbar;
+    private CoordinatorLayout mainLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this); // מצב Edge-to-Edge
+        EdgeToEdge.enable(this);
 
         setContentView(R.layout.activity_employer_page);
 
-        // צבע של Status Bar
+        // Set status bar color
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(Color.parseColor("#1A237E"));
         }
 
-        // Toolbar
+        // Setup Toolbar
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // טיפול ב-Insets רק על container (לא על toolbar!)
-        View container = findViewById(R.id.container);
-        ViewCompat.setOnApplyWindowInsetsListener(container, (v, insets) -> {
+        // Setup main layout and window insets
+        mainLayout = findViewById(R.id.main);
+        ViewCompat.setOnApplyWindowInsetsListener(mainLayout, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom);
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
 
-    // פעולה עבור כפתור "הוסף עסק"
+    // Action for "Add Business" button
     public void goShowBusiness(View view) {
         startActivity(new Intent(this, AddBusiness.class));
     }
 
-    // פעולה עבור כפתור "הוסף עבודה"
+    // Action for "Add Job" button
     public void goAddJob(View view) {
         startActivity(new Intent(this, AddJob.class));
     }
 
-    // פעולה עבור כפתור "עדכון העסקים שלי"
+    // Action for "Update My Businesses" button
     public void goIntrested(View view) {
         startActivity(new Intent(this, MyBusinessesList.class));
     }
 
-    // פעולה עבור כפתור "לאיזור האישי"
+    // Action for "Personal Area" button
     public void UpdateUser(View view) {
         startActivity(new Intent(this, UpdateUserDetails.class));
     }
 
-    // פעולה עבור כפתור "רשימת העסקים שלי"
+    // Action for "My Businesses List" button
     public void goShowJobsForEmployer(View view) {
         startActivity(new Intent(this, ShowJobsForEmployer.class));
     }
